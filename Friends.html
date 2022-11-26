@@ -8,7 +8,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/null">
     <link rel="icon" type="image/png" href="/null">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>归档 - Stone Zhao@STZ</title>
+    <title>Friends - Stone Zhao@STZ</title>
     
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
@@ -437,29 +437,23 @@ header .header__right .dropdown-menus .dropdown-menu {
             
 
 <article class="page">
-  <div class="archive-list">
-    <p class="h4">2 posts in total.</p>
-    <hr>
-    
-    
-      
-        
-        <p class="h5">2022</p>
-      
-      <a href="/2022/11/26/Hello/" class="list-group-item list-group-item-action">
-        <span class="archive-post-title">Hello</span>
-        <time style="float: right;">11-26</time>
-      </a>
-    
-      
-      <a href="/2022/11/25/hello-world/" class="list-group-item list-group-item-action">
-        <span class="archive-post-title">Temporarily Void</span>
-        <time style="float: right;">11-25</time>
-      </a>
-    
-
+<div id="post-meta-m">
+        <h3>Friends</h3>
 </div>
+<div class="article-m">
+    <div class="post-toc">
+        
+    </div>
+    <div id="article" class="markdown-body textretty">
+        <p><a target="_blank" rel="noopener" href="https://littleqiu.net/">Little Qiu和他的Dream City</a><br><a target="_blank" rel="noopener" href="https://angelic47.com/">47姐姐和她的理想乡(暂时不可用)</a></p>
+
+    </div>
+</div>
+
 </article>
+
+
+
         </div>
         
 <footer class="text-center">
@@ -510,6 +504,36 @@ header .header__right .dropdown-menus .dropdown-menu {
     
 </script>
 
+
+<script>
+    var postImg = document.querySelectorAll("article[class=page] img");
+    for (let imgi = 0; imgi < postImg.length; imgi++) {
+        postImg[imgi].onclick = () => {
+            let zoomImg = document.createElement("div");
+            zoomImg.id = "zoomImg";
+            zoomImg.innerHTML = `<div id="zoom-picture"></div>
+    <div class="poptrox-overlay"
+        style="position: fixed; left: 0px; top: 0px; z-index: 20000; width: 100%; height: 100%; text-align: center; cursor: zoom-out; opacity: 1;">
+        <div style="display:inline-block;height:100%;vertical-align:middle;"></div>
+        <div
+            style="position:absolute;left:0;top:0;width:100%;height:100%;background:#000000;opacity:0;filter:alpha(opacity=0);">
+        </div>
+        <div class="poptrox-popup"
+            style="display: inline-block; vertical-align: middle; position: relative; z-index: 1; cursor: zoom-out; min-width: 10px; min-height: 10px; width: auto; height: auto;">
+            <div class="loader" style="display: none;"></div>
+            <div class="pic" style="text-indent: 0px;"><img
+                    src="${ postImg[imgi].srcset || postImg[imgi].src }" alt="Loading..."
+                    style="vertical-align: bottom; max-width: 85vw; max-height: 85vh;"></div>
+        </div>
+    </div>`;
+            document.body.appendChild(zoomImg);
+                document.querySelector("#zoomImg").onclick = () => {
+                    document.querySelector("#zoomImg").remove();
+                }
+        }
+    }
+    
+</script>
 
 
 
