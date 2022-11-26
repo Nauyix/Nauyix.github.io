@@ -8,7 +8,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/null">
     <link rel="icon" type="image/png" href="/null">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>归档 - Hexo</title>
+    <title>Links - Hexo</title>
     
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
@@ -435,25 +435,71 @@ header .header__right .dropdown-menus .dropdown-menu {
         <div id="page-main" class="main-content">
         <div class="mg-top">
             
-
 <article class="page">
-  <div class="archive-list">
-    <p class="h4">1 posts in total.</p>
-    <hr>
-    
-    
-      
-        
-        <p class="h5">2022</p>
-      
-      <a href="/2022/11/25/hello-world/" class="list-group-item list-group-item-action">
-        <span class="archive-post-title">Hello World</span>
-        <time style="float: right;">11-25</time>
-      </a>
-    
-
+<div id="post-meta-m" style="padding-bottom:0;">
+  <div class="post-meta" id="post-meta">
+    <h3>Links</h3>
+  </div>
 </div>
+<div class="links-page" style="padding-top:10px;" id="links-page">
+    
+    
+      <script>
+        (async () => {
+          var res = await fetch('');
+          var json = await res.json();
+          console.log(json);
+          const Linkscontainer = document.getElementById('links-page');
+          json.forEach(item => {
+            const element = document.createElement('div');
+            element.className = "links-card";
+
+            element.innerHTML = `
+        <a href="${item.link}" class="links-card-body" target="_blank" rel="noopener">
+          <div class="links-card-content">
+              <div class="link-avatar my-auto">
+                
+                  <img webp-comp class="lazyload-img" data-srcset="${item.image}" srcset="/img/loading.svg" src="${item.image}" alt="${item.title}" />
+                
+              </div>
+            <div class="link-text">
+              <div class="link-title">${item.title}</div>
+              <div class="link-intro">${item.intro}</div>
+            </div>
+          </div>
+        </a>
+            `;
+            Linkscontainer.appendChild(element);
+          });
+          setTimeout(function () {
+  function query(selector) {
+    return Array.from(document.querySelectorAll(selector));
+}
+    
+var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+        if (entry.isIntersecting) { 
+            var img = entry.target;
+            img.srcset = img.getAttribute('data-srcset');
+            img.className += ' loaded'
+            io.unobserve(img);
+        }
+    });
+});
+    
+query('.lazyload-img').forEach(function (item) {
+    io.observe(item);
+});
+},0)
+        })();
+
+
+      </script>
+    
+</div>
+  </div>
 </article>
+
         </div>
         
 <footer class="text-center">
