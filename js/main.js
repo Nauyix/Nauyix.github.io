@@ -7,6 +7,18 @@ function loadScript(isAsync, url, cb, isMoudule) {
     script.async = isAsync;
     document.body.appendChild(script);
 }
+var navStr = navigator.userAgent.toLowerCase();
+    if(navStr.indexOf("msie 10.0")!==-1||navStr.indexOf("rv:11.0")!==-1){ // 判断是IE10或者IE11
+        grayscale(document.body);
+        grayscale(document.getElementsByTagName("img"));
+        document.getElementsByTagName('body')[0].className = 'bodyGrey'; //加类名
+    }
+
+var style = document.createElement("style");
+   style.type = "text/css";
+   style.innerHTML="body {filter:gray;filter: grayscale(100%);-webkit-filter:grayscale(100%);filter:gray;filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1)}"
+   style.id="addStyle"
+  document.getElementsByTagName("HEAD").item(0).appendChild(style);
 /**
  * loadScriptFile
  * option: object

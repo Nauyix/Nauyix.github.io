@@ -105,6 +105,10 @@
 
 
 
+    
+<link rel="stylesheet" href="/source/css/blackwhilte.css">
+
+
 <style>
 #page-main,footer,.p-btn{
     display: none;
@@ -363,6 +367,14 @@ header .header__right .dropdown-menus .dropdown-menu {
 
     
     <script src="/js/main.js"></script>
+    
+    <script>
+        let mdate = "11-30, 12-1, 12-2";
+        let ndate = new Date();
+        if (mdate == (ndate.getMonth()+1) + "-" + (ndate.getDate())) {
+            addClass("html", "memorial");
+        }
+    </script>
     
 <meta name="generator" content="Hexo 6.3.0"></head>
 
