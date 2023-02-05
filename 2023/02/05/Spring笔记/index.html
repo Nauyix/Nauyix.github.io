@@ -8,7 +8,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/null">
     <link rel="icon" type="image/png" href="/null">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>归档 - Stone Zhao@STZ</title>
+    <title>Spring笔记 - Stone Zhao@STZ</title>
     
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
@@ -470,35 +470,177 @@ header .header__right .dropdown-menus .dropdown-menu {
             
 
 <article class="page">
-  <div class="archive-list">
-    <p class="h4">4 posts in total.</p>
-    <hr>
+<div id="post-meta-m">
+    <div class="post-meta" id="post-meta">
+  <h3>Spring笔记</h3>
+    
+      <span class="post-meta-label">
+        Stone Zhao
+      </span>
+    
+    
+      <span class="post-meta-label">
+        <span class="p-dot"></span>
+        <time datetime="2023-02-05 21:46" pubdate>
+          2023-02-05
+        </time>
+      </span>
     
     
       
+      <span class="post-meta">
+        <span class="p-dot"></span>
+        共 1k 字
+      </span>
+    
+    
+      
+      <span class="post-meta">
+        <span class="p-dot"></span>
         
-        <p class="h5">2022</p>
-      
-      <a href="/2022/11/27/About-2022/" class="list-group-item list-group-item-action">
-        <span class="archive-post-title">About 2022</span>
-        <time style="float: right;">11-27</time>
-      </a>
+        预计 
+        10
+         分钟
+      </span>
     
-      
-      <a href="/2022/11/26/Hello/" class="list-group-item list-group-item-action">
-        <span class="archive-post-title">Hello</span>
-        <time style="float: right;">11-26</time>
-      </a>
     
-      
-      <a href="/2022/11/25/hello-world/" class="list-group-item list-group-item-action">
-        <span class="archive-post-title">Temporarily Void</span>
-        <time style="float: right;">11-25</time>
-      </a>
-    
-
+  </div>
+  
 </div>
+<div class="article-m">
+  <div class="post-toc">
+    
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring%E6%A1%86%E6%9E%B6%E7%AC%94%E8%AE%B0%EF%BC%88%E5%8F%82%E8%80%83%E5%8A%A8%E5%8A%9B%E8%8A%82%E7%82%B9Spring%E6%A1%86%E6%9E%B6%E6%95%99%E7%A8%8B%E5%88%B6%E4%BD%9C%EF%BC%8C%E9%80%90%E6%AD%A5%E5%AE%8C%E5%96%84%E4%B8%AD%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">Spring框架笔记（参考动力节点Spring框架教程制作，逐步完善中）</span></a></li></ol>
+    
+  </div>
+    <div id="article">
+      <div id="post-content" class="markdown-body textretty">
+        <h1 id="Spring框架笔记（参考动力节点Spring框架教程制作，逐步完善中）"><a href="#Spring框架笔记（参考动力节点Spring框架教程制作，逐步完善中）" class="headerlink" title="Spring框架笔记（参考动力节点Spring框架教程制作，逐步完善中）"></a>Spring框架笔记（参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ft4y1g7Fb">动力节点Spring框架教程</a>制作，逐步完善中）</h1><ol>
+<li><p>开闭原则（Open Cloce Protocal, OCP）：软件应对扩展开放，对修改关闭</p>
+</li>
+<li><p>依赖倒转原则（Dependency Inversion Principle, DIP）： </p>
+<ul>
+<li>高层模块不应该依赖低层模块，二者都应该依赖其抽象</li>
+<li>中心思想：面向接口编程，面向抽象编程</li>
+<li>目的：降低程序耦合，提高扩展性能</li>
+</ul>
+</li>
+<li><p>控制反转 编程思想（Inversion of Control, IoC）</p>
+<ul>
+<li>不在程序中采用硬编码的方式来新建对象</li>
+<li>不在程序中采取硬编码的方式来维护对象关系</li>
+<li>由于出现较晚，没有被纳入GoF23种设计模式范围内</li>
+<li>实现方式较多，其中比较重要的有：依赖注入（Dependency Injection, DI）</li>
+<li>IoC是思想，DI是实现</li>
+<li>注入方法：Set方法注入&#x2F;构造方法注入</li>
+<li>set注入<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;property name=&quot;set方法去掉set后首字母变成小写&quot; ref=&quot;被注入的BeanID&quot;/&gt;</span><br><span class="line">&lt;!--属性的首位一定要是大写，构造方法中set一定是小写--&gt;</span><br><span class="line">&lt;!--name后的内容仅指代setXXXXX方法中的XXXXX，并不代表任何其他意义，若name=&quot;qwq&quot;,则会调用setQwq方法--&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>构造方法注入<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>Spring框架</p>
+<ul>
+<li>实现控制反转IoC，协助新建对象&#x2F;维护对象关系</li>
+<li>实现IoC思想的容器</li>
+<li>八大模块：<ul>
+<li>Core: 基于IoC的核心，实现对Bean的管理，主要组件是BeanFactorty</li>
+<li>AOP: 次核心，面向切面编程</li>
+<li>Web MVC: Spring自己提供的一套MVC框架（暨SpringMVC）</li>
+<li>WebFlux: 响应式Web框架</li>
+<li>Web: 支持集成常见的Web框架（如struts，webwork）</li>
+<li>DAO: 提供了单独的支持JDBC操作的API</li>
+<li>ORM: 支持集成常见的ORM框架（如MyBatis,Hibernate）</li>
+<li>Context: 提供扩展服务</li>
+</ul>
+</li>
+<li>特点<ul>
+<li>轻量<ul>
+<li>非侵入式：Spring应用中对象不依赖Spring的特定类</li>
+<li>轻量：体积小</li>
+</ul>
+</li>
+<li>控制反转：底层使用工厂模式（XML解析+工厂模式+反射机制）</li>
+<li>面向切面</li>
+<li>容器</li>
+<li>框架</li>
+</ul>
+</li>
+<li>pom.xml<ul>
+<li>指定打包方式<packaging></packaging></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Spring的配置文件</p>
+<ul>
+<li>放在resources目录下的xml文件</li>
+<li>配置标签，让spring创造对象</li>
+<li>bean的两个重要属性：<ul>
+<li>id bean的唯一标识符</li>
+<li>类的全限定类名（带包名）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Spring容器的使用</p>
+<ul>
+<li>获取Spring容器对象：ApplicationContext ac&#x3D;new ClassPathXmlApplicationContext(“配置文件路径”)</li>
+<li>注意：运行上一行局内代码即视为启动Spring容器，解析xml文件，并实例化其所有的Bean对象</li>
+<li>根据BeanID获取对象：ac.getBean(“Bean的ID”,bean类型.class); 参数2若留空，返回类型默认为Object</li>
+<li>spring框架通过反射机制来创建对象→一定要保证无参构造方法存在<ul>
+<li>Class cz&#x3D;Class.forName(“完整类名”)</li>
+<li>Object obj&#x3D;cz.newInstance()</li>
+</ul>
+</li>
+<li>底层使用Map&lt;String,Object存储&gt;</li>
+<li>同一个xml文件内不可以有同id的bean，若同时加载多个xml后，存在同id的bean，后加载的bean的会覆盖先加载的bean，被覆盖的bean不会被实例化（猜测：也许是先加载完所有的bean然后再统一实例化？）</li>
+<li>getBean的时候不可以虚空索敌，会报错<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--启用Spring6--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>repository.spring.milestone<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Spring Milestone Repository<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://repo.spring.io/milestone<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>6.0.0-M2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>启动Log4j2日志框架</p>
+<ul>
+<li>引入依赖 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--引入依赖，引入impl后会自动引入core、api等--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">log4j.version</span>&gt;</span>2.14.1<span class="tag">&lt;/<span class="name">log4j.version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.logging.log4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>log4j-slf4j-impl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;log4j.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>创建xml配置文件</li>
+<li>在项目内记录日志信息<ul>
+<li>创建日志记录器对象<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Logger logger=LoggerFactory.getLogger(被记录类名.class)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>根据不同级别输出日志<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logger.级别(&quot;信息内容&quot;);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+
+      </div>
+    </div>
+</div>
+
+
+<div class="post-footer">
+  
+  <div class="donate text-center">
+    <span>喜欢这篇文章？为什么不考虑打赏一下作者呢？</span>
+    <div class="donate-way">
+      
+    </div>
+  </div>
+  
+
+  <div class="post-copyright">
+    <p style="margin: 5px 0;">文章作者：<a href="/">Stone Zhao</a></p>
+    <p style="margin: 5px 0;">文章链接：<a href="http://lxy12138.com/2023/02/05/Spring%E7%AC%94%E8%AE%B0/">http://lxy12138.com/2023/02/05/Spring%E7%AC%94%E8%AE%B0/</a></p>
+    <p style="margin: 5px 0;">版权声明：本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处，谢谢。</p>
+  </div>
+  
+</div>
+
+    <!-- Comments -->
+    <div class="comments">
+        
+        
+    </div>
+
 </article>
+
+
         </div>
         
 <footer class="text-center">
@@ -515,6 +657,8 @@ header .header__right .dropdown-menus .dropdown-menu {
 </footer>
 
 <div class="p-btn">
+    
+        <a class="toc-btn" id="toc-btn"><i id="i-menu"></i></a>
     
     <a href="#top" class="click-btn">
       <i id="i-up"></i>
@@ -550,8 +694,50 @@ header .header__right .dropdown-menus .dropdown-menu {
 </script>
 
 
+<script>
+    var postImg = document.querySelectorAll("article[class=page] img");
+    for (let imgi = 0; imgi < postImg.length; imgi++) {
+        postImg[imgi].onclick = () => {
+            let zoomImg = document.createElement("div");
+            zoomImg.id = "zoomImg";
+            zoomImg.innerHTML = `<div id="zoom-picture"></div>
+    <div class="poptrox-overlay"
+        style="position: fixed; left: 0px; top: 0px; z-index: 20000; width: 100%; height: 100%; text-align: center; cursor: zoom-out; opacity: 1;">
+        <div style="display:inline-block;height:100%;vertical-align:middle;"></div>
+        <div
+            style="position:absolute;left:0;top:0;width:100%;height:100%;background:#000000;opacity:0;filter:alpha(opacity=0);">
+        </div>
+        <div class="poptrox-popup"
+            style="display: inline-block; vertical-align: middle; position: relative; z-index: 1; cursor: zoom-out; min-width: 10px; min-height: 10px; width: auto; height: auto;">
+            <div class="loader" style="display: none;"></div>
+            <div class="pic" style="text-indent: 0px;"><img
+                    src="${ postImg[imgi].srcset || postImg[imgi].src }" alt="Loading..."
+                    style="vertical-align: bottom; max-width: 85vw; max-height: 85vh;"></div>
+        </div>
+    </div>`;
+            document.body.appendChild(zoomImg);
+                document.querySelector("#zoomImg").onclick = () => {
+                    document.querySelector("#zoomImg").remove();
+                }
+        }
+    }
+    
+</script>
 
 
+
+
+    <script>
+        query("#toc-btn")[0].onclick = () => {
+            if (query(".post-toc")[0].innerHTML) {
+                toggleClass(".post-toc", "display-inline");
+            }
+        }
+
+        if (!query(".post-toc")[0].innerHTML) {
+            addClass("#toc-btn","display-none");
+        }
+    </script>
 
 
 
