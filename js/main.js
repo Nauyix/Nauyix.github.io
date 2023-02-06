@@ -14,11 +14,6 @@ var navStr = navigator.userAgent.toLowerCase();
         document.getElementsByTagName('body')[0].className = 'bodyGrey'; //加类名
     }
 
-var style = document.createElement("style");
-   style.type = "text/css";
-   style.innerHTML="body {filter:gray;filter: grayscale(100%);-webkit-filter:grayscale(100%);filter:gray;filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1)}"
-   style.id="addStyle"
-  document.getElementsByTagName("HEAD").item(0).appendChild(style);
 /**
  * loadScriptFile
  * option: object
