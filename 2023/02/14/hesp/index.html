@@ -8,12 +8,12 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/null">
     <link rel="icon" type="image/png" href="/null">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>Hello - Stone Zhao@STZ</title>
+    <title>Stone Zhao@STZ</title>
     
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
     
-    <meta name="description" content="&lt;p&gt;这个网站是怎么来的呢?&lt;/p&gt;">
+    <meta name="description" content="">
     <meta name="author" content="Stone Zhao">
     <meta name="keywords" content="">
     <style>
@@ -472,7 +472,7 @@ header .header__right .dropdown-menus .dropdown-menu {
 <article class="page">
 <div id="post-meta-m">
     <div class="post-meta" id="post-meta">
-  <h3>Hello</h3>
+  <h3></h3>
     
       <span class="post-meta-label">
         Stone Zhao
@@ -481,8 +481,8 @@ header .header__right .dropdown-menus .dropdown-menu {
     
       <span class="post-meta-label">
         <span class="p-dot"></span>
-        <time datetime="2022-11-26 16:20" pubdate>
-          2022-11-26
+        <time datetime="2023-02-14 08:14" pubdate>
+          2023-02-14
         </time>
       </span>
     
@@ -490,7 +490,7 @@ header .header__right .dropdown-menus .dropdown-menu {
       
       <span class="post-meta">
         <span class="p-dot"></span>
-        共 194 字
+        共 1.3k 字
       </span>
     
     
@@ -499,7 +499,7 @@ header .header__right .dropdown-menus .dropdown-menu {
         <span class="p-dot"></span>
         
         预计 
-        1
+        11
          分钟
       </span>
     
@@ -510,17 +510,189 @@ header .header__right .dropdown-menus .dropdown-menu {
 <div class="article-m">
   <div class="post-toc">
     
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#hesp-bi%EF%BC%88%E5%89%8D%E5%8F%B0api%E6%8E%A5%E5%8F%A3%E7%A8%8B%E5%BA%8F%EF%BC%89%E5%8A%9F%E8%83%BD"><span class="toc-number">1.</span> <span class="toc-text">hesp-bi（前台api接口程序）功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%90%E4%B8%9A%E5%8A%A1%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B%EF%BC%88%E4%BB%A5-getInherentHazardLevenCount-%E7%BB%9F%E8%AE%A1%E6%9F%90%E4%BC%81%E4%B8%9A%E5%9B%BA%E6%9C%89%E9%A3%8E%E9%99%A9%E7%AD%89%E7%BA%A7%E8%A3%85%E7%BD%AE%E6%95%B0-%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">某业务实现过程（以 getInherentHazardLevenCount-统计某企业固有风险等级装置数 为例）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-number">3.</span> <span class="toc-text">相关代码规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%90%8D%E8%AF%8D-x2F-%E6%A8%A1%E5%9D%97"><span class="toc-number">4.</span> <span class="toc-text">其他名词&#x2F;模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5"><span class="toc-number">5.</span> <span class="toc-text">关于注解的碎碎念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%87%E6%80%AA%E7%9A%84%E5%B0%8F%E7%96%91%E9%97%AE"><span class="toc-number">6.</span> <span class="toc-text">奇怪的小疑问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8ESQL%E7%9A%84%E7%B4%A7%E6%80%A5%E5%A4%8D%E4%B9%A0"><span class="toc-number">7.</span> <span class="toc-text">关于SQL的紧急复习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#join-%E8%BF%9E%E6%8E%A5"><span class="toc-number">7.0.1.</span> <span class="toc-text">join 连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#as"><span class="toc-number">7.0.2.</span> <span class="toc-text">as</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#count"><span class="toc-number">7.0.3.</span> <span class="toc-text">count</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8C%83%E5%BC%8F"><span class="toc-number">7.0.4.</span> <span class="toc-text">范式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#distinct"><span class="toc-number">7.0.5.</span> <span class="toc-text">distinct</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#group-concat"><span class="toc-number">7.0.6.</span> <span class="toc-text">group_concat</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#union%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">7.0.7.</span> <span class="toc-text">union关键字</span></a></li></ol></li></ol></li></ol>
     
   </div>
     <div id="article">
       <div id="post-content" class="markdown-body textretty">
-        <p>这个网站是怎么来的呢?</p>
-<span id="more"></span>
-
-<p>这个域名(lxy12138.com)是在2014年被第一次注册的。<br>在一开始的三年，站点部署在47姐姐的私人服务器上（感谢47姐姐的慷概解囊）<br>大概从2018年开始，由于各种原因，站点不再更新，也一度陷入停站状态，仅保留了域名邮箱的使用:-(<br>    (高中真的又忙又穷谁有时间天天管一个网站嘤嘤嘤)<br>在2022年末，由于懒狗赵石突然决定做些什么事情，于是，他重建了这个网站<br>也就是现在你看到的，赵石的小窝 V2.0</p>
-<p>嗨，别来无恙啊;-)</p>
-<p>Contact me at: <a href="mailto:&#115;&#x74;&#x7a;&#50;&#x30;&#x31;&#x35;&#x40;&#111;&#117;&#x74;&#x6c;&#x6f;&#x6f;&#x6b;&#x2e;&#x63;&#111;&#x6d;">&#115;&#x74;&#x7a;&#50;&#x30;&#x31;&#x35;&#x40;&#111;&#117;&#x74;&#x6c;&#x6f;&#x6f;&#x6b;&#x2e;&#x63;&#111;&#x6d;</a></p>
+        <p>spring boot&#x2F;Tomcat&#x2F;mybatis<br>– BaseDto 所有DTO的父DTO，制定了当前登录用户的基本信息（id，企业id，等级等）–</p>
+<h2 id="hesp-bi（前台api接口程序）功能"><a href="#hesp-bi（前台api接口程序）功能" class="headerlink" title="hesp-bi（前台api接口程序）功能"></a>hesp-bi（前台api接口程序）功能</h2><ul>
+<li>dgs 管控平台总部首页接口（好像是管理平台的总接口？）<ul>
+<li>controller 控制层</li>
+<li>dao 持久层 操作数据库-操作定义于resources&#x2F;mapper&#x2F;bi</li>
+<li>entity 实体 和数据类对应(用的不多？)</li>
+<li>model	模型 对entity进行加工后的模型<ul>
+<li>productionZone 产品区（？<ul>
+<li>dto 服务层，一般用于上交给服务器</li>
+<li>vo 展示层，一般用于传输给展示层</li>
+</ul>
+</li>
+<li>target<ul>
+<li>dto 服务层</li>
+<li>vo 展示层</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>service 业务层 存放业务逻辑，dto→vo</li>
+<li>util 工具类</li>
+</ul>
+</li>
+<li>system 操作访问日志-业务访问日志接口<ul>
+<li><p>controller</p>
+<ul>
+<li>SysLogController getCompanyList方法：由~&#x2F;saveLog传入OperationLodDto，调用logservice的savelog保存该dto，返回值为操作结果</li>
+<li>SystemController <ul>
+<li>subCompanyVideoCount()：由~&#x2F;updatePersonalInformation传入systemDto对象，调用SystemServiceImpl的updatePersonalInformation，返回值为操作结果</li>
+<li>getOrgList()-1:由~&#x2F;getOrgList传入OrgQueryDto对象，调用orgService获得组织机构列表并返回</li>
+<li>getOrgList()-2:由~&#x2F;getUserInfo传入UserInfoDto对象，调用SystemServiceImpl的getUserInfo获得个人信息，包装后返回</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>service</p>
+<ul>
+<li>SystemServiceImpl 实现controller层中所用到的功能</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>video 企业视频相关管理<ul>
+<li>controller<ul>
+<li>VideoController</li>
+</ul>
+</li>
+<li>service<ul>
+<li>VideoServiceImpl 实现controller层中所用到的功能</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>workorder 作业票相关管理（查询数量，过程管理）</li>
+<li>smi 安全信息管理（如企业危化品保有量、相关资格证管理）</li>
+<li>robot 机器人巡查检查日志、管理与隐患记录</li>
+<li>promise 企业安全承诺信息记录</li>
+<li>emp 人员行动（轨迹、当前位置、行动趋势等）</li>
+<li>hrmw app端信息查询接口？</li>
+<li>hs HaiShang？海上平台管理？</li>
+</ul>
+<h2 id="某业务实现过程（以-getInherentHazardLevenCount-统计某企业固有风险等级装置数-为例）"><a href="#某业务实现过程（以-getInherentHazardLevenCount-统计某企业固有风险等级装置数-为例）" class="headerlink" title="某业务实现过程（以 getInherentHazardLevenCount-统计某企业固有风险等级装置数 为例）"></a>某业务实现过程（以 getInherentHazardLevenCount-统计某企业固有风险等级装置数 为例）</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>表层步骤</th>
+<th>步骤</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>前端将攻速数据以post方式发送数据包至~&#x2F;getInherentHazardLevelCount</td>
+<td>前端发起任务</td>
+</tr>
+<tr>
+<td>2</td>
+<td>数据被打包为CompanyDto，传入CompanyOrgController的getInherentHazardLevelCount方法</td>
+<td>任务传入控制层</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2中方法return语句中调用ResultUtil的success方法，传入值为2中的CompanyDto</td>
+<td>控制层调用打包函数，打包内容待定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>success方法传入参数为companyOrgService（Impl）的getInherentHazardLevelCount(dto)</td>
+<td>控制层将任务传入业务层</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Impl调用companyOrgDao.getInherentHazardLevelCount(dto)</td>
+<td>业务层调用服务层</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Dao通过mapper映射到mybatis操作getInherentHazardLevelCount</td>
+<td>服务层运行</td>
+</tr>
+<tr>
+<td>7</td>
+<td>结果被打包为ProductionZoneInherentHazardLevelStatisticsVo，被传回Impl</td>
+<td>服务层将结果传回展示层</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Impl返回该Vo（步骤4）</td>
+<td>展示层将结果传回业务层</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Vo进入ResultUtil的success方法（步骤3），被打包为JsonResult，返回</td>
+<td>业务层将结果传回控制层</td>
+</tr>
+<tr>
+<td>10</td>
+<td>数据被传回到前端</td>
+<td>控制层将结果传回前端</td>
+</tr>
+</tbody></table>
+<h2 id="相关代码规范"><a href="#相关代码规范" class="headerlink" title="相关代码规范"></a>相关代码规范</h2><ol>
+<li>接口注解:<ul>
+<li>auther 作者</li>
+<li>description 接口作用</li>
+<li>createtime 创建时间</li>
+</ul>
+</li>
+</ol>
+<h2 id="其他名词-x2F-模块"><a href="#其他名词-x2F-模块" class="headerlink" title="其他名词&#x2F;模块"></a>其他名词&#x2F;模块</h2><ul>
+<li>sm4 一种加密解密算法，为我国商用密码标准</li>
+<li>hesp-core 系统的运行核心</li>
+<li>hesp-base 存放基本工具类&#x2F;结果类（jsonresult&#x2F;resultutil）等</li>
+<li>JsonResult类 在base中规定的回送数据的类</li>
+<li>ResultUtil 记录操作的返回值（成功&#x2F;失败）</li>
+<li>禅道 前后端沟通&#x2F;布置任务&#x2F;反馈结果</li>
+</ul>
+<h2 id="关于注解的碎碎念"><a href="#关于注解的碎碎念" class="headerlink" title="关于注解的碎碎念"></a>关于注解的碎碎念</h2><ul>
+<li>Resource 自动注入（默认byName） </li>
+<li>RequestMapping 注册，对该地址建立对任意http请求的映射</li>
+<li>PostMapping 注册，对该地址建立对post请求的映射（也有其他的一些mapping，可类推）</li>
+<li>@valid</li>
+</ul>
+<h2 id="奇怪的小疑问"><a href="#奇怪的小疑问" class="headerlink" title="奇怪的小疑问"></a>奇怪的小疑问</h2><ul>
+<li>为什么system-SystemController中更改用户信息的方法叫做subCompanyVideoCount</li>
+<li>为什么所有的方法都用的post而没有get<ul>
+<li>小猜测：可能因为传送的数据包容易超过get的限制？</li>
+</ul>
+</li>
+<li></li>
+</ul>
+<h2 id="关于SQL的紧急复习"><a href="#关于SQL的紧急复习" class="headerlink" title="关于SQL的紧急复习"></a>关于SQL的紧急复习</h2><h4 id="join-连接"><a href="#join-连接" class="headerlink" title="join 连接"></a>join 连接</h4><ol>
+<li>内连接 仅仅是求交集</li>
+<li>外连接<ul>
+<li>左连接（left join）求完交集后，将交集数据拼接上左表的其他列（无关项留空）</li>
+<li>右连接（right join）求完交集后，将交集数据拼接上右表的其他列</li>
+<li>外连接（full outer join）求完交集后，拼接上左右表剩余的记录</li>
+</ul>
+</li>
+</ol>
+<h4 id="as"><a href="#as" class="headerlink" title="as"></a>as</h4><p>为某一列设置别名，比如在拼接的时候为了规避新表列重名的问题</p>
+<h4 id="count"><a href="#count" class="headerlink" title="count"></a>count</h4><p>计算符合条件的行的数量</p>
+<h4 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h4><ol>
+<li>1NF 数据是不可再分的<ul>
+<li>解决方法：拆数据项</li>
+</ul>
+</li>
+<li>2NF 在1NF的基础上，消除了非主属性对于码的部分函数依赖，即保证通过主键可以唯一确定该项每一列的值<ul>
+<li>解决方法：</li>
+</ul>
+</li>
+<li>3NF 在2NF的基础上，一个表中不可以存在任何非主属性可以被另一项非主属性唯一确定<ul>
+<li>解决方法：拆表</li>
+</ul>
+</li>
+</ol>
+<h4 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a>distinct</h4><p>在查询的时候去除重复的行，可以对单列使用，也可以对全表使用</p>
+<h4 id="group-concat"><a href="#group-concat" class="headerlink" title="group_concat"></a>group_concat</h4><p>拼接符合条件的所有数据至一列中</p>
+<h4 id="union关键字"><a href="#union关键字" class="headerlink" title="union关键字"></a>union关键字</h4><p>用于多个select之间，可以合并两个或多个select语句的结果集<br>每个select必须拥有相同数量的列与相似的数据类型</p>
 
       </div>
     </div>
@@ -539,7 +711,7 @@ header .header__right .dropdown-menus .dropdown-menu {
 
   <div class="post-copyright">
     <p style="margin: 5px 0;">文章作者：<a href="/">Stone Zhao</a></p>
-    <p style="margin: 5px 0;">文章链接：<a href="http://lxy12138.com/2022/11/26/Hello/">http://lxy12138.com/2022/11/26/Hello/</a></p>
+    <p style="margin: 5px 0;">文章链接：<a href="http://lxy12138.com/2023/02/14/hesp/">http://lxy12138.com/2023/02/14/hesp/</a></p>
     <p style="margin: 5px 0;">版权声明：本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处，谢谢。</p>
   </div>
   
