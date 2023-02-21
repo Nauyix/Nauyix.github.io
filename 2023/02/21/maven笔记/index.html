@@ -8,12 +8,12 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/null">
     <link rel="icon" type="image/png" href="/null">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>About Me - Stone Zhao@STZ</title>
+    <title>maven笔记 - Stone Zhao@STZ</title>
     
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
     
-    <meta name="description" content="">
+    <meta name="description" content="&lt;p&gt;喔，填坑呢在这&lt;/p&gt;">
     <meta name="author" content="Stone Zhao">
     <meta name="keywords" content="">
     <style>
@@ -471,26 +471,213 @@ header .header__right .dropdown-menus .dropdown-menu {
 
 <article class="page">
 <div id="post-meta-m">
-        <h3>About Me</h3>
+    <div class="post-meta" id="post-meta">
+  <h3>maven笔记</h3>
+    
+      <span class="post-meta-label">
+        Stone Zhao
+      </span>
+    
+    
+      <span class="post-meta-label">
+        <span class="p-dot"></span>
+        <time datetime="2023-02-21 14:45" pubdate>
+          2023-02-21
+        </time>
+      </span>
+    
+    
+      
+      <span class="post-meta">
+        <span class="p-dot"></span>
+        共 1.2k 字
+      </span>
+    
+    
+      
+      <span class="post-meta">
+        <span class="p-dot"></span>
+        
+        预计 
+        11
+         分钟
+      </span>
+    
+    
+  </div>
+  
 </div>
 <div class="article-m">
-    <div class="post-toc">
-        
-    </div>
-    <div id="article" class="markdown-body textretty">
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1957256466&auto=1&height=66"></iframe>
+  <div class="post-toc">
+    
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E6%88%90"><span class="toc-number">1.</span> <span class="toc-text">组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96"><span class="toc-number">3.</span> <span class="toc-text">依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E6%8F%92%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">生命周期与插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91%E4%B8%8E%E8%AE%BE%E8%AE%A1"><span class="toc-number">5.</span> <span class="toc-text">分模块开发与设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E4%BE%9D%E8%B5%96"><span class="toc-number">6.</span> <span class="toc-text">聚合依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-number">7.</span> <span class="toc-text">继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7"><span class="toc-number">8.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86"><span class="toc-number">9.</span> <span class="toc-text">版本管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%8E%AF%E5%A2%83%E5%BC%80%E5%8F%91%E9%85%8D%E7%BD%AE-%E4%B8%8D%E9%9C%80%E9%80%90%E4%B8%AA%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E5%8D%B3%E5%8F%AF%E5%85%BC%E5%AE%B9%EF%BC%88%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83-x2F-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83-x2F-%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E2%80%A6%E2%80%A6%EF%BC%89"><span class="toc-number">10.</span> <span class="toc-text">多环境开发配置-不需逐个更改文件即可兼容（生产环境&#x2F;开发环境&#x2F;测试环境……）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%B3%E8%BF%87%E6%B5%8B%E8%AF%95"><span class="toc-number">11.</span> <span class="toc-text">跳过测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%81%E6%9C%8D"><span class="toc-number">12.</span> <span class="toc-text">私服</span></a></li></ol>
+    
+  </div>
+    <div id="article">
+      <div id="post-content" class="markdown-body textretty">
+        <p>喔，填坑呢在这</p>
+<span id="more"></span>
+<h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><ol>
+<li>坐标<ul>
+<li>groupId 隶属组织名称</li>
+<li>artifactId 当前项目名称</li>
+<li>version 当前版本号</li>
+<li>packaging 打包方式（默认为jar）</li>
+<li>作用：唯一定位该资源，查找、下载并使用资源</li>
+</ul>
+</li>
+</ol>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol>
+<li>环境变量MAVEN_HOME</li>
+<li>可以配置settings.xml（全局生效），也可以配置pom.xml（对当前项目生效）</li>
+<li>本地仓库配置<br><localRepository>…</localRepository></li>
+<li>配置镜像仓库（加速下载，常用阿里云仓库）<br><mirror>…</mirror></li>
+</ol>
+<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><ol>
+<li>项目可以依赖项目</li>
+<li>项目可以依赖现成的包</li>
+<li>依赖中存在的问题：<ul>
+<li>路径优先:当依赖中出现相同的资源时，层级越深，优先级越低，层级越浅，优先级越高</li>
+<li>声明优先:当资源在相同层级被依赖时，配置顺序靠前的覆盖配置顺序靠后的</li>
+<li>特殊优先:当同级配置了相同资源的不同版本，后配置的覆盖先配置的</li>
+</ul>
+</li>
+<li>可选依赖<ul>
+<li>场景：不希望别人知道我用过这个依赖</li>
+<li><option>true</option></li>
+<li>效果：当前项目使用该依赖，但依赖该项目的项目不自动引用该依赖</li>
+</ul>
+</li>
+<li>排除依赖<ul>
+<li>场景：不希望使用某依赖</li>
+<li>在一个dependency里写：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">groupId</span>&gt;</span><span class="tag">&lt;/<span class="name">groupid</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span><span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>效果：若当前项目排除了依赖项目的A依赖，则该A依赖不会被当前应用所依赖</li>
+</ul>
+</li>
+<li>依赖范围：<br>注意：依赖范围具有传递性<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;scope&gt;&lt;/scope&gt;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>scope</th>
+<th>主代码</th>
+<th>测试代码</th>
+<th>打包</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>compile(默认)</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>test</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>provided</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>runtime</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h2 id="生命周期与插件"><a href="#生命周期与插件" class="headerlink" title="生命周期与插件"></a>生命周期与插件</h2><p>clean 清理<br>    pre-clean<br>    clean<br>    post-clean<br>default 核心工作（编译、测试、打包、部署）</p>
+<p>site 产生报告<br>    pre-<br>    site<br>    post-site<br>    site-deploy</p>
+<p>插件：与生命周期相绑定<br>或者可以说maven的每一个生命周期都是利用插件来实现的</p>
+<ul>
+<li>引入<br>引入方式同依赖，只不过把dependency改成plubins&#x2F;plugin<br>&lt;groupId&gt;…&lt;&#x2F;groupId&gt;<br>&lt;artifactId&gt;….&lt;&#x2F;artifactId&gt;<br>&lt;version&gt;…&lt;&#x2F;version&gt;</li>
+<li>目标<br>设置&lt;executions&gt;…&lt;&#x2F;executions&gt;<br>下层：<goal>指令&lt;&#x2F;goal&gt;<br><phase>运行阶段&lt;&#x2F;phase&gt;<br>即为在哪个生命周期中执行该插件</li>
+</ul>
+<hr>
+<h2 id="分模块开发与设计"><a href="#分模块开发与设计" class="headerlink" title="分模块开发与设计"></a>分模块开发与设计</h2><p>总目标：将程序拆装成不同模块，利用接口通信 <del>（不是java的接口）</del><br>controller 控制层<br>service 业务层<br>dao 持久层<br>pojo 展示层</p>
+<h2 id="聚合依赖"><a href="#聚合依赖" class="headerlink" title="聚合依赖"></a>聚合依赖</h2><p>用一个模块来管理其他模块</p>
+<ul>
+<li>设置聚合模块打包方式为pom</li>
+<li>&lt;modules&gt;被聚合的工程列表&lt;&#x2F;modules&gt;</li>
+</ul>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><ul>
+<li>模块依赖关系维护<br>  子模块可以声明需要依赖，但是不限定版本，若出现版本冲突则会难以解决<br>  解决方案：<ul>
+<li>在聚合模块中声明所有的依赖</li>
+<li>在子模块中声明&lt;parent&gt;工件ID&#x2F;版本&#x2F;GroupId….&lt;&#x2F;parent&gt;</li>
+<li>子工程在设计dependency时不需要写version<br>继承的作用：子工程中沿用父工程的依赖配置</li>
+</ul>
+</li>
+</ul>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p>定义自定义属性</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">技术名称.version</span>&gt;</span>变量值<span class="tag">&lt;/<span class="name">技术名称.version</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--默认变量version为上文artifact配置信息中的version--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--引用方法--&gt;</span></span><br><span class="line">$&#123;技术名称.version&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><del>I’m a spectre – the spectre of Communism……</del></p>
-<h2 id="简单介绍一下自己吧"><a href="#简单介绍一下自己吧" class="headerlink" title="简单介绍一下自己吧"></a>简单介绍一下自己吧</h2><p>赵石，年20，好摸鱼，PC&#x2F;手机皆通玩之，不拘于时，玩于余<br>平常是个PC玩家，现阶段基本只玩csgo、地平线，端游是属于是上课养老用的（COC&#x2F;明日方舟）<br>另：长期招收csgo开黑伙伴，5E2100，完美1700，不玩官匹（伤透了我的心）<br>曾经是个ACM爱好者（没拿牌子，不配做ACMer），正在拟定学习方向（做可行性分析报告？）<br>毕业也许想走测试&#x2F;高并发，但还是走一步看一步</p>
-<h2 id="这个网站以后会用来干什么呢？"><a href="#这个网站以后会用来干什么呢？" class="headerlink" title="这个网站以后会用来干什么呢？"></a>这个网站以后会用来干什么呢？</h2><p>更新一些学习路上的动态，一些碎碎念，和一些乱七八糟的东西<br>技术性文章会被同步更新到csdn（嘻嘻）</p>
-<p>本页面还在持续更新中<br>Best wishes ;-)</p>
-<p>（最后更新于2022年11月）<br>Reach me at:<a href="mailto:&#x73;&#x74;&#122;&#x32;&#48;&#x31;&#53;&#64;&#111;&#117;&#116;&#x6c;&#111;&#x6f;&#x6b;&#x2e;&#99;&#111;&#x6d;">&#x73;&#x74;&#122;&#x32;&#48;&#x31;&#53;&#64;&#111;&#117;&#116;&#x6c;&#111;&#x6f;&#x6b;&#x2e;&#99;&#111;&#x6d;</a></p>
+<h2 id="版本管理"><a href="#版本管理" class="headerlink" title="版本管理"></a>版本管理</h2><ul>
+<li>关于版本号命名的小常识<ul>
+<li>snapshot 开发过程中，为方便合作或解决依赖等，输出的临时性版本，会随着开发的进展不断更新，更新周期较短</li>
+<li>release 经过测试后，团队对外发布的，运行较为稳定的版本，更新周期较长</li>
+<li>关于版本号的一些约定：&lt;主版本&gt;&lt;次版本&gt;&lt;增量版本&gt;&lt;里程碑版本&gt;</li>
+<li>如：5.1.13-Release</li>
+</ul>
+</li>
+</ul>
+<h2 id="多环境开发配置-不需逐个更改文件即可兼容（生产环境-x2F-开发环境-x2F-测试环境……）"><a href="#多环境开发配置-不需逐个更改文件即可兼容（生产环境-x2F-开发环境-x2F-测试环境……）" class="headerlink" title="多环境开发配置-不需逐个更改文件即可兼容（生产环境&#x2F;开发环境&#x2F;测试环境……）"></a>多环境开发配置-不需逐个更改文件即可兼容（生产环境&#x2F;开发环境&#x2F;测试环境……）</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">id</span>&gt;</span>produce_dev<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!--配置相关属性--&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!--设置默认启动方式--&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">activeByDefault</span>&gt;</span>true<span class="tag">&lt;/<span class="name">activeByDefault</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
+<p>执行特定环境方法：mvn <command> -P [环境名称]</p>
+<h2 id="跳过测试"><a href="#跳过测试" class="headerlink" title="跳过测试"></a>跳过测试</h2><ul>
+<li>常用场景：<ul>
+<li>模块功能未开发（完毕）</li>
+<li>单个功能更新导致其他功能失效</li>
+<li>快速打包</li>
+</ul>
+</li>
+<li>方式<ul>
+<li>在maven配置窗口跳过</li>
+<li>mvn <command> -D skipTests</li>
+<li>在pom中配置测试插件(maven-surefire-plugin)，设置&lt;skipTests&gt;true&lt;&#x2F;skipTests&gt;<strong>(不建议使用)</strong></li>
+</ul>
+</li>
+<li>只使用部分用例测试<ul>
+<li>在测试插件(maven-surefire-plugin)的configuration中，设置include-对应的测试用例(.java)</li>
+</ul>
+</li>
+</ul>
+<h2 id="私服"><a href="#私服" class="headerlink" title="私服"></a>私服</h2><p>暂时没学嗷</p>
+
+      </div>
     </div>
 </div>
 
-</article>
 
+<div class="post-footer">
+  
+  <div class="donate text-center">
+    <span>喜欢这篇文章？为什么不考虑打赏一下作者呢？</span>
+    <div class="donate-way">
+      
+    </div>
+  </div>
+  
+
+  <div class="post-copyright">
+    <p style="margin: 5px 0;">文章作者：<a href="/">Stone Zhao</a></p>
+    <p style="margin: 5px 0;">文章链接：<a href="http://lxy12138.com/2023/02/21/maven%E7%AC%94%E8%AE%B0/">http://lxy12138.com/2023/02/21/maven%E7%AC%94%E8%AE%B0/</a></p>
+    <p style="margin: 5px 0;">版权声明：本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处，谢谢。</p>
+  </div>
+  
+</div>
+
+    <!-- Comments -->
+    <div class="comments">
+        
+        
+    </div>
+
+</article>
 
 
         </div>
@@ -509,6 +696,8 @@ header .header__right .dropdown-menus .dropdown-menu {
 </footer>
 
 <div class="p-btn">
+    
+        <a class="toc-btn" id="toc-btn"><i id="i-menu"></i></a>
     
     <a href="#top" class="click-btn">
       <i id="i-up"></i>
@@ -576,6 +765,18 @@ header .header__right .dropdown-menus .dropdown-menu {
 
 
 
+
+    <script>
+        query("#toc-btn")[0].onclick = () => {
+            if (query(".post-toc")[0].innerHTML) {
+                toggleClass(".post-toc", "display-inline");
+            }
+        }
+
+        if (!query(".post-toc")[0].innerHTML) {
+            addClass("#toc-btn","display-none");
+        }
+    </script>
 
 
 
