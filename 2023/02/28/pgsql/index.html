@@ -8,12 +8,12 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/null">
     <link rel="icon" type="image/png" href="/null">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>Friends - Stone Zhao@STZ</title>
+    <title>pgsql - Stone Zhao@STZ</title>
     
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
     
-    <meta name="description" content="">
+    <meta name="description" content="&lt;p&gt;大二没好好学呜呜呜&lt;/p&gt;">
     <meta name="author" content="Stone Zhao">
     <meta name="keywords" content="">
     <style>
@@ -471,23 +471,229 @@ header .header__right .dropdown-menus .dropdown-menu {
 
 <article class="page">
 <div id="post-meta-m">
-        <h3>Friends</h3>
+    <div class="post-meta" id="post-meta">
+  <h3>pgsql</h3>
+    
+      <span class="post-meta-label">
+        Stone Zhao
+      </span>
+    
+    
+      <span class="post-meta-label">
+        <span class="p-dot"></span>
+        <time datetime="2023-02-28 20:17" pubdate>
+          2023-02-28
+        </time>
+      </span>
+    
+    
+      
+      <span class="post-meta">
+        <span class="p-dot"></span>
+        共 1.1k 字
+      </span>
+    
+    
+      
+      <span class="post-meta">
+        <span class="p-dot"></span>
+        
+        预计 
+        11
+         分钟
+      </span>
+    
+    
+  </div>
+  
 </div>
 <div class="article-m">
-    <div class="post-toc">
-        
-    </div>
-    <div id="article" class="markdown-body textretty">
-        <p><a target="_blank" rel="noopener" href="https://littleqiu.net/">Little Qiu和他的Dream City</a><br>是一直相伴而行的好朋友</p>
-<p><a target="_blank" rel="noopener" href="https://angelic47.com/">47姐姐和她的理想乡(暂时不可用)</a><br>是我编程路上的引路人</p>
-<p><a target="_blank" rel="noopener" href="https://shawnzhou.world/">Julao Shawn Zhou</a><br>是巨佬！巨佬！你知道什么是巨佬吗！</p>
-<p>友链还在更新中<br>Reach me at:<a href="mailto:&#x73;&#116;&#122;&#x32;&#x30;&#49;&#x35;&#64;&#111;&#x75;&#x74;&#108;&#x6f;&#x6f;&#107;&#46;&#99;&#111;&#109;">&#x73;&#116;&#122;&#x32;&#x30;&#49;&#x35;&#64;&#111;&#x75;&#x74;&#108;&#x6f;&#x6f;&#107;&#46;&#99;&#111;&#109;</a></p>
+  <div class="post-toc">
+    
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL-%E5%A4%87%E5%BF%98%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">SQL 备忘录</span></a></li></ol>
+    
+  </div>
+    <div id="article">
+      <div id="post-content" class="markdown-body textretty">
+        <p>大二没好好学呜呜呜</p>
+<span id="more"></span>
+<h1 id="SQL-备忘录"><a href="#SQL-备忘录" class="headerlink" title="SQL 备忘录"></a>SQL 备忘录</h1><ol>
+<li>基本语句格式<ul>
+<li>select</li>
+<li>from</li>
+<li>where</li>
+<li>group by 按照一定规则分组，可以有多个参数<br>  多参数时，若两参数的参照关系完全相同，会归为一类<br>  多参数时，会按照设置的参数项目对结果进行分类<br>  必须与聚合函数（count()\sum()等）搭配使用，否则会报错</li>
+<li>order by 按照一定规则排序<br>  order by colomn [asc|desc]<br>  asc:Ascend 升序 desc:Descend 降序</li>
+</ul>
+</li>
+<li>关键字</li>
+</ol>
+<ul>
+<li>distinct 保证结果（根据某一列&#x2F;多列）严格不相同</li>
+<li>join 连接 见6</li>
+<li>as 为某项数据设置别名，一般在存在复杂子查询时使用</li>
+<li>exists 后接内层子查询，返回结果为Yes或No，若外层查询到的数据在内层中满足条件的出现过，则返回Yes</li>
+<li>limit<ul>
+<li>用在from后：可以设置搜索的偏移量，提升搜索效率，select * from table limit 起始行,向后偏移量（-1则搜索到表结尾）</li>
+<li>用在where后：限制结果数量，搜索到指定数量的记录后即停止搜索，避免搜索全表 select * from table where colomn&#x3D;? limit 1</li>
+</ul>
+</li>
+<li>union 用在两个select整体之间，用来连接搜索结果，要求被连接的两个表拥有严格相似的结构</li>
+<li>in&#x2F;not in 用于限制条件，可以限制搜索目标in(ans1,ans2,ans3……)</li>
+<li>like &amp;&amp; ilike 见7</li>
+<li>having 过滤搜索结果，见8</li>
+</ul>
+<ol>
+<li>内置函数</li>
+</ol>
+<ul>
+<li>generate_series(start, stop, step),可以用于数字&#x2F;时间的序列生成，step可以为除了0以外的任何实数</li>
+<li>row_number() over (order by colomn [asc|desc]) 对于某列的数据按照[升序|降序]生成序列，遇到相同数据不会生成重复序号</li>
+<li>rank() over (order by colomn [asc|desc]) 对于某列的数据按照[升序|降序]生成序列，遇到相同数据会生成重复序号，相同的数据只占用一个名次</li>
+<li>dense_rank() over (order by colomn [asc|desc]) 对于某列的数据按照[升序|降序]生成序列，遇到相同数据会生成重复序号，相同的数据占用多个名次</li>
+<li>NTILE(number) over (order by colomn [asc|desc]) 对于某列的数据按照[升序|降序]生成序列，每个数字项出现number次</li>
+<li>聚合函数<ul>
+<li>count</li>
+<li>sum</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>范式<ol>
+<li>1NF 数据是不可再分的<ul>
+<li>解决方法：拆数据项</li>
+</ul>
+</li>
+<li>2NF 在1NF的基础上，消除了非主属性对于码的部分函数依赖，即保证通过主键可以唯一确定该项每一列的值<ul>
+<li>解决方法：拆表</li>
+</ul>
+</li>
+<li>3NF 在2NF的基础上，一个表中不可以存在任何非主属性可以被另一项非主属性唯一确定<ul>
+<li>解决方法：进一步拆表</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>表达式</li>
+</ol>
+<ul>
+<li>case表达式<ul>
+<li>简单case表达式</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> colomn</span><br><span class="line">	<span class="keyword">when</span> ans1 <span class="keyword">then</span> rep1</span><br><span class="line">	<span class="keyword">when</span> ans2 <span class="keyword">then</span> rep2</span><br><span class="line">	<span class="keyword">else</span> rep3</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line"><span class="operator">&lt;</span><span class="operator">!</span><span class="comment">--指定某一列内容，若值为ans，结果呈现为为rep，else为缺省值，可不配置--&gt;</span></span><br></pre></td></tr></table></figure>
 
+<pre><code>* 搜索case表达式
+</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="keyword">when</span> condition1 <span class="keyword">then</span> ans1</span><br><span class="line">	 <span class="keyword">when</span> condition2 <span class="keyword">then</span> ans2</span><br><span class="line">	 <span class="keyword">else</span> ans3</span><br><span class="line">	 <span class="keyword">end</span></span><br><span class="line"><span class="operator">&lt;</span><span class="operator">!</span><span class="comment">--指定条件，若满足条件，则结果呈现为ans，else为缺省值，可不配置--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>连接</li>
+</ol>
+<ul>
+<li>inner join</li>
+<li>left (outer) join</li>
+<li>right (outer) join</li>
+<li>full outer join<br>粗浅的理解：<br>先发生表结构拼接</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>join</th>
+<th>中文</th>
+<th>粗浅的理解</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>inner join</td>
+<td>内连接</td>
+<td>A交B</td>
+<td></td>
+</tr>
+<tr>
+<td>left (outer) join</td>
+<td>左(外)连接</td>
+<td>A并(A交B)</td>
+<td>B表中没有的内容留空</td>
+</tr>
+<tr>
+<td>right (outer) join</td>
+<td>右(外)连接</td>
+<td>(A交B)并A</td>
+<td>A表中没有的内容留空</td>
+</tr>
+<tr>
+<td>full outer join</td>
+<td>全外连接</td>
+<td>A并(A交B)并B</td>
+<td>AB中互相没有的留空，然后补齐在总表下方</td>
+</tr>
+</tbody></table>
+<p>A join B<br>    on 匹配条件<br>仅保存符合匹配条件的数据库记录</p>
+<ol start="7">
+<li>通配符与模糊搜索</li>
+</ol>
+<ul>
+<li><p>like &amp;&amp; ilike</p>
+<ul>
+<li>like在搜索时区分大小写</li>
+<li>但ilike不区分</li>
+</ul>
+</li>
+<li><p>两个通配符</p>
+<ul>
+<li>_ 占位通配符，该通配符出现的次数严格匹配目标的格式，如_0，则目标字串的第二位一定为0</li>
+<li>% 不占位通配符，该通配符出现的地方不限制字符数字，可以为0-n个字符填充，如%0，此时目标串含有0则会被选中<br>语句示例：select * from table where colomn like ‘%_00’</li>
+</ul>
+</li>
+<li><p>like可以用于复制一张表的结构 <strong>（不包含数据）</strong></p>
+<p>  create table table2(like table1)</p>
+</li>
+</ul>
+<ol start="8">
+<li>having的用法</li>
+</ol>
+<ul>
+<li>区分having和where：<ul>
+<li>where是直接在搜索的时候进行筛选，having是过滤搜索结果</li>
+<li>执行顺序：where-→聚合函数-→having</li>
+<li>having后面可以使用聚合函数，但where不可以</li>
+</ul>
+</li>
+</ul>
+
+      </div>
     </div>
 </div>
 
-</article>
 
+<div class="post-footer">
+  
+  <div class="donate text-center">
+    <span>喜欢这篇文章？为什么不考虑打赏一下作者呢？</span>
+    <div class="donate-way">
+      
+    </div>
+  </div>
+  
+
+  <div class="post-copyright">
+    <p style="margin: 5px 0;">文章作者：<a href="/">Stone Zhao</a></p>
+    <p style="margin: 5px 0;">文章链接：<a href="http://lxy12138.com/2023/02/28/pgsql/">http://lxy12138.com/2023/02/28/pgsql/</a></p>
+    <p style="margin: 5px 0;">版权声明：本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处，谢谢。</p>
+  </div>
+  
+</div>
+
+    <!-- Comments -->
+    <div class="comments">
+        
+        
+    </div>
+
+</article>
 
 
         </div>
@@ -506,6 +712,8 @@ header .header__right .dropdown-menus .dropdown-menu {
 </footer>
 
 <div class="p-btn">
+    
+        <a class="toc-btn" id="toc-btn"><i id="i-menu"></i></a>
     
     <a href="#top" class="click-btn">
       <i id="i-up"></i>
@@ -573,6 +781,18 @@ header .header__right .dropdown-menus .dropdown-menu {
 
 
 
+
+    <script>
+        query("#toc-btn")[0].onclick = () => {
+            if (query(".post-toc")[0].innerHTML) {
+                toggleClass(".post-toc", "display-inline");
+            }
+        }
+
+        if (!query(".post-toc")[0].innerHTML) {
+            addClass("#toc-btn","display-none");
+        }
+    </script>
 
 
 
