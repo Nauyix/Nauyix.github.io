@@ -13,7 +13,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
     
-    <meta name="description" content="&lt;h1 id=&#34;Spring框架笔记（参考动力节点Spring框架教程制作，逐步完善中）&#34;&gt;&lt;a href=&#34;#Spring框架笔记（参考动力节点Spring框架教程制作，逐步完善中）&#34; class=&#34;headerlink&#34; title=&#34;Spring框架笔记（参考动力节点Spring框架教程制作，逐步完善中）&#34;&gt;&lt;/a&gt;Spring框架笔记（参考&lt;a href=&#34;https://www.bilibili.com/video/BV1Ft4y1g7Fb&#34;&gt;动力节点Spring框架教程&lt;/a&gt;制作，逐步完善中）&lt;/h1&gt;">
+    <meta name="description" content="&lt;h1 id=&#34;Spring框架笔记&#34;&gt;&lt;a href=&#34;#Spring框架笔记&#34; class=&#34;headerlink&#34; title=&#34;Spring框架笔记&#34;&gt;&lt;/a&gt;Spring框架笔记&lt;/h1&gt;">
     <meta name="author" content="Stone Zhao">
     <meta name="keywords" content="">
     <style>
@@ -490,7 +490,7 @@ header .header__right .dropdown-menus .dropdown-menu {
       
       <span class="post-meta">
         <span class="p-dot"></span>
-        共 1k 字
+        共 3.1k 字
       </span>
     
     
@@ -499,7 +499,7 @@ header .header__right .dropdown-menus .dropdown-menu {
         <span class="p-dot"></span>
         
         预计 
-        10
+        37
          分钟
       </span>
     
@@ -510,13 +510,13 @@ header .header__right .dropdown-menus .dropdown-menu {
 <div class="article-m">
   <div class="post-toc">
     
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring%E6%A1%86%E6%9E%B6%E7%AC%94%E8%AE%B0%EF%BC%88%E5%8F%82%E8%80%83%E5%8A%A8%E5%8A%9B%E8%8A%82%E7%82%B9Spring%E6%A1%86%E6%9E%B6%E6%95%99%E7%A8%8B%E5%88%B6%E4%BD%9C%EF%BC%8C%E9%80%90%E6%AD%A5%E5%AE%8C%E5%96%84%E4%B8%AD%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">Spring框架笔记（参考动力节点Spring框架教程制作，逐步完善中）</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring%E6%A1%86%E6%9E%B6%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">Spring框架笔记</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring%E6%A1%86%E6%9E%B6%E7%AC%94%E8%AE%B0%EF%BC%88%E5%8F%82%E8%80%83%E5%8A%A8%E5%8A%9B%E8%8A%82%E7%82%B9Spring%E6%A1%86%E6%9E%B6%E6%95%99%E7%A8%8B%E5%88%B6%E4%BD%9C%EF%BC%8C%E9%80%90%E6%AD%A5%E5%AE%8C%E5%96%84%E4%B8%AD%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">Spring框架笔记（参考动力节点Spring框架教程制作，逐步完善中）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Bean%E7%9A%84%E4%B8%89%E7%BA%A7%E7%BC%93%E5%AD%98"><span class="toc-number">2.0.1.</span> <span class="toc-text">Bean的三级缓存</span></a></li></ol></li></ol></li></ol>
     
   </div>
     <div id="article">
       <div id="post-content" class="markdown-body textretty">
-        <h1 id="Spring框架笔记（参考动力节点Spring框架教程制作，逐步完善中）"><a href="#Spring框架笔记（参考动力节点Spring框架教程制作，逐步完善中）" class="headerlink" title="Spring框架笔记（参考动力节点Spring框架教程制作，逐步完善中）"></a>Spring框架笔记（参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ft4y1g7Fb">动力节点Spring框架教程</a>制作，逐步完善中）</h1><span id="more"></span>
-<ol>
+        <h1 id="Spring框架笔记"><a href="#Spring框架笔记" class="headerlink" title="Spring框架笔记"></a>Spring框架笔记</h1><span id="more"></span>
+<h1 id="Spring框架笔记（参考动力节点Spring框架教程制作，逐步完善中）"><a href="#Spring框架笔记（参考动力节点Spring框架教程制作，逐步完善中）" class="headerlink" title="Spring框架笔记（参考动力节点Spring框架教程制作，逐步完善中）"></a>Spring框架笔记（参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ft4y1g7Fb">动力节点Spring框架教程</a>制作，逐步完善中）</h1><ol>
 <li><p>开闭原则（Open Cloce Protocal, OCP）：软件应对扩展开放，对修改关闭</p>
 </li>
 <li><p>依赖倒转原则（Dependency Inversion Principle, DIP）： </p>
@@ -534,8 +534,8 @@ header .header__right .dropdown-menus .dropdown-menu {
 <li>实现方式较多，其中比较重要的有：依赖注入（Dependency Injection, DI）</li>
 <li>IoC是思想，DI是实现</li>
 <li>注入方法：Set方法注入&#x2F;构造方法注入</li>
-<li>set注入<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;property name=&quot;set方法去掉set后首字母变成小写&quot; ref=&quot;被注入的BeanID&quot;/&gt;</span><br><span class="line">&lt;!--属性的首位一定要是大写，构造方法中set一定是小写--&gt;</span><br><span class="line">&lt;!--name后的内容仅指代setXXXXX方法中的XXXXX，并不代表任何其他意义，若name=&quot;qwq&quot;,则会调用setQwq方法--&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li>构造方法注入<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>set注入<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;set方法去掉set后首字母变成小写&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;被注入的BeanID&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--属性的首位一定要是大写，构造方法中set一定是小写--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--name后的内容仅指代setXXXXX方法中的XXXXX，并不代表任何其他意义，若name=&quot;qwq&quot;,则会调用setQwq方法--&gt;</span></span><br><span class="line">	</span><br></pre></td></tr></table></figure></li>
+<li>构造方法注入<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">&quot;0&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;BeanID&quot;</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">&quot;1&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;BeanID&quot;</span>/&gt;</span></span><br><span class="line">	......</span><br><span class="line">	<span class="comment">&lt;!--index为第n个构造参数，从0开始计数--&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--ref为已经创建的BeanID--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">&quot;参数名&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;&quot;</span>/&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--如果不写index和name，spring会尽力按照类型来进行注入--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>Spring框架</p>
@@ -566,7 +566,7 @@ header .header__right .dropdown-menus .dropdown-menu {
 </ul>
 </li>
 <li>pom.xml<ul>
-<li>指定打包方式<packaging></packaging></li>
+<li>packaging 打包方式</li>
 <li>repositories 仓库地址</li>
 <li>dependencies 依赖</li>
 </ul>
@@ -587,7 +587,7 @@ header .header__right .dropdown-menus .dropdown-menu {
 <li><p>Spring容器的使用</p>
 <ul>
 <li>获取Spring容器对象：ApplicationContext ac&#x3D;new ClassPathXmlApplicationContext(“配置文件路径”)</li>
-<li>注意：运行上一行局内代码即视为启动Spring容器，解析xml文件，并实例化其所有的Bean对象</li>
+<li>注意：运行上一行句内代码即视为启动Spring容器，解析xml文件，并实例化其所有的Bean对象</li>
 <li>根据BeanID获取对象：ac.getBean(“Bean的ID”,bean类型.class); 参数2若留空，返回类型默认为Object</li>
 <li>spring框架通过反射机制来创建对象→一定要保证无参构造方法存在<ul>
 <li>Class cz&#x3D;Class.forName(“完整类名”)</li>
@@ -610,7 +610,134 @@ header .header__right .dropdown-menus .dropdown-menu {
 <li>根据不同级别输出日志<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logger.级别(&quot;信息内容&quot;);</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
+<li><p>set注入详解</p>
+<ul>
+<li><p>注入外部Bean：外部定义好bean，property中使用ref引用</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;exm1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;bean&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;Service&quot;</span> <span class="attr">class</span>=<span class="string">&quot;service&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;ServiceBean1&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;exm1&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>注入内部Bean：在内部property中嵌套定义bean，不用写ref(少用)</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;Service&quot;</span> <span class="attr">class</span>=<span class="string">&quot;service&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;ServiceBean1&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;bean&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>注入简单类型（如int，char，enum等）：property中不指定ref，property指定value<br> <del>Date虽然可以使用value赋值，但对于格式有着严格的要求，如Mon Feb 6 14:50:17 CST 2023，所以尽量还是用ref</del></p>
+</li>
+<li><p>级联属性赋值：<code>\&lt;property name=id.属性 value=&quot;&quot;/\&gt;</code><br> 注意：如果想要使用级联属性赋值，需要编写对应id-bean的get方法</p>
+</li>
+<li><p>注入数组：property内嵌array，使用value&#x2F;ref填充</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--对于简单类型--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;array1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;String&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;val&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">value</span>&gt;</span>value1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">value</span>&gt;</span>value2<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--对于非简单类型，写好Set方法--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;r1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;exam&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;e1&quot;</span> <span class="attr">value</span>=<span class="string">&quot;e11&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;r2&quot;</span> <span class="attr">class</span>=<span class="string">&quot;exam&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;e2&quot;</span> <span class="attr">value</span>=<span class="string">&quot;e22&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;r3&quot;</span> <span class="attr">class</span>=<span class="string">&quot;exam&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;e3&quot;</span> <span class="attr">value</span>=<span class="string">&quot;e33&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;array2&quot;</span> <span class="attr">class</span>=<span class="string">&quot;notSimple&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;array&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">ref</span> <span class="attr">bean</span>=<span class="string">&quot;r1&quot;</span>/&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">ref</span> <span class="attr">bean</span>=<span class="string">&quot;r2&quot;</span>/&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">ref</span> <span class="attr">bean</span>=<span class="string">&quot;r3&quot;</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>注入List&#x2F;Set&#x2F;Map&#x2F;属性类</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;array3&quot;</span> <span class="attr">class</span>=<span class="string">&quot;notSimple&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;List&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">value</span>&gt;</span>val1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">value</span>&gt;</span>val2<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">value</span>&gt;</span>val3<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--注入Set或List，如果是简单类型，则用value，若不简单，则用bean ref--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;Set&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">set</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">value</span>&gt;</span>val1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">value</span>&gt;</span>val2<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">value</span>&gt;</span>val3<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;Map&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">map</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!--简单类型--&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">&quot;&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span>/&gt;</span></span><br><span class="line">			<span class="comment">&lt;!--非简单类型--&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">entry</span> <span class="attr">key-ref</span>=<span class="string">&quot;&quot;</span> <span class="attr">value-ref</span>=<span class="string">&quot;&quot;</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">map</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--Properties的key和value一定是String--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;properties&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">props</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">&quot;key&quot;</span>&gt;</span>value<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">&quot;pwd&quot;</span>&gt;</span>pwd<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">props</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注入null和空字符串</p>
+</li>
+</ul>
+</li>
 </ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;qwq&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">null</span>/&gt;</span> <span class="comment">&lt;!--此时，qwq为null--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;qwq&quot;</span> <span class="attr">value</span>=<span class="string">&quot;null&quot;</span>&gt;</span> <span class="comment">&lt;!--此时，qwq为&quot;null&quot;--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;qwq&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>/&gt;</span> <span class="comment">&lt;!--此时，qwq为空字符串--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;qwq&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span>&gt;</span> <span class="comment">&lt;!--此时，qwq为空字符串--&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code>* 注入值中存在特殊符号(&lt;&gt;?/)
+    1. 使用实体符号代替特殊符号
+    + |符号|转义字符|
+    + |:-:|:-:|:-:|
+    + |&amp;gt;|&amp; gt;|
+    + |&amp;lt;|&amp; lt;|
+    + |&amp;apos;|&amp; apos;|
+    + |&amp;quot;|&amp; quot;|
+    + |&amp;amp;|&amp; amp;|
+    + |&amp;iquest;|&amp; iquest;|
+    2. 将特殊符号放到&amp;lt;![CDATA[...]]&amp;gt;(只能用value标签，即双标记value)
+</code></pre>
+<ol start="9">
+<li><p>命名空间注入</p>
+<ol>
+<li>p命名空间注入</li>
+</ol>
+<ul>
+<li>目的：简化配置</li>
+<li>基于set注入</li>
+<li>配置文件头：xmlns:p&#x3D;”<a target="_blank" rel="noopener" href="http://www.springframework.org/schema/p">http://www.springframework.org/schema/p</a><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;&quot;</span> <span class="attr">p:简单属性</span>=<span class="string">&quot;&quot;</span> <span class="attr">p:复杂属性-ref</span>=<span class="string">&quot;&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="2">
+<li>c命名空间注入</li>
+</ol>
+<ul>
+<li>目的：简化配置</li>
+<li>基于构造方法注入</li>
+<li>配置文件头：xmlns:p&#x3D;”<a target="_blank" rel="noopener" href="http://www.springframework.org/schema/c">http://www.springframework.org/schema/c</a><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;&quot;</span> <span class="attr">c:下标</span>=<span class="string">&quot;&quot;</span> <span class="attr">c:下标-ref</span>=<span class="string">&quot;&quot;</span> <span class="attr">c:参数名</span>=<span class="string">&quot;&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>util命名空间实现配置复用</p>
+<ul>
+<li>配置文件头：xmlns:p&#x3D;”<a target="_blank" rel="noopener" href="http://www.springframework.org/schema/util">http://www.springframework.org/schema/util</a></li>
+<li>更改schemaLocation:<a target="_blank" rel="noopener" href="http://www.springframework.org/schema/util">www.springframework.org/schema/util</a> <a target="_blank" rel="noopener" href="http://ww.springframework.org/schema/util/spring-util.xsd&quot;">http://ww.springframework.org/schema/util/spring-util.xsd&quot;</a><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">util:properties</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">&quot;&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">util:properties</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--在之后的property中--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;...&quot;</span> <span class="attr">class</span>=<span class="string">&quot;...&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;properties&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;上面的id&quot;</span>/&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--不用一条一条写里面的property了--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>基于XML的自动装配</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;&quot;</span> <span class="attr">autowire</span>=<span class="string">&quot;byName&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>根据名字进行自动装配，底层基于set方法</li>
+<li>被自动注入的bean的id需要和set方法中的name一致（去掉set首字母小写）<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;&quot;</span> <span class="attr">autowire</span>=<span class="string">&quot;byType&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>根据类型进行自动装配，底层基于set方法</li>
+<li>一个类型的对象只可以有一个</li>
+</ul>
+</li>
+<li><p>引入外部properties文件</p>
+<ul>
+<li>配置文件头，引入context命名空间：xmlns:p&#x3D;”<a target="_blank" rel="noopener" href="http://www.springframework.org/schema/context">http://www.springframework.org/schema/context</a></li>
+<li>更改schemaLocation:<a target="_blank" rel="noopener" href="http://www.springframework.org/schema/context">www.springframework.org/schema/context</a> <a target="_blank" rel="noopener" href="http://ww.springframework.org/schema/util/spring-context.xsd&quot;">http://ww.springframework.org/schema/util/spring-context.xsd&quot;</a></li>
+<li>使用context:property-placeholder的location属性指定路径，从根目录开始寻址</li>
+<li>resources相当于根目录</li>
+<li>使用${key}取值，保留双引号</li>
+<li>警惕系统变量乱入.</li>
+</ul>
+</li>
+<li><p>bean的作用域 </p>
+<ul>
+<li>scope项：<ul>
+<li>Spring默认是单例的，即singleton，启动容器时即创建对象</li>
+<li>将bean的scope属性设置为prototype则为多例，此时每一次getBean则实例化一次</li>
+<li>若引用SpringMVC框架，可有request（一次请求一个bean）和session（一次会话一个值）</li>
+<li>还有其他少用scope项 如global session(portlet应用专用)\application(一个应用)\websocket(一个生命周期)\自定义</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>bean的实例化</p>
+<ul>
+<li>构造方法实例化-自动调用无参构造方法</li>
+<li>简单工厂模式实例化<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;工厂类完整名&quot;</span> <span class="attr">factory-method</span>=<span class="string">&quot;创建的静态方法&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>factory-bean实例化<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span> <span class="attr">factory-bean</span>=<span class="string">&quot;工厂类id&quot;</span> <span class="attr">factory-method</span>=<span class="string">&quot;创建的静态方法&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--比如--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;factory&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.example.factory&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;qwq&quot;</span> <span class="attr">factory-bean</span>=<span class="string">&quot;factory&quot;</span> <span class="attr">factory-method</span>=<span class="string">&quot;get&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>FactoryBean接口实例化<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PersonFactoryBean</span> <span class="keyword">implements</span> <span class="title class_">FactoryBean</span>&lt;Person&gt;&#123;</span><br><span class="line">	<span class="meta">@override</span></span><br><span class="line">	<span class="keyword">public</span> Person <span class="title function_">getObject</span><span class="params">()</span> <span class="keyword">throws</span> <span class="title function_">Excrption</span><span class="params">()</span>&#123;</span><br><span class="line">		<span class="keyword">return</span>  <span class="keyword">new</span> <span class="title class_">Spring</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@override</span></span><br><span class="line">	......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;qwq&quot;</span> <span class="attr">class</span>=<span class="string">&quot;PersonFactoryBean&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--通过工厂bean获取普通bean--&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>Bean的生命周期</p>
+<ol>
+<li>实例化</li>
+<li>Bean属性赋值<br>2.5 检查Bean是否实现了Aware相关接口，并设置相关依赖</li>
+<li>执行“bean后处理器”的before方法<br>3.5 检查Bean是否实现了InitializingBean接口，调用方法</li>
+<li>初始化bean（xml中配置init-method&#x3D;””）</li>
+<li>执行“bean后处理器”的after方法</li>
+<li>使用bean<br>6.5 检查Bean是否实现了DisposableBean接口并调用接口方法</li>
+<li>销毁bean（xml中配置destroy-method&#x3D;””）</li>
+</ol>
+<ul>
+<li>bean后处理器: implements BeanPostProcessor并重写其before和after方法，写完在xml中创建该bean即可</li>
+<li>一旦配置则对当前xml所有的bean都生效</li>
+<li>作用：检查Bean是否实现了某些特定的接口</li>
+<li>Spring容器仅对singleton的bean进行完整的生命周期管理，其他scope只负责初始化完毕<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DefaultListableBeanFactory fac=<span class="keyword">new</span> <span class="title class_">DefaultListableBeanFactory</span>();</span><br><span class="line">fac.registerSingleton(beanname(String),object)</span><br><span class="line"><span class="comment">//关于如何将自己new的对象交给SpringNTR这件事</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>Bean的循环依赖</p>
+</li>
+</ol>
+<ul>
+<li>spring仅可以自动处理set注入&#x2F;singleton情况下的循环依赖问题</li>
+<li>构造注入&#x2F;(singleton&#x2F;prototype&#x2F;Others)情况下__无法解决__<br>原理：调用无参构造方法实例化对象（此时即曝光该Bean对象），然后使用set注入</li>
+</ul>
+<h3 id="Bean的三级缓存"><a href="#Bean的三级缓存" class="headerlink" title="Bean的三级缓存"></a>Bean的三级缓存</h3><p>private final Map&lt;String,Object&gt; singletonObjects   一级缓存<br>private final Map&lt;String,Object&gt; earlysingletonObjects   二级缓存<br>private final Map&lt;String,ObjectFactory&lt;?&gt;&gt; singletonFactories   三级缓存(该map集合即被称为缓存)<br>key为bean的id<br>value:<br>一级缓存：经过注入后完整的bean对象<br>二级缓存：已经被实例化，但是还没有赋值属性的bean对象<br>三级缓存：单例工厂对象</p>
+<ol start="17">
+<li>Spring IoC 注解式开发<br>目的：简化XML配置<br>使用方式：在配置文件中添加aop依赖，配置context命名空间，配置扫描，在类上只用注解<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns:context</span>=<span class="string">&quot;http://www.springframeword.org/schema/context&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">bace-package</span>=<span class="string">&quot;&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>选择性实例化bean</li>
+</ul>
 
       </div>
     </div>
