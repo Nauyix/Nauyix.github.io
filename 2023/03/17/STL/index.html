@@ -8,12 +8,12 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/null">
     <link rel="icon" type="image/png" href="/null">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>maven - Stone Zhao@STZ</title>
+    <title>STL容器简介 - Stone Zhao@STZ</title>
     
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
     
-    <meta name="description" content="">
+    <meta name="description" content="&lt;p&gt;STL一共有__7__种序列容器，__4__种关联容器，__4__种无序关联容器&lt;/p&gt;">
     <meta name="author" content="Stone Zhao">
     <meta name="keywords" content="">
     <style>
@@ -472,7 +472,7 @@ header .header__right .dropdown-menus .dropdown-menu {
 <article class="page">
 <div id="post-meta-m">
     <div class="post-meta" id="post-meta">
-  <h3>maven</h3>
+  <h3>STL容器简介</h3>
     
       <span class="post-meta-label">
         Stone Zhao
@@ -481,8 +481,8 @@ header .header__right .dropdown-menus .dropdown-menu {
     
       <span class="post-meta-label">
         <span class="p-dot"></span>
-        <time datetime="2023-02-28 20:11" pubdate>
-          2023-02-28
+        <time datetime="2023-03-17 17:03" pubdate>
+          2023-03-17
         </time>
       </span>
     
@@ -490,7 +490,7 @@ header .header__right .dropdown-menus .dropdown-menu {
       
       <span class="post-meta">
         <span class="p-dot"></span>
-        共 0 字
+        共 586 字
       </span>
     
     
@@ -499,7 +499,7 @@ header .header__right .dropdown-menus .dropdown-menu {
         <span class="p-dot"></span>
         
         预计 
-        1
+        5
          分钟
       </span>
     
@@ -510,12 +510,149 @@ header .header__right .dropdown-menus .dropdown-menu {
 <div class="article-m">
   <div class="post-toc">
     
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%AE%B9%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">序列容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">关联容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%BA%8F%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8%EF%BC%88%E5%93%88%E5%B8%8C%E5%AE%B9%E5%99%A8%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">无序关联容器（哈希容器）</span></a></li></ol>
     
   </div>
     <div id="article">
       <div id="post-content" class="markdown-body textretty">
-        
+        <p>STL一共有__7__种序列容器，__4__种关联容器，__4__种无序关联容器</p>
+<span id="more"></span>
+<p>首先明确定义：什么是容器？</p>
+<ul>
+<li>容器是存储其他对象的对象</li>
+<li>容器贯彻了C++泛型编程的思想，结合OOP理念</li>
+<li>底层实现：类与模板</li>
+<li>忘记了可以来开天辟地（bushi）<a href="https://lxy12138.com/2023/03/12/C/">C++笔记</a></li>
+<li>注意，在不加其他限制措施的情况下，任何STL容器都是线程不安全的</li>
+</ul>
+<h2 id="序列容器"><a href="#序列容器" class="headerlink" title="序列容器"></a>序列容器</h2><p>序列的基本方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>insert()</td>
+<td>插入一个对象</td>
+<td></td>
+</tr>
+<tr>
+<td>erase()</td>
+<td>删除一个对象</td>
+<td>需要传入迭代器</td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>清空序列内容</td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>元素按照线性顺序排列</li>
+</ul>
+<ol>
+<li>vector<T> 动态数组</li>
+</ol>
+<ul>
+<li>支持随机访问且速度较快</li>
+<li>可以根据数组长度动态申请内存大小</li>
+<li>在尾部添加和删除元素的时候是固定时间复杂度</li>
+<li>在头部添加和删除元素的时候是线性时间复杂度</li>
+<li>可反转</li>
+</ul>
+<ol start="2">
+<li>deque<T> 双端队列</li>
+</ol>
+<ul>
+<li>支持随机访问</li>
+<li>在首位添加或删除元素的时候是固定时间复杂度（效率低于vector）</li>
+<li>可反转</li>
+</ul>
+<ol start="3">
+<li>list<T> 双向链表</li>
+</ol>
+<ul>
+<li>不支持随机访问</li>
+<li>任意插入或删除都是线性时间复杂度</li>
+<li>存在sort成员函数</li>
+</ul>
+<ol start="4">
+<li>forward<T> 单向链表</li>
+</ol>
+<ul>
+<li>不支持随机访问</li>
+<li>不可反转</li>
+<li>在C++11后提供</li>
+</ul>
+<ol start="5">
+<li>queue<T> 队列</li>
+</ol>
+<ul>
+<li>性质如其名</li>
+<li>为deque的封装</li>
+</ul>
+<ol start="6">
+<li>priority_queue<T> pq(greater<T>) 优先队列</li>
+</ol>
+<ul>
+<li>底层使用堆实现</li>
+<li>队列内数据有序</li>
+<li>性质如其名</li>
+</ul>
+<ol start="7">
+<li>stack<T> 栈</li>
+</ol>
+<ul>
+<li>性质如其名</li>
+<li>为deque的封装</li>
+</ul>
+<h2 id="关联容器"><a href="#关联容器" class="headerlink" title="关联容器"></a>关联容器</h2><ul>
+<li>保存k-v数据</li>
+<li>元素保存有序</li>
+<li>查询性能和插入性能较稳定，一般为log级</li>
+<li>一般底层使用树存储</li>
+</ul>
+<ol>
+<li>set<T> 集合容器</li>
+</ol>
+<ul>
+<li>没有kv，k就是v</li>
+<li>可反转</li>
+<li>可排序，默认升序</li>
+<li>键唯一，不可重复</li>
+<li>提供交并差运算(略复杂)</li>
+</ul>
+<ol start="2">
+<li>multiset<T> 多重集合</li>
+</ol>
+<ul>
+<li>在set的基础上允许重复</li>
+</ul>
+<ol start="3">
+<li>map 映射</li>
+</ol>
+<ul>
+<li>k-v结构，键不可重复</li>
+<li>查询和插入都是稳定的log(n)</li>
+<li>可反转，有排序</li>
+</ul>
+<ol start="4">
+<li>multimap 多重映射</li>
+</ol>
+<ul>
+<li>在map的基础上允许重复</li>
+</ul>
+<h2 id="无序关联容器（哈希容器）"><a href="#无序关联容器（哈希容器）" class="headerlink" title="无序关联容器（哈希容器）"></a>无序关联容器（哈希容器）</h2><ul>
+<li>保存k-v数据</li>
+<li>元素保存无序</li>
+<li>查询与插入性能优异，一般为O(1)</li>
+<li><strong>遍历性能较差</strong></li>
+<li>一般底层使用哈希存储</li>
+</ul>
+
       </div>
     </div>
 </div>
@@ -533,7 +670,7 @@ header .header__right .dropdown-menus .dropdown-menu {
 
   <div class="post-copyright">
     <p style="margin: 5px 0;">文章作者：<a href="/">Stone Zhao</a></p>
-    <p style="margin: 5px 0;">文章链接：<a href="http://lxy12138.com/2023/02/28/maven/">http://lxy12138.com/2023/02/28/maven/</a></p>
+    <p style="margin: 5px 0;">文章链接：<a href="http://lxy12138.com/2023/03/17/STL/">http://lxy12138.com/2023/03/17/STL/</a></p>
     <p style="margin: 5px 0;">版权声明：本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处，谢谢。</p>
   </div>
   
