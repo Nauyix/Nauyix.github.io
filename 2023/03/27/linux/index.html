@@ -8,12 +8,12 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/null">
     <link rel="icon" type="image/png" href="/null">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>About Me - Stone Zhao@STZ</title>
+    <title>linux - Stone Zhao@STZ</title>
     
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
     
-    <meta name="description" content="">
+    <meta name="description" content="&lt;p&gt;我是谁，我在哪，我在干什么&lt;/p&gt;">
     <meta name="author" content="Stone Zhao">
     <meta name="keywords" content="">
     <style>
@@ -471,26 +471,96 @@ header .header__right .dropdown-menus .dropdown-menu {
 
 <article class="page">
 <div id="post-meta-m">
-        <h3>About Me</h3>
+    <div class="post-meta" id="post-meta">
+  <h3>linux</h3>
+    
+      <span class="post-meta-label">
+        Stone Zhao
+      </span>
+    
+    
+      <span class="post-meta-label">
+        <span class="p-dot"></span>
+        <time datetime="2023-03-27 20:16" pubdate>
+          2023-03-27
+        </time>
+      </span>
+    
+    
+      
+      <span class="post-meta">
+        <span class="p-dot"></span>
+        共 226 字
+      </span>
+    
+    
+      
+      <span class="post-meta">
+        <span class="p-dot"></span>
+        
+        预计 
+        2
+         分钟
+      </span>
+    
+    
+  </div>
+  
 </div>
 <div class="article-m">
-    <div class="post-toc">
-        
-    </div>
-    <div id="article" class="markdown-body textretty">
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1957256466&auto=1&height=66"></iframe>
-
-<p><del>I’m a spectre – the spectre of Communism……</del></p>
-<h2 id="简单介绍一下自己吧"><a href="#简单介绍一下自己吧" class="headerlink" title="简单介绍一下自己吧"></a>简单介绍一下自己吧</h2><p>赵石，年20，好摸鱼，PC&#x2F;手机皆通玩之，<br>曾经是个ACM爱好者（没拿牌子，不配做ACMer）<br>毕业也许想当一名后端开发（C++），但还是走一步看一步</p>
-<h2 id="这个网站以后会用来干什么呢？"><a href="#这个网站以后会用来干什么呢？" class="headerlink" title="这个网站以后会用来干什么呢？"></a>这个网站以后会用来干什么呢？</h2><p>更新一些学习路上的动态，一些碎碎念，和一些乱七八糟的东西<br>技术性文章会被同步更新到csdn（嘻嘻）</p>
-<p>本页面还在持续更新中<br>Best wishes ;-)</p>
-<p>（最后更新于2023年02月）<br>Reach me at:<a href="mailto:&#115;&#116;&#x7a;&#50;&#x30;&#x31;&#53;&#64;&#x6f;&#117;&#x74;&#x6c;&#111;&#111;&#x6b;&#x2e;&#x63;&#x6f;&#x6d;">&#115;&#116;&#x7a;&#50;&#x30;&#x31;&#53;&#64;&#x6f;&#117;&#x74;&#x6c;&#111;&#111;&#x6b;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
-
+  <div class="post-toc">
+    
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#linux%E7%9A%84%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">linux的目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linux%E5%91%BD%E4%BB%A4%E5%85%A5%E9%97%A8"><span class="toc-number">2.</span> <span class="toc-text">linux命令入门</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ls%E5%91%BD%E4%BB%A4"><span class="toc-number">2.0.1.</span> <span class="toc-text">ls命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cd-x2F-pwd%E5%91%BD%E4%BB%A4"><span class="toc-number">2.0.2.</span> <span class="toc-text">cd&#x2F;pwd命令</span></a></li></ol></li></ol></li></ol>
+    
+  </div>
+    <div id="article">
+      <div id="post-content" class="markdown-body textretty">
+        <p>我是谁，我在哪，我在干什么</p>
+<span id="more"></span>
+<h2 id="linux的目录结构"><a href="#linux的目录结构" class="headerlink" title="linux的目录结构"></a>linux的目录结构</h2><ul>
+<li>linux没有盘符的概念，只有一个 <strong>根目录</strong> &#x2F;，所有的文件都在&#x2F;下面</li>
+</ul>
+<h2 id="linux命令入门"><a href="#linux命令入门" class="headerlink" title="linux命令入门"></a>linux命令入门</h2><p>基本格式：command [-options] [parameter]</p>
+<h4 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a>ls命令</h4><p>查看当前目录下内容(文件&amp;&amp;文件夹)<br>ls [-a -l -h] [path]<br>选项列表：</p>
+<ul>
+<li>-a 列出全部文件（包括隐藏的文件&#x2F;文件夹）</li>
+<li>-l 以列表方式展示文件详细信息</li>
+<li>-h 以易于阅读的形式列出文件大小<br>若不加path参数则展示当前目录下内容<br>注意：</li>
+<li>linux启动的时候默认会加载当前用户的个人目录，即&#x2F;home&#x2F;${username}</li>
+<li>以.为开头的文件会被认为是隐藏的文件</li>
+<li>如果不加-h，文件大小默认单位为B，加上后会被优化为K,G等更大的单位</li>
+</ul>
+<h4 id="cd-x2F-pwd命令"><a href="#cd-x2F-pwd命令" class="headerlink" title="cd&#x2F;pwd命令"></a>cd&#x2F;pwd命令</h4>
+      </div>
     </div>
 </div>
 
-</article>
 
+<div class="post-footer">
+  
+  <div class="donate text-center">
+    <span>喜欢这篇文章？为什么不考虑打赏一下作者呢？</span>
+    <div class="donate-way">
+      
+    </div>
+  </div>
+  
+
+  <div class="post-copyright">
+    <p style="margin: 5px 0;">文章作者：<a href="/">Stone Zhao</a></p>
+    <p style="margin: 5px 0;">文章链接：<a href="http://lxy12138.com/2023/03/27/linux/">http://lxy12138.com/2023/03/27/linux/</a></p>
+    <p style="margin: 5px 0;">版权声明：本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处，谢谢。</p>
+  </div>
+  
+</div>
+
+    <!-- Comments -->
+    <div class="comments">
+        
+        
+    </div>
+
+</article>
 
 
         </div>
@@ -509,6 +579,8 @@ header .header__right .dropdown-menus .dropdown-menu {
 </footer>
 
 <div class="p-btn">
+    
+        <a class="toc-btn" id="toc-btn"><i id="i-menu"></i></a>
     
     <a href="#top" class="click-btn">
       <i id="i-up"></i>
@@ -576,6 +648,18 @@ header .header__right .dropdown-menus .dropdown-menu {
 
 
 
+
+    <script>
+        query("#toc-btn")[0].onclick = () => {
+            if (query(".post-toc")[0].innerHTML) {
+                toggleClass(".post-toc", "display-inline");
+            }
+        }
+
+        if (!query(".post-toc")[0].innerHTML) {
+            addClass("#toc-btn","display-none");
+        }
+    </script>
 
 
 

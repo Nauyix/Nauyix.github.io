@@ -8,12 +8,12 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/null">
     <link rel="icon" type="image/png" href="/null">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>About Me - Stone Zhao@STZ</title>
+    <title>Temporarily Void - Stone Zhao@STZ</title>
     
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
     
-    <meta name="description" content="">
+    <meta name="description" content="&lt;p&gt;New pages and articles are still on the way&lt;br&gt;&lt;/p&gt;">
     <meta name="author" content="Stone Zhao">
     <meta name="keywords" content="">
     <style>
@@ -471,26 +471,85 @@ header .header__right .dropdown-menus .dropdown-menu {
 
 <article class="page">
 <div id="post-meta-m">
-        <h3>About Me</h3>
+    <div class="post-meta" id="post-meta">
+  <h3>Temporarily Void</h3>
+    
+      <span class="post-meta-label">
+        Stone Zhao
+      </span>
+    
+    
+      <span class="post-meta-label">
+        <span class="p-dot"></span>
+        <time datetime="2023-03-28 16:06" pubdate>
+          2023-03-28
+        </time>
+      </span>
+    
+    
+      
+      <span class="post-meta">
+        <span class="p-dot"></span>
+        共 18 字
+      </span>
+    
+    
+      
+      <span class="post-meta">
+        <span class="p-dot"></span>
+        
+        预计 
+        1
+         分钟
+      </span>
+    
+    
+  </div>
+  
 </div>
 <div class="article-m">
-    <div class="post-toc">
-        
-    </div>
-    <div id="article" class="markdown-body textretty">
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1957256466&auto=1&height=66"></iframe>
+  <div class="post-toc">
+    
+      
+    
+  </div>
+    <div id="article">
+      <div id="post-content" class="markdown-body textretty">
+        <p>New pages and articles are still on the way<br></p>
+<span id="more"></span>
+<p>But<br></p>
+<p>Don’t worry:)<br><br>It wont be too long<br></p>
 
-<p><del>I’m a spectre – the spectre of Communism……</del></p>
-<h2 id="简单介绍一下自己吧"><a href="#简单介绍一下自己吧" class="headerlink" title="简单介绍一下自己吧"></a>简单介绍一下自己吧</h2><p>赵石，年20，好摸鱼，PC&#x2F;手机皆通玩之，<br>曾经是个ACM爱好者（没拿牌子，不配做ACMer）<br>毕业也许想当一名后端开发（C++），但还是走一步看一步</p>
-<h2 id="这个网站以后会用来干什么呢？"><a href="#这个网站以后会用来干什么呢？" class="headerlink" title="这个网站以后会用来干什么呢？"></a>这个网站以后会用来干什么呢？</h2><p>更新一些学习路上的动态，一些碎碎念，和一些乱七八糟的东西<br>技术性文章会被同步更新到csdn（嘻嘻）</p>
-<p>本页面还在持续更新中<br>Best wishes ;-)</p>
-<p>（最后更新于2023年02月）<br>Reach me at:<a href="mailto:&#115;&#116;&#x7a;&#50;&#x30;&#x31;&#53;&#64;&#x6f;&#117;&#x74;&#x6c;&#111;&#111;&#x6b;&#x2e;&#x63;&#x6f;&#x6d;">&#115;&#116;&#x7a;&#50;&#x30;&#x31;&#53;&#64;&#x6f;&#117;&#x74;&#x6c;&#111;&#111;&#x6b;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
-
+      </div>
     </div>
 </div>
 
-</article>
 
+<div class="post-footer">
+  
+  <div class="donate text-center">
+    <span>喜欢这篇文章？为什么不考虑打赏一下作者呢？</span>
+    <div class="donate-way">
+      
+    </div>
+  </div>
+  
+
+  <div class="post-copyright">
+    <p style="margin: 5px 0;">文章作者：<a href="/">Stone Zhao</a></p>
+    <p style="margin: 5px 0;">文章链接：<a href="http://lxy12138.com/2023/03/28/hello-world/">http://lxy12138.com/2023/03/28/hello-world/</a></p>
+    <p style="margin: 5px 0;">版权声明：本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处，谢谢。</p>
+  </div>
+  
+</div>
+
+    <!-- Comments -->
+    <div class="comments">
+        
+        
+    </div>
+
+</article>
 
 
         </div>
@@ -509,6 +568,8 @@ header .header__right .dropdown-menus .dropdown-menu {
 </footer>
 
 <div class="p-btn">
+    
+        <a class="toc-btn" id="toc-btn"><i id="i-menu"></i></a>
     
     <a href="#top" class="click-btn">
       <i id="i-up"></i>
@@ -576,6 +637,18 @@ header .header__right .dropdown-menus .dropdown-menu {
 
 
 
+
+    <script>
+        query("#toc-btn")[0].onclick = () => {
+            if (query(".post-toc")[0].innerHTML) {
+                toggleClass(".post-toc", "display-inline");
+            }
+        }
+
+        if (!query(".post-toc")[0].innerHTML) {
+            addClass("#toc-btn","display-none");
+        }
+    </script>
 
 
 

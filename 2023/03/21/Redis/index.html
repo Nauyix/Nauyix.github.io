@@ -8,12 +8,12 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/null">
     <link rel="icon" type="image/png" href="/null">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>About Me - Stone Zhao@STZ</title>
+    <title>Redis - Stone Zhao@STZ</title>
     
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
     
-    <meta name="description" content="">
+    <meta name="description" content="&lt;p&gt;喔，R！&lt;/p&gt;">
     <meta name="author" content="Stone Zhao">
     <meta name="keywords" content="">
     <style>
@@ -471,26 +471,242 @@ header .header__right .dropdown-menus .dropdown-menu {
 
 <article class="page">
 <div id="post-meta-m">
-        <h3>About Me</h3>
+    <div class="post-meta" id="post-meta">
+  <h3>Redis</h3>
+    
+      <span class="post-meta-label">
+        Stone Zhao
+      </span>
+    
+    
+      <span class="post-meta-label">
+        <span class="p-dot"></span>
+        <time datetime="2023-03-21 17:47" pubdate>
+          2023-03-21
+        </time>
+      </span>
+    
+    
+      
+      <span class="post-meta">
+        <span class="p-dot"></span>
+        共 1.3k 字
+      </span>
+    
+    
+      
+      <span class="post-meta">
+        <span class="p-dot"></span>
+        
+        预计 
+        12
+         分钟
+      </span>
+    
+    
+  </div>
+  
 </div>
 <div class="article-m">
-    <div class="post-toc">
-        
-    </div>
-    <div id="article" class="markdown-body textretty">
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1957256466&auto=1&height=66"></iframe>
+  <div class="post-toc">
+    
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis%E5%85%A5%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">Redis入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">Redis数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis%E7%9A%84%E5%B1%82%E7%BA%A7%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.0.1.</span> <span class="toc-text">Redis的层级格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#String%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.0.2.</span> <span class="toc-text">String类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Hash%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.0.3.</span> <span class="toc-text">Hash类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#List%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.0.4.</span> <span class="toc-text">List类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Set%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.0.5.</span> <span class="toc-text">Set类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SortedSet-%E5%8F%AF%E6%8E%92%E5%BA%8F%E9%9B%86%E5%90%88"><span class="toc-number">3.0.6.</span> <span class="toc-text">SortedSet 可排序集合</span></a></li></ol></li></ol></li></ol>
+    
+  </div>
+    <div id="article">
+      <div id="post-content" class="markdown-body textretty">
+        <p>喔，R！</p>
+<span id="more"></span>
+<h2 id="Redis入门"><a href="#Redis入门" class="headerlink" title="Redis入门"></a>Redis入门</h2><ul>
+<li>redis是键值数据库(非关系型&#x2F;K-V&#x2F;NoSql数据库)<br>  因此，可以用复杂数据类型包装value来存储复杂数据<br>  Remote Dictionary Server-RE DI S</li>
+<li>NoSQL特性<ul>
+<li>非结构化（通过K-V）</li>
+<li>无关联的（智能通过业务逻辑维护表间关系）</li>
+<li>非SQL（没有通用的语法标准）</li>
+<li>无事务，BASE理论（基本可用（Basically Available）、软状态（Soft-state）、最终一致性（Eventually Consistency）），难以满足ACID</li>
+<li>内存存储</li>
+<li>水平扩展</li>
+</ul>
+</li>
+<li>适用场景：<ul>
+<li>数据结构不固定</li>
+<li>对一致性、安全性要求不高</li>
+<li>对性能要求较高</li>
+</ul>
+</li>
+<li>Redis特征<ul>
+<li>K-V，支持数据结构较多</li>
+<li>单线程，每个命令具备原子性</li>
+<li>低延迟、速度快（基于内存、IO多路复用，编码良好）</li>
+<li>支持数据持久化</li>
+<li>支持主从集群、分片集群</li>
+<li>支持多语言客户端</li>
+</ul>
+</li>
+</ul>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
+<li>Expire Key [time(s)] 设置某键有效期（-1为永久存在，-2为已经过期）</li>
+<li>TTL Key 查看某键剩余有效期</li>
+<li>Keys Model 查看符合模板的所有key</li>
+<li>Del Key 删除一个指定的key</li>
+<li>Exists Key 查看key是否存在</li>
+</ul>
+<h2 id="Redis数据结构"><a href="#Redis数据结构" class="headerlink" title="Redis数据结构"></a>Redis数据结构</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>String</td>
+<td>hello</td>
+</tr>
+<tr>
+<td>Hash</td>
+<td>{name:”jack”,age:21}</td>
+</tr>
+<tr>
+<td>List</td>
+<td>[A-&gt;B-&gt;C-&gt;D]</td>
+</tr>
+<tr>
+<td>Set</td>
+<td>{A,B,C}</td>
+</tr>
+<tr>
+<td>SortedSet</td>
+<td>{A:1,B:2,C:3}</td>
+</tr>
+<tr>
+<td>GEO</td>
+<td>{A:(120.3,36.2)}</td>
+</tr>
+<tr>
+<td>BitMap</td>
+<td>11011</td>
+</tr>
+<tr>
+<td>HyperLog</td>
+<td>11011</td>
+</tr>
+</tbody></table>
+<h4 id="Redis的层级格式"><a href="#Redis的层级格式" class="headerlink" title="Redis的层级格式"></a>Redis的层级格式</h4><p>key允许使用多个词条形成层级结构，多个词条之间使用”:”隔开<br>层级在redis内部是真实存在的，不是通过业务分割的</p>
+<h4 id="String类型"><a href="#String类型" class="headerlink" title="String类型"></a>String类型</h4><p>字符串类型，可以根据内容不同分为三类（仍然为字符串类型）</p>
+<ul>
+<li>string 普通字符串</li>
+<li>int 整数</li>
+<li>float 浮点数<br>其中int和float可以进行自加&#x2F;自减操作<br>如果要让一个key的value有很多属性，需要打包成json</li>
+</ul>
+<p>常见命令：</p>
+<ul>
+<li>set 设置键值对</li>
+<li>get 获得键值对</li>
+<li>mset 批量设置键值对</li>
+<li>mget 批量获得键值对</li>
+<li>incr 让一个整型的key自增1</li>
+<li>incrby 让一个整型的key自增并指定步长</li>
+<li>incrbyfloat 让一个浮点型的key自增并指定步长</li>
+<li>存在decr，但是一般都用incr加负数步长</li>
+<li>setnx 添加一个键值对，前提是不存在，否则不执行</li>
+<li>setex 添加键值对并指定有效期<br><del>键值对有效期的场景：获取短信验证码&#x2F;二维码登录等</del></li>
+</ul>
+<h4 id="Hash类型"><a href="#Hash类型" class="headerlink" title="Hash类型"></a>Hash类型</h4><p>如果要让一个key的value有很多属性，可以分别存储<br>KEY (key1 value1 key2 value2…)</p>
+<p>常见命令</p>
+<ul>
+<li>hset key field value 参考string</li>
+<li>hget 参考string</li>
+<li>hmset 参考string</li>
+<li>hmset 参考string（4.0后已被禁用）</li>
+<li>hgetall 获取一个key中的所有field和value</li>
+<li>hkeys 获取一个key中的所有field</li>
+<li>hvals 获取一个key中的所有value</li>
+<li>hincrby 让一个hash的key字段自增并指定步长（只能指定integer）</li>
+<li>hsetnx 添加一个hash类型的key的field值，前提是不存在，否则不执行</li>
+</ul>
+<h4 id="List类型"><a href="#List类型" class="headerlink" title="List类型"></a>List类型</h4><p>可以看作是双向链表，支持正向检索和反向检索<br>特征：</p>
+<ol>
+<li>有序</li>
+<li>元素可以重复</li>
+<li>插入和删除较快</li>
+<li>查询速度一般</li>
+</ol>
+<p>常见命令：</p>
+<ul>
+<li>(L&#x2F;R)PUSH key element… 向链表(左&#x2F;右)侧插入一个元素</li>
+<li>(L&#x2F;R)POP key 移除并返回(左&#x2F;右)侧的第一个元素，没有则返回nil</li>
+<li>LRANGE key star end 返回一段角标范围内的所有元素</li>
+<li>B(L&#x2F;R)POP 与普通类似，没有的时候会等待指定时间，不会返回nil</li>
+</ul>
+<h4 id="Set类型"><a href="#Set类型" class="headerlink" title="Set类型"></a>Set类型</h4><p>底层类似Java中的HashMap</p>
+<ul>
+<li>无序</li>
+<li>数据不可重复</li>
+<li>查找较快</li>
+<li>支持交&#x2F;并&#x2F;差等功能</li>
+</ul>
+<p>常用命令：</p>
+<ul>
+<li>SADD key member 添加一个或多个元素</li>
+<li>SREM key member 移除指定元素</li>
+<li>SCARD key 返回元素个数</li>
+<li>SISMEMBET key member 判断是否存在</li>
+<li>SMSMBERS 获取set中的所有元素</li>
+<li>SINTER set1 set2 求交集</li>
+<li>SDIFF set1 set2 求差集</li>
+<li>SUNION set1 set2 求并集</li>
+</ul>
+<h4 id="SortedSet-可排序集合"><a href="#SortedSet-可排序集合" class="headerlink" title="SortedSet 可排序集合"></a>SortedSet 可排序集合</h4><p>底层数据结构为跳表+hash表<br>每一个元素都带有score属性，根据score进行排序</p>
+<ul>
+<li>有序</li>
+<li>数据不重复</li>
+<li>查询较快</li>
+</ul>
+<p>常用命令：<br>SortedSet的常见命令有:</p>
+<ul>
+<li>ZADD key score member:添加元素，如果已经存在则更新其score值<br>在一个命令中添加多个元素时：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZADD Key score1 member1 score2 member2</span><br></pre></td></tr></table></figure></li>
+<li>ZREM key member:删除集合中的一个指定元素</li>
+<li>ZSCORE key member:获取集合中的指定元素的score值</li>
+<li>ZRANK key member:获取集合中的指定元素的排名</li>
+<li>ZCARD key:获取集合中的元素个数</li>
+<li>ZCOUNT key min max:统计score值在给定范围内的所有元素的个数</li>
+<li>ZINCRBY key increment member: 让集合中的指定元素自增，步长为指定的increment值</li>
+<li>ZRANGE key min max:按照score排序后，获取指定排名范围内的元素<br>  计数器从0开始</li>
+<li>ZRANGEBYSCORE key min max:按照score排序后，获取指定score范围内的元素</li>
+<li>ZDIFF、ZINTER、ZUNION:求差集、交集、并集</li>
+</ul>
+<p>所有的查询默认为升序，如果需要降序则将命令改为ZREVxxx</p>
 
-<p><del>I’m a spectre – the spectre of Communism……</del></p>
-<h2 id="简单介绍一下自己吧"><a href="#简单介绍一下自己吧" class="headerlink" title="简单介绍一下自己吧"></a>简单介绍一下自己吧</h2><p>赵石，年20，好摸鱼，PC&#x2F;手机皆通玩之，<br>曾经是个ACM爱好者（没拿牌子，不配做ACMer）<br>毕业也许想当一名后端开发（C++），但还是走一步看一步</p>
-<h2 id="这个网站以后会用来干什么呢？"><a href="#这个网站以后会用来干什么呢？" class="headerlink" title="这个网站以后会用来干什么呢？"></a>这个网站以后会用来干什么呢？</h2><p>更新一些学习路上的动态，一些碎碎念，和一些乱七八糟的东西<br>技术性文章会被同步更新到csdn（嘻嘻）</p>
-<p>本页面还在持续更新中<br>Best wishes ;-)</p>
-<p>（最后更新于2023年02月）<br>Reach me at:<a href="mailto:&#115;&#116;&#x7a;&#50;&#x30;&#x31;&#53;&#64;&#x6f;&#117;&#x74;&#x6c;&#111;&#111;&#x6b;&#x2e;&#x63;&#x6f;&#x6d;">&#115;&#116;&#x7a;&#50;&#x30;&#x31;&#53;&#64;&#x6f;&#117;&#x74;&#x6c;&#111;&#111;&#x6b;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
-
+      </div>
     </div>
 </div>
 
-</article>
 
+<div class="post-footer">
+  
+  <div class="donate text-center">
+    <span>喜欢这篇文章？为什么不考虑打赏一下作者呢？</span>
+    <div class="donate-way">
+      
+    </div>
+  </div>
+  
+
+  <div class="post-copyright">
+    <p style="margin: 5px 0;">文章作者：<a href="/">Stone Zhao</a></p>
+    <p style="margin: 5px 0;">文章链接：<a href="http://lxy12138.com/2023/03/21/Redis/">http://lxy12138.com/2023/03/21/Redis/</a></p>
+    <p style="margin: 5px 0;">版权声明：本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处，谢谢。</p>
+  </div>
+  
+</div>
+
+    <!-- Comments -->
+    <div class="comments">
+        
+        
+    </div>
+
+</article>
 
 
         </div>
@@ -509,6 +725,8 @@ header .header__right .dropdown-menus .dropdown-menu {
 </footer>
 
 <div class="p-btn">
+    
+        <a class="toc-btn" id="toc-btn"><i id="i-menu"></i></a>
     
     <a href="#top" class="click-btn">
       <i id="i-up"></i>
@@ -576,6 +794,18 @@ header .header__right .dropdown-menus .dropdown-menu {
 
 
 
+
+    <script>
+        query("#toc-btn")[0].onclick = () => {
+            if (query(".post-toc")[0].innerHTML) {
+                toggleClass(".post-toc", "display-inline");
+            }
+        }
+
+        if (!query(".post-toc")[0].innerHTML) {
+            addClass("#toc-btn","display-none");
+        }
+    </script>
 
 
 
