@@ -8,12 +8,12 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/null">
     <link rel="icon" type="image/png" href="/null">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>Temporarily Void - Stone Zhao@STZ</title>
+    <title>关于linux编程的一些碎碎念 - Stone Zhao@STZ</title>
     
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
     
-    <meta name="description" content="&lt;p&gt;New pages and articles are still on the way&lt;br&gt;&lt;/p&gt;">
+    <meta name="description" content="&lt;p&gt;用了这么久了，我竟然还不知道它是怎么跑起来的QAQ&lt;/p&gt;">
     <meta name="author" content="Stone Zhao">
     <meta name="keywords" content="">
     <style>
@@ -472,7 +472,7 @@ header .header__right .dropdown-menus .dropdown-menu {
 <article class="page">
 <div id="post-meta-m">
     <div class="post-meta" id="post-meta">
-  <h3>Temporarily Void</h3>
+  <h3>关于linux编程的一些碎碎念</h3>
     
       <span class="post-meta-label">
         Stone Zhao
@@ -481,8 +481,8 @@ header .header__right .dropdown-menus .dropdown-menu {
     
       <span class="post-meta-label">
         <span class="p-dot"></span>
-        <time datetime="2023-03-28 16:06" pubdate>
-          2023-03-28
+        <time datetime="2023-04-02 11:45" pubdate>
+          2023-04-02
         </time>
       </span>
     
@@ -490,7 +490,7 @@ header .header__right .dropdown-menus .dropdown-menu {
       
       <span class="post-meta">
         <span class="p-dot"></span>
-        共 18 字
+        共 1.6k 字
       </span>
     
     
@@ -499,7 +499,7 @@ header .header__right .dropdown-menus .dropdown-menu {
         <span class="p-dot"></span>
         
         预计 
-        1
+        15
          分钟
       </span>
     
@@ -510,15 +510,175 @@ header .header__right .dropdown-menus .dropdown-menu {
 <div class="article-m">
   <div class="post-toc">
     
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#gcc%E7%9A%84%E5%B8%B8%E7%94%A8%E9%80%89%E9%A1%B9"><span class="toc-number">1.</span> <span class="toc-text">gcc的常用选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gcc%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">gcc工作流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%BA%93%E5%92%8C%E5%8A%A8%E6%80%81%E5%BA%93"><span class="toc-number"></span> <span class="toc-text">静态库和动态库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">静态库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-number">1.0.1.</span> <span class="toc-text">命名规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%89%93%E5%8C%85"><span class="toc-number">1.0.2.</span> <span class="toc-text">如何打包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E9%9D%99%E6%80%81%E5%BA%93"><span class="toc-number">1.0.3.</span> <span class="toc-text">如何使用自定义静态库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%BA%93"><span class="toc-number">2.</span> <span class="toc-text">动态库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99-1"><span class="toc-number">2.0.1.</span> <span class="toc-text">命名规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%89%93%E5%8C%85%EF%BC%9A"><span class="toc-number">2.0.2.</span> <span class="toc-text">如何打包：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8A%A8%E6%80%81%E5%BA%93"><span class="toc-number">2.0.3.</span> <span class="toc-text">如何使用自定义动态库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%BA%93%E5%92%8C%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">2.0.4.</span> <span class="toc-text">动态库和静态库的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%BA%93-1"><span class="toc-number">2.0.4.1.</span> <span class="toc-text">静态库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%BA%93-1"><span class="toc-number">2.0.4.2.</span> <span class="toc-text">动态库</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Makefile"><span class="toc-number"></span> <span class="toc-text">Makefile</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%84%E5%88%99"><span class="toc-number">1.</span> <span class="toc-text">规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">工作原理：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">3.</span> <span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="toc-number">3.0.1.</span> <span class="toc-text">自定义变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%84%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="toc-number">3.0.2.</span> <span class="toc-text">预定义变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC"><span class="toc-number">3.0.3.</span> <span class="toc-text">获取变量的值</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GDB"><span class="toc-number"></span> <span class="toc-text">GDB</span></a>
     
   </div>
     <div id="article">
       <div id="post-content" class="markdown-body textretty">
-        <p>New pages and articles are still on the way<br></p>
+        <p>用了这么久了，我竟然还不知道它是怎么跑起来的QAQ</p>
 <span id="more"></span>
-<p>But<br></p>
-<p>Don’t worry:)<br><br>It wont be too long<br></p>
+<h2 id="gcc的常用选项"><a href="#gcc的常用选项" class="headerlink" title="gcc的常用选项"></a>gcc的常用选项</h2><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>作用</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-E</td>
+<td>预处理指定文件</td>
+<td></td>
+</tr>
+<tr>
+<td>-S</td>
+<td>编译指定的源文件</td>
+<td></td>
+</tr>
+<tr>
+<td>-c</td>
+<td>编译、汇编但不链接</td>
+<td></td>
+</tr>
+<tr>
+<td>-o</td>
+<td>[file1] [file2] 将file2编译成可执行文件file1</td>
+<td></td>
+</tr>
+<tr>
+<td>-I</td>
+<td>指定include的搜索目录</td>
+<td></td>
+</tr>
+<tr>
+<td>-g</td>
+<td>编译时生成调试信息</td>
+<td></td>
+</tr>
+<tr>
+<td>-D</td>
+<td>程序编译的时候指定一个宏</td>
+<td></td>
+</tr>
+<tr>
+<td>-w</td>
+<td>不生成任何警告信息</td>
+<td></td>
+</tr>
+<tr>
+<td>-Wall</td>
+<td>生成所有警告信息</td>
+<td></td>
+</tr>
+<tr>
+<td>-On</td>
+<td>n&#x3D;[0,3] 优化级别</td>
+<td></td>
+</tr>
+<tr>
+<td>-l</td>
+<td>指定编译时使用的库</td>
+<td></td>
+</tr>
+<tr>
+<td>-L</td>
+<td>指定编译的时候搜索的库路径</td>
+<td></td>
+</tr>
+<tr>
+<td>-fPIC&#x2F;fpic</td>
+<td>生成与位置无关的代码</td>
+<td></td>
+</tr>
+<tr>
+<td>-shared</td>
+<td>生成共享目标文件</td>
+<td></td>
+</tr>
+<tr>
+<td>-std</td>
+<td>指定语言标准</td>
+<td>如-std&#x3D;c99</td>
+</tr>
+</tbody></table>
+<h2 id="gcc工作流程"><a href="#gcc工作流程" class="headerlink" title="gcc工作流程"></a>gcc工作流程</h2><p>原代码(.h&#x2F;.c&#x2F;.cpp)</p>
+<p>–预处理器–&gt;</p>
+<p>预处理后源代码</p>
+<p>–编译器–&gt;</p>
+<p>汇编代码(.s)</p>
+<p>–汇编器–&gt;</p>
+<p>(启动代码、目标代码、库代码、其他目标代码)</p>
+<p>–链接器–&gt;</p>
+<p>可执行程序</p>
+<h1 id="静态库和动态库"><a href="#静态库和动态库" class="headerlink" title="静态库和动态库"></a>静态库和动态库</h1><h2 id="静态库"><a href="#静态库" class="headerlink" title="静态库"></a>静态库</h2><ul>
+<li>注意：库文件需要和对应的头文件一起使用</li>
+</ul>
+<h4 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a>命名规则</h4><ul>
+<li>linux平台<br>前缀：lib<br>后缀：.a</li>
+<li>windows平台<br>前缀：lib<br>后缀：.lib</li>
+</ul>
+<h4 id="如何打包"><a href="#如何打包" class="headerlink" title="如何打包"></a>如何打包</h4><p>将写好的源码通过gcc获得.o文件<br>使用ar工具插入 ar rcs libxxx.a xxx.o,xxx.o(需要被打包的a文件，可以是多个)<br>r:将文件插入备存文件<br>c:简历备存文件<br>s:索引<br>获得libxxx.a文件</p>
+<h4 id="如何使用自定义静态库"><a href="#如何使用自定义静态库" class="headerlink" title="如何使用自定义静态库"></a>如何使用自定义静态库</h4><p>答：在编译时指定扫描路径<br>gcc xxx.c -o app -I ..&#x2F;include&#x2F; -l calc -L .&#x2F;lib<br>小小的回忆一下之前的知识：<br>-I 指定include的搜索目录<br>-l 指定编译的时候使用的库<br>-L 指定编译的时候搜索的库的路径<br><del>linux严格区分大小写</del></p>
+<h2 id="动态库"><a href="#动态库" class="headerlink" title="动态库"></a>动态库</h2><h4 id="命名规则-1"><a href="#命名规则-1" class="headerlink" title="命名规则"></a>命名规则</h4><ul>
+<li>linux平台<br>前缀：lib<br>后缀：.so</li>
+<li>windows平台<br>前缀：lib<br>后缀：.dll</li>
+</ul>
+<h4 id="如何打包："><a href="#如何打包：" class="headerlink" title="如何打包："></a>如何打包：</h4><ol>
+<li>gcc得到.o文件，即和位置无关的代码<br>gcc -c -fpic&#x2F;-fPIC a.c b.c</li>
+<li>gcc 得到动态库<br>gcc -shared a.o b.o -o libxxx.so<br>从而获得libxxx.so文件</li>
+</ol>
+<h4 id="如何使用自定义动态库"><a href="#如何使用自定义动态库" class="headerlink" title="如何使用自定义动态库"></a>如何使用自定义动态库</h4><p>参照<a href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E9%9D%99%E6%80%81%E5%BA%93">自定义静态库</a>完成编译链接</p>
+<ul>
+<li><p>动态库和静态库的区别是什么？<br>静态库：代码会被打包到可执行程序中<br>动态库：代码不会被打包到可执行程序中<br>因此，如果一个程序使用了动态库，在其启动的时候，动态库会被动态加载到内存之中，可以通过”ldd [file]”命令检查动态库依赖关系</p>
+<br></li>
+<li><p>如何定位动态库?<br>使用系统的动态载入器来获取绝对路径<br><del>现在主流的linux动态库加载器为ld-linux.so</del></p>
+<br>
+</li>
+<li><p>如何将自己的动态库添加到加载器内？</p>
+</li>
+</ul>
+<ol>
+<li>会话级配置：<br>直接执行export LD_LIBRARY_PATH&#x3D;$LD_LIBRARY_PATH:[new path]<br>解释：在LD_LIBRARY_PATH内追加新动态库路径，$[]为对原有系统变量的引用<br>缺点：在终端关闭后即失效<br></li>
+<li>用户级配置：<br>在~&#x2F;.bachrc文件中加入export LD_LIBRARY_PATH&#x3D;$LD_LIBRARY_PATH:[new path]<br>加入后使用source .bachrc进行更新<br></li>
+<li>系统级配置<br>在&#x2F;etc&#x2F;profile中加入export LD_LIBRARY_PATH&#x3D;$LD_LIBRARY_PATH:[new path]<br>加入后使用source &#x2F;etc&#x2F;profile进行更新(不需要sudo)</li>
+</ol>
+<h4 id="动态库和静态库的优缺点"><a href="#动态库和静态库的优缺点" class="headerlink" title="动态库和静态库的优缺点"></a>动态库和静态库的优缺点</h4><h5 id="静态库-1"><a href="#静态库-1" class="headerlink" title="静态库"></a>静态库</h5><p>优点：</p>
+<ol>
+<li>静态库被打包进程序，加载速度较快</li>
+<li>发布时直接发布程序即可，移植工作量小<br>缺点：</li>
+<li>占用空间较大</li>
+<li>更新、部署、发布比较麻烦，更改其中一个文件需要重新发布整个程序</li>
+</ol>
+<h5 id="动态库-1"><a href="#动态库-1" class="headerlink" title="动态库"></a>动态库</h5><p>优点：</p>
+<ol>
+<li>可以实现进程间资源共享</li>
+<li>更新、部署、发布简单</li>
+<li>可以控制加载时间，使用到再加载<br>缺点：</li>
+<li>相对于静态库，加载速度慢</li>
+<li>发布程序时需要提供其依赖的动态库</li>
+</ol>
+<h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><p>作用：对于一个大的项目来说，他们的依赖关系非常复杂，如果使用单挑命令进行编译，时候维护难度会相对较大，使用makefile文件，可以指定文件的编译顺序、编译选项，同时，还可以实现自动化编译，在对代码进行更改后执行make命令就可以完成编译<br>文件名：makefile&#x2F;Makefile</p>
+<h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><ul>
+<li>一个makefile文件中可以有一个或者多个规则<br>目标…:依赖…<br>&amp;nbsp&amp;nbsp命令….（注意制表符）<br>目标：最终需要生成的文件<br>依赖：生成目标所需要的文件或目标<br>命令:通过执行命令对依赖操作生成目标(必须有缩进)</li>
+<li>一般来说，makefile的其他规则都是为了第一条规则服务的</li>
+</ul>
+<h2 id="工作原理："><a href="#工作原理：" class="headerlink" title="工作原理："></a>工作原理：</h2><ul>
+<li>命令在执行前，会检查规则中的依赖是否存在<ul>
+<li>如果存在，则执行</li>
+<li>如果不存在，会向下检查其他规则，如果找到了，执行</li>
+</ul>
+</li>
+<li>检测更新，在执行规则中的命令时，会比较目标和依赖文件的时间<ul>
+<li>如果依赖的(最后修改)时间比目标的时间晚，则需要重新生成目标</li>
+<li>如果依赖的时间比目标的时间早，对应规则的命令不会被执行</li>
+</ul>
+</li>
+</ul>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h4 id="自定义变量"><a href="#自定义变量" class="headerlink" title="自定义变量"></a>自定义变量</h4><p>[name]&#x3D;[value]</p>
+<h4 id="预定义变量"><a href="#预定义变量" class="headerlink" title="预定义变量"></a>预定义变量</h4><p>AR 归档维护程序的名称，默认为ar<br>CC c的编译器的名称，默认为gcc<br>cxx c++的编译器的名称<br>$@ 目标的完整名称<br>$&lt; 第一个依赖文件的名称<br>$^ 所有的依赖文件<br>…….<br>还有很多，这里只列举常用的</p>
+<h4 id="获取变量的值"><a href="#获取变量的值" class="headerlink" title="获取变量的值"></a>获取变量的值</h4><p>$(变量名)</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>$(函数名 参数)<br>比如：<br>$(wildcatd PATTERN)…<br>功能：获取指定目录下指定类型的文件列表<br>参数：pattern指的是某个或多个目录下某种类型的文件<br>返回值：得到一个文件列表，文件名之间用空格间隔<br>示例：<br>$(wildcard <em>.c .&#x2F;sub&#x2F;</em>.c)<br> 获取当前目录与同级sub目录下的所有*.c文件名<br>$（patsubst,&lt;pattern&gt;,&lt;replacement&gt;,&lt;text&gt;）<br>查找&lt;text&gt;中的单词是否符合&lt;pattern&gt;模式，如果匹配的话，用&lt;replacement&gt;替换<br>示例：<br>$(patsubst %.c,%.o,x.c bar.c)<br>返回值格式：x.o bar.o</p>
+<h1 id="GDB"><a href="#GDB" class="headerlink" title="GDB"></a>GDB</h1><p>gdb是由gnu组织提供的调试工具，和gcc配套组成了一套完整的开发环境</p>
 
       </div>
     </div>
@@ -537,7 +697,7 @@ header .header__right .dropdown-menus .dropdown-menu {
 
   <div class="post-copyright">
     <p style="margin: 5px 0;">文章作者：<a href="/">Stone Zhao</a></p>
-    <p style="margin: 5px 0;">文章链接：<a href="http://lxy12138.com/2023/03/28/hello-world/">http://lxy12138.com/2023/03/28/hello-world/</a></p>
+    <p style="margin: 5px 0;">文章链接：<a href="http://lxy12138.com/2023/04/02/gcc/">http://lxy12138.com/2023/04/02/gcc/</a></p>
     <p style="margin: 5px 0;">版权声明：本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处，谢谢。</p>
   </div>
   
