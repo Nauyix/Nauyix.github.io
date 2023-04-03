@@ -8,12 +8,12 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/null">
     <link rel="icon" type="image/png" href="/null">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>Stone Zhao@STZ</title>
+    <title>C++中的四种智能指针 - Stone Zhao@STZ</title>
     
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
     
-    <meta name="description" content="">
+    <meta name="description" content="&lt;p&gt;一般来说，C++中一共有&lt;strong&gt;4&lt;/strong&gt;种智能指针，包括引入于C++98的auto_ptr，以及引入与C++11的unique_ptr&amp;#x2F;shared_ptr&amp;#x2F;weak_ptr&lt;/p&gt;">
     <meta name="author" content="Stone Zhao">
     <meta name="keywords" content="">
     <style>
@@ -350,6 +350,13 @@ header .header__right .dropdown-menus .dropdown-menu {
     
 
     
+        <!--
+        <link rel="stylesheet" href="/css/page.css" media="print"
+            onload="this.media='all';this.onload=null">
+        <noscript>-->
+            <link rel="stylesheet" href="/css/page.css">
+        <!--</noscript>-->
+    
     
     <link rel="stylesheet" href="/css/main.css" media="print" onload="this.media='all';this.onload=null">
     <noscript>
@@ -462,73 +469,120 @@ header .header__right .dropdown-menus .dropdown-menu {
         <div class="mg-top">
             
 
-<div class="post-card-center">
-<div class="post-card-main">
-
-    <div class="index-card">
-      
-      <article class="index-card-info">
-        <h3 class="index-header">
-          <a href="/2022/11/27/About-2022/">
-          
-          About 2022</a>
-        </h3>
-        <p class="index-excerpt">
-            
-            
-              
-            
-            永恒是颗虚伪的糖，任回忆终堆积成墙。
-        </p>
-        <div class="index-btm post-metas">
-          
-            
-              <time datetime="2022-11-27 21:54" pubdate>
-                2022-11-27
-              </time>
-            
-          
-          
-        </div>
-      </article>
-    </div>
-  
-    <div class="index-card">
-      
-      <article class="index-card-info">
-        <h3 class="index-header">
-          <a href="/2022/11/26/Hello/">
-          
-          Hello</a>
-        </h3>
-        <p class="index-excerpt">
-            
-            
-              
-            
-            这个网站是怎么来的呢?
-        </p>
-        <div class="index-btm post-metas">
-          
-            
-              <time datetime="2022-11-26 16:20" pubdate>
-                2022-11-26
-              </time>
-            
-          
-          
-        </div>
-      </article>
-    </div>
-  
-</div>
-</div>
-
-    <nav aria-label="navigation">
-      <span class="pagination" id="pagination">
-        <a class="extend prev" rel="prev" href="/">&lt;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+<article class="page">
+<div id="post-meta-m">
+    <div class="post-meta" id="post-meta">
+  <h3>C++中的四种智能指针</h3>
+    
+      <span class="post-meta-label">
+        Stone Zhao
       </span>
-    </nav>
+    
+    
+      <span class="post-meta-label">
+        <span class="p-dot"></span>
+        <time datetime="2023-04-03 20:37" pubdate>
+          2023-04-03
+        </time>
+      </span>
+    
+    
+      
+      <span class="post-meta">
+        <span class="p-dot"></span>
+        共 385 字
+      </span>
+    
+    
+      
+      <span class="post-meta">
+        <span class="p-dot"></span>
+        
+        预计 
+        4
+         分钟
+      </span>
+    
+    
+  </div>
+  
+</div>
+<div class="article-m">
+  <div class="post-toc">
+    
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#auto-ptr%EF%BC%9A%E6%BA%90%E8%87%AA%E4%BA%8EC-98%E7%9A%84%E8%80%81%E5%A4%A7%E5%93%A5"><span class="toc-number">1.</span> <span class="toc-text">auto_ptr：源自于C++98的老大哥</span></a></li></ol>
+    
+  </div>
+    <div id="article">
+      <div id="post-content" class="markdown-body textretty">
+        <p>一般来说，C++中一共有<strong>4</strong>种智能指针，包括引入于C++98的auto_ptr，以及引入与C++11的unique_ptr&#x2F;shared_ptr&#x2F;weak_ptr</p>
+<span id="more"></span>
+<h2 id="auto-ptr：源自于C-98的老大哥"><a href="#auto-ptr：源自于C-98的老大哥" class="headerlink" title="auto_ptr：源自于C++98的老大哥"></a>auto_ptr：源自于C++98的老大哥</h2><table>
+<thead>
+<tr>
+<th>信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>引入于</td>
+<td>C++98</td>
+</tr>
+<tr>
+<td>定义于</td>
+<td>&lt;memory&gt;</td>
+</tr>
+<tr>
+<td>优点</td>
+<td>当指针对象被销毁时，它所管理的对象也会<strong>自动</strong>被delete掉</td>
+</tr>
+<tr>
+<td>缺点</td>
+<td>让我们在下面慢慢说</td>
+</tr>
+<tr>
+<td>创建方法</td>
+<td>auto_ptr<string> ap(new string(“this is an auto_ptr”));</td>
+</tr>
+<tr>
+<td>支持</td>
+<td>拷贝构造，有参构造，无参构造</td>
+</tr>
+</tbody></table>
+<p><del>开始慢慢说吧</del></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;memory&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string *p=<span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">&quot;This is a auto_ptr&quot;</span>);</span><br><span class="line">    <span class="function">auto_ptr&lt;string&gt; <span class="title">p1</span><span class="params">(p)</span></span>;</span><br><span class="line">    <span class="function">auto_ptr&lt;string&gt; <span class="title">p2</span><span class="params">(p)</span></span>;</span><br><span class="line">    <span class="comment">//禁忌1：禁止让两个auto_ptr指向同一片内存</span></span><br><span class="line">    <span class="comment">//否则，在p1销毁后，p2会成为野指针，你也不想你指针乱指的事情被主管知道吧</span></span><br><span class="line">    <span class="function">auto_ptr&lt;string&gt; <span class="title">p3</span><span class="params">(p)</span></span>;</span><br><span class="line">    <span class="function">auto_ptr&lt;string&gt; <span class="title">p4</span><span class="params">(p3)</span></span>;</span><br><span class="line">    cout&lt;&lt;*p3;</span><br><span class="line">    <span class="comment">//禁忌2：拷贝构造后调用原指针</span></span><br><span class="line">    <span class="comment">//拷贝构造时会发生所有权转移，p3在p4构造后成为了空指针</span></span><br><span class="line">    <span class="comment">//🎵爱上一个不存在的人🎵</span></span><br><span class="line">    <span class="type">int</span> pp[<span class="number">10</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="function">auto_ptr&lt;<span class="type">int</span>&gt; <span class="title">p5</span><span class="params">(pp)</span></span>;</span><br><span class="line">    <span class="comment">//禁忌3：禁止指向数组</span></span><br><span class="line">    <span class="comment">//auto_ptr在销毁所管理对象的时候会调用delete，但是销毁数组需要用delete[]</span></span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; pi;</span><br><span class="line">    vector.<span class="built_in">push_back</span>(<span class="number">1</span>);</span><br><span class="line">    vector.<span class="built_in">push_back</span>(<span class="number">2</span>);</span><br><span class="line">    vector.<span class="built_in">push_back</span>(<span class="number">3</span>);</span><br><span class="line">    auto_ptr&lt;vector&lt;<span class="type">int</span>&gt;&gt; p6=&amp;pi[<span class="number">0</span>];</span><br><span class="line">    <span class="comment">//禁忌4：禁止在容器相关的操作中调用auto_ptr</span></span><br><span class="line">    <span class="comment">//auto_ptr是独占的，对其进行修改操作易发生所有权转移</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      </div>
+    </div>
+</div>
+
+
+<div class="post-footer">
+  
+  <div class="donate text-center">
+    <span>喜欢这篇文章？为什么不考虑打赏一下作者呢？</span>
+    <div class="donate-way">
+      
+    </div>
+  </div>
+  
+
+  <div class="post-copyright">
+    <p style="margin: 5px 0;">文章作者：<a href="/">Stone Zhao</a></p>
+    <p style="margin: 5px 0;">文章链接：<a href="http://lxy12138.com/2023/04/03/smart-pointer/">http://lxy12138.com/2023/04/03/smart-pointer/</a></p>
+    <p style="margin: 5px 0;">版权声明：本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处，谢谢。</p>
+  </div>
+  
+</div>
+
+    <!-- Comments -->
+    <div class="comments">
+        
+        
+    </div>
+
+</article>
+
 
         </div>
         
@@ -546,6 +600,8 @@ header .header__right .dropdown-menus .dropdown-menu {
 </footer>
 
 <div class="p-btn">
+    
+        <a class="toc-btn" id="toc-btn"><i id="i-menu"></i></a>
     
     <a href="#top" class="click-btn">
       <i id="i-up"></i>
@@ -581,8 +637,50 @@ header .header__right .dropdown-menus .dropdown-menu {
 </script>
 
 
+<script>
+    var postImg = document.querySelectorAll("article[class=page] img");
+    for (let imgi = 0; imgi < postImg.length; imgi++) {
+        postImg[imgi].onclick = () => {
+            let zoomImg = document.createElement("div");
+            zoomImg.id = "zoomImg";
+            zoomImg.innerHTML = `<div id="zoom-picture"></div>
+    <div class="poptrox-overlay"
+        style="position: fixed; left: 0px; top: 0px; z-index: 20000; width: 100%; height: 100%; text-align: center; cursor: zoom-out; opacity: 1;">
+        <div style="display:inline-block;height:100%;vertical-align:middle;"></div>
+        <div
+            style="position:absolute;left:0;top:0;width:100%;height:100%;background:#000000;opacity:0;filter:alpha(opacity=0);">
+        </div>
+        <div class="poptrox-popup"
+            style="display: inline-block; vertical-align: middle; position: relative; z-index: 1; cursor: zoom-out; min-width: 10px; min-height: 10px; width: auto; height: auto;">
+            <div class="loader" style="display: none;"></div>
+            <div class="pic" style="text-indent: 0px;"><img
+                    src="${ postImg[imgi].srcset || postImg[imgi].src }" alt="Loading..."
+                    style="vertical-align: bottom; max-width: 85vw; max-height: 85vh;"></div>
+        </div>
+    </div>`;
+            document.body.appendChild(zoomImg);
+                document.querySelector("#zoomImg").onclick = () => {
+                    document.querySelector("#zoomImg").remove();
+                }
+        }
+    }
+    
+</script>
 
 
+
+
+    <script>
+        query("#toc-btn")[0].onclick = () => {
+            if (query(".post-toc")[0].innerHTML) {
+                toggleClass(".post-toc", "display-inline");
+            }
+        }
+
+        if (!query(".post-toc")[0].innerHTML) {
+            addClass("#toc-btn","display-none");
+        }
+    </script>
 
 
 
