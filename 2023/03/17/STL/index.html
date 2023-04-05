@@ -13,7 +13,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
     
-    <meta name="description" content="&lt;p&gt;STL一共有 &lt;strong&gt;7&lt;/strong&gt; 种序列容器， &lt;strong&gt;4&lt;/strong&gt; 种关联容器， &lt;strong&gt;4&lt;/strong&gt; 种无序关联容器&lt;/p&gt;">
+    <meta name="description" content="&lt;p&gt;STL标准库中一共有 &lt;strong&gt;7&lt;/strong&gt; 种序列容器， &lt;strong&gt;4&lt;/strong&gt; 种关联容器， &lt;strong&gt;4&lt;/strong&gt; 种无序关联容器(C++11新增)&lt;/p&gt;">
     <meta name="author" content="Stone Zhao">
     <meta name="keywords" content="">
     <style>
@@ -490,7 +490,7 @@ header .header__right .dropdown-menus .dropdown-menu {
       
       <span class="post-meta">
         <span class="p-dot"></span>
-        共 587 字
+        共 805 字
       </span>
     
     
@@ -499,7 +499,7 @@ header .header__right .dropdown-menus .dropdown-menu {
         <span class="p-dot"></span>
         
         预计 
-        5
+        7
          分钟
       </span>
     
@@ -515,7 +515,7 @@ header .header__right .dropdown-menus .dropdown-menu {
   </div>
     <div id="article">
       <div id="post-content" class="markdown-body textretty">
-        <p>STL一共有 <strong>7</strong> 种序列容器， <strong>4</strong> 种关联容器， <strong>4</strong> 种无序关联容器</p>
+        <p>STL标准库中一共有 <strong>7</strong> 种序列容器， <strong>4</strong> 种关联容器， <strong>4</strong> 种无序关联容器(C++11新增)</p>
 <span id="more"></span>
 <p>首先明确定义：什么是容器？</p>
 <ul>
@@ -523,7 +523,7 @@ header .header__right .dropdown-menus .dropdown-menu {
 <li>容器贯彻了C++泛型编程的思想，结合OOP理念</li>
 <li>底层实现：类与模板</li>
 <li>忘记了可以来开天辟地（bushi）<a href="https://lxy12138.com/2023/03/12/C/">C++笔记</a></li>
-<li>注意，在不加其他限制措施的情况下，任何STL容器都是线程不安全的</li>
+<li>注意，在不加其他限制措施的情况下，任何STL容器都不提供任何强度的线程安全保证</li>
 </ul>
 <h2 id="序列容器"><a href="#序列容器" class="headerlink" title="序列容器"></a>序列容器</h2><p>序列的基本方法：</p>
 <table>
@@ -650,8 +650,22 @@ header .header__right .dropdown-menus .dropdown-menu {
 <li>元素保存无序</li>
 <li>查询与插入性能优异，一般为O(1)</li>
 <li><strong>遍历性能较差</strong></li>
-<li>一般底层使用哈希存储</li>
+<li>底层使用哈希存储</li>
 </ul>
+<ol>
+<li>unordered_map 哈希组织的map</li>
+</ol>
+<ul>
+<li>unordered_map是如何解决哈希冲突的？<br>首先明确 unordered_map底层采用的是开链法，即，如果发生哈希冲突，会在当前节点初始化一链表，并将当前数据插在链表的头部，因此每一次插入的时间复杂度仍然为O(1)。<br>在极限情况下，哈希表会退化为链表，此时引入概念：<br><br>负载因子(load_factor)：<br>hashtable的元素个数和hashtable的桶数间的比值<br>即load_factor&#x3D;(float)map.size()&#x2F;map.buck_count();<br>最大负载因子(max_load_factor):负载因子的上限<br><br>当load_factor&gt;&#x3D;max_load_factor(调用max_load_factor方法可以得最大负载因子默认为1)时，发生rehash</li>
+</ul>
+<ol start="2">
+<li><p>unordered_set 哈希组织的set</p>
+</li>
+<li><p>unordered_multimap 哈希组织的mulitmap，key可重复出现</p>
+</li>
+<li><p>unordered_multiset 哈希组织的multiset，key可重复出现</p>
+</li>
+</ol>
 
       </div>
     </div>

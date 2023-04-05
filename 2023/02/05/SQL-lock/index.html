@@ -8,12 +8,12 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/null">
     <link rel="icon" type="image/png" href="/null">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>归档 - Stone Zhao@STZ</title>
+    <title>并发控制 - Stone Zhao@STZ</title>
     
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
     
-    <meta name="description" content="">
+    <meta name="description" content="&lt;p&gt;锁、事务、隔离&lt;/p&gt;">
     <meta name="author" content="Stone Zhao">
     <meta name="keywords" content="">
     <style>
@@ -470,29 +470,123 @@ header .header__right .dropdown-menus .dropdown-menu {
             
 
 <article class="page">
-  <div class="archive-list">
-    <p class="h4">14 posts in total.</p>
-    <hr>
+<div id="post-meta-m">
+    <div class="post-meta" id="post-meta">
+  <h3>并发控制</h3>
+    
+      <span class="post-meta-label">
+        Stone Zhao
+      </span>
+    
+    
+      <span class="post-meta-label">
+        <span class="p-dot"></span>
+        <time datetime="2023-02-05 10:12" pubdate>
+          2023-02-05
+        </time>
+      </span>
     
     
       
+      <span class="post-meta">
+        <span class="p-dot"></span>
+        共 949 字
+      </span>
+    
+    
+      
+      <span class="post-meta">
+        <span class="p-dot"></span>
         
-        <p class="h5">2023</p>
-      
-      <a href="/2023/01/28/pgsql/" class="list-group-item list-group-item-action">
-        <span class="archive-post-title">Sql基础知识</span>
-        <time style="float: right;">01-28</time>
-      </a>
+        预计 
+        8
+         分钟
+      </span>
     
-      
-      <a href="/2023/01/17/C/" class="list-group-item list-group-item-action">
-        <span class="archive-post-title">C++笔记</span>
-        <time style="float: right;">01-17</time>
-      </a>
     
-
+  </div>
+  
 </div>
+<div class="article-m">
+  <div class="post-toc">
+    
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%81"><span class="toc-number">1.</span> <span class="toc-text">锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%86%99%E9%94%81"><span class="toc-number">1.0.1.</span> <span class="toc-text">读写锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%94%81%E7%B2%92%E5%BA%A6"><span class="toc-number">1.0.2.</span> <span class="toc-text">锁粒度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1"><span class="toc-number">2.</span> <span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%A7%E8%B4%A8%EF%BC%88ACID%EF%BC%89"><span class="toc-number">2.0.1.</span> <span class="toc-text">事务的基本性质（ACID）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-number">2.0.2.</span> <span class="toc-text">隔离级别</span></a></li></ol></li></ol></li></ol>
+    
+  </div>
+    <div id="article">
+      <div id="post-content" class="markdown-body textretty">
+        <p>锁、事务、隔离</p>
+<span id="more"></span>
+<p>首先明确MySQL的最基础架构<br>客户端&#x2F;连接–&gt;链接线程处理–&gt;解析器–&gt;查询缓存–&gt;优化器–&gt;存储引擎–&gt;数据</p>
+<p>对于客户端&#x2F;连接，需要明确，每一个客户端连接都会独立的拥有一个线程，所以当多个查询再同一时刻读写数据时，就容易产生冲突，为了避免冲突发生，我们需要做好并发控制，保证一个线程的运行不会对其他线程的运行产生预料外的影响。</p>
+<h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2><h4 id="读写锁"><a href="#读写锁" class="headerlink" title="读写锁"></a>读写锁</h4><p>多个线程同时读取统一数据显然不会发生问题，但如果多个线程同时有读有写，就会造成两个线程对于同一个语句读取到的数据不一致的问题，因此，为了安全起见，我们要为数据加锁</p>
+<ul>
+<li>共享锁&#x2F;读锁&#x2F;乐观锁<br>被锁定的数据不可以被其他线程重复写入，但可以被其他线程读取</li>
+<li>排他锁&#x2F;写锁&#x2F;悲观锁<br>被锁定的数据不可以被其他线程重复写入，也不可以被其他线程读取</li>
+</ul>
+<h4 id="锁粒度"><a href="#锁粒度" class="headerlink" title="锁粒度"></a>锁粒度</h4><p>如果被锁定的数据过多，则会造成其他同样需要该数据的线程阻塞的情况，一般来说，在MySQL中，存在两种粒度</p>
+<ul>
+<li>表锁<br>读取时会锁定整张表</li>
+<li>行级锁<br>读取时只会锁定行<br>锁的实现位于存储引擎层，因此存储引擎之上的层并不会知晓锁的情况和概念</li>
+</ul>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><h4 id="事务的基本性质（ACID）"><a href="#事务的基本性质（ACID）" class="headerlink" title="事务的基本性质（ACID）"></a>事务的基本性质（ACID）</h4><ul>
+<li>原子性(Atomicity)<br>事务被视为不可分割的工作单元，一个事务的操作要不全部执行，要不全部不执行，事务不可以被再次切分</li>
+<li>一致性(Consistency)<br>数据库永远保持一致性，如果事务没有被提交，那么其所做的修改也不会被保存到数据库中</li>
+<li>隔离性(Isolation)<br>事务之间是不可见的，即正在执行（或执行完尚未提交）的事务并不会对其他事务读取到的结果造成任何影响</li>
+<li>持久性(Durability)<br>一旦事务提交，则其所做的一切修改都会被永久保存并对外可见</li>
+</ul>
+<h4 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h4><p>隔离性的实现也存在级别差异，在SQL中规定了四种隔离级别，较低级别的隔离往往可以获得更高的性能<br>以下为四种隔离级别：</p>
+<ul>
+<li><p>未提交读（READ UNCOMMITTED）<br>事务中的修改即使没有提交也对其他事务可见</p>
+</li>
+<li><p>提交读（READ COMMITTED）<br>事务的修改只有提交后才对其他事务可见，这也是大多数数据库系统的默认隔离级别</p>
+</li>
+<li><p>可重复读（REPEATABLE READ）<br>此级别是MySQL的默认事务隔离级别，采用多版本并发控制，避免了幻读的问题</p>
+</li>
+<li><p>可串行化（SERIALIZABLE）<br>强制事务串行执行，会在读取的每一行数据都上锁，因此会导致大量的超时和锁争用问题</p>
+</li>
+<li><p>脏读：读取到其他事务尚未提交的数据</p>
+</li>
+<li><p>不可重复读：一个事务读取到另一个事务提交的数据，即同一个事务对于同一组数据读取到的结果不一致</p>
+</li>
+<li><p>幻读：某个事务在读取某一范围的记录时，另一个事务又在该范围插图了新的记录，当该事务再次读取时，会发生幻行</p>
+</li>
+<li><p>加锁读：读取必加锁<br>不可重复读和幻读：不可重复读强调前后同一条数据的结果不一致，幻读强调数据多出现多行，即”幻行”</p>
+</li>
+</ul>
+
+      </div>
+    </div>
+</div>
+
+
+<div class="post-footer">
+  
+  <div class="donate text-center">
+    <span>喜欢这篇文章？为什么不考虑打赏一下作者呢？</span>
+    <div class="donate-way">
+      
+    </div>
+  </div>
+  
+
+  <div class="post-copyright">
+    <p style="margin: 5px 0;">文章作者：<a href="/">Stone Zhao</a></p>
+    <p style="margin: 5px 0;">文章链接：<a href="http://lxy12138.com/2023/02/05/SQL-lock/">http://lxy12138.com/2023/02/05/SQL-lock/</a></p>
+    <p style="margin: 5px 0;">版权声明：本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处，谢谢。</p>
+  </div>
+  
+</div>
+
+    <!-- Comments -->
+    <div class="comments">
+        
+        
+    </div>
+
 </article>
+
+
         </div>
         
 <footer class="text-center">
@@ -509,6 +603,8 @@ header .header__right .dropdown-menus .dropdown-menu {
 </footer>
 
 <div class="p-btn">
+    
+        <a class="toc-btn" id="toc-btn"><i id="i-menu"></i></a>
     
     <a href="#top" class="click-btn">
       <i id="i-up"></i>
@@ -544,8 +640,50 @@ header .header__right .dropdown-menus .dropdown-menu {
 </script>
 
 
+<script>
+    var postImg = document.querySelectorAll("article[class=page] img");
+    for (let imgi = 0; imgi < postImg.length; imgi++) {
+        postImg[imgi].onclick = () => {
+            let zoomImg = document.createElement("div");
+            zoomImg.id = "zoomImg";
+            zoomImg.innerHTML = `<div id="zoom-picture"></div>
+    <div class="poptrox-overlay"
+        style="position: fixed; left: 0px; top: 0px; z-index: 20000; width: 100%; height: 100%; text-align: center; cursor: zoom-out; opacity: 1;">
+        <div style="display:inline-block;height:100%;vertical-align:middle;"></div>
+        <div
+            style="position:absolute;left:0;top:0;width:100%;height:100%;background:#000000;opacity:0;filter:alpha(opacity=0);">
+        </div>
+        <div class="poptrox-popup"
+            style="display: inline-block; vertical-align: middle; position: relative; z-index: 1; cursor: zoom-out; min-width: 10px; min-height: 10px; width: auto; height: auto;">
+            <div class="loader" style="display: none;"></div>
+            <div class="pic" style="text-indent: 0px;"><img
+                    src="${ postImg[imgi].srcset || postImg[imgi].src }" alt="Loading..."
+                    style="vertical-align: bottom; max-width: 85vw; max-height: 85vh;"></div>
+        </div>
+    </div>`;
+            document.body.appendChild(zoomImg);
+                document.querySelector("#zoomImg").onclick = () => {
+                    document.querySelector("#zoomImg").remove();
+                }
+        }
+    }
+    
+</script>
 
 
+
+
+    <script>
+        query("#toc-btn")[0].onclick = () => {
+            if (query(".post-toc")[0].innerHTML) {
+                toggleClass(".post-toc", "display-inline");
+            }
+        }
+
+        if (!query(".post-toc")[0].innerHTML) {
+            addClass("#toc-btn","display-none");
+        }
+    </script>
 
 
 

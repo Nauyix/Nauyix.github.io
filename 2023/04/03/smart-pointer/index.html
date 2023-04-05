@@ -13,7 +13,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
     
-    <meta name="description" content="&lt;p&gt;一般来说，C++中一共有&lt;strong&gt;4&lt;/strong&gt;种智能指针，包括引入于C++98的auto_ptr，以及引入与C++11的unique_ptr&amp;#x2F;shared_ptr&amp;#x2F;weak_ptr&lt;/p&gt;">
+    <meta name="description" content="&lt;p&gt;一般来说，C++中一共有&lt;strong&gt;4&lt;/strong&gt;种智能指针，包括引入于C++98的auto_ptr，以及引入于C++11的unique_ptr&amp;#x2F;shared_ptr&amp;#x2F;weak_ptr&lt;/p&gt;">
     <meta name="author" content="Stone Zhao">
     <meta name="keywords" content="">
     <style>
@@ -490,7 +490,7 @@ header .header__right .dropdown-menus .dropdown-menu {
       
       <span class="post-meta">
         <span class="p-dot"></span>
-        共 1.4k 字
+        共 1.5k 字
       </span>
     
     
@@ -499,7 +499,7 @@ header .header__right .dropdown-menus .dropdown-menu {
         <span class="p-dot"></span>
         
         预计 
-        15
+        16
          分钟
       </span>
     
@@ -510,12 +510,12 @@ header .header__right .dropdown-menus .dropdown-menu {
 <div class="article-m">
   <div class="post-toc">
     
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#auto-ptr%EF%BC%9A%E6%BA%90%E8%87%AA%E4%BA%8EC-98%E7%9A%84%E8%80%81%E5%A4%A7%E5%93%A5"><span class="toc-number">1.</span> <span class="toc-text">auto_ptr：源自于C++98的老大哥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#unique-ptr%EF%BC%9Aauto-ptr%E7%9A%84%E4%BC%98%E7%A7%80%E7%BB%A7%E6%89%BF%E8%80%85"><span class="toc-number">2.</span> <span class="toc-text">unique_ptr：auto_ptr的优秀继承者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shared-ptr%EF%BC%9A%E5%85%81%E8%AE%B8%E5%A4%9A%E4%B8%AA%E6%8C%87%E9%92%88%E6%8C%87%E5%90%91%E5%90%8C%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.</span> <span class="toc-text">shared_ptr：允许多个指针指向同一个对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#weak-ptr%EF%BC%9A%E5%92%8Cshared-ptr%E9%80%9A%E5%8A%9B%E5%90%88%E4%BD%9C%E7%9A%84%E4%BA%B2%E5%AF%86%E5%8F%8B%E6%8C%87%E9%92%88"><span class="toc-number">4.</span> <span class="toc-text">weak_ptr：和shared_ptr通力合作的亲密友指针</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#auto-ptr%EF%BC%9A%E6%BA%90%E8%87%AA%E4%BA%8EC-98%E7%9A%84%E8%80%81%E5%A4%A7%E5%93%A5"><span class="toc-number">1.</span> <span class="toc-text">auto_ptr：源自于C++98的老大哥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#unique-ptr%EF%BC%9Aauto-ptr%E7%9A%84%E4%BC%98%E7%A7%80%E7%BB%A7%E6%89%BF%E8%80%85"><span class="toc-number">2.</span> <span class="toc-text">unique_ptr：auto_ptr的优秀继承者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shared-ptr%EF%BC%9A%E5%85%81%E8%AE%B8%E5%A4%9A%E4%B8%AA%E6%8C%87%E9%92%88%E6%8C%87%E5%90%91%E5%90%8C%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.</span> <span class="toc-text">shared_ptr：允许多个指针指向同一个对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#weak-ptr%EF%BC%9A%E5%92%8Cshared-ptr%E9%80%9A%E5%8A%9B%E5%90%88%E4%BD%9C%E7%9A%84%E4%BA%B2%E5%AF%86%E5%8F%8B%E6%8C%87%E9%92%88%EF%BC%88%E5%85%B6%E5%AE%9E%E4%B9%9F%E4%B8%8D%E8%83%BD%E8%AF%B4%E6%98%AF%E4%B8%AA%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">weak_ptr：和shared_ptr通力合作的亲密友指针（其实也不能说是个智能指针）</span></a></li></ol>
     
   </div>
     <div id="article">
       <div id="post-content" class="markdown-body textretty">
-        <p>一般来说，C++中一共有<strong>4</strong>种智能指针，包括引入于C++98的auto_ptr，以及引入与C++11的unique_ptr&#x2F;shared_ptr&#x2F;weak_ptr</p>
+        <p>一般来说，C++中一共有<strong>4</strong>种智能指针，包括引入于C++98的auto_ptr，以及引入于C++11的unique_ptr&#x2F;shared_ptr&#x2F;weak_ptr</p>
 <span id="more"></span>
 <h2 id="auto-ptr：源自于C-98的老大哥"><a href="#auto-ptr：源自于C-98的老大哥" class="headerlink" title="auto_ptr：源自于C++98的老大哥"></a>auto_ptr：源自于C++98的老大哥</h2><table>
 <thead>
@@ -578,15 +578,8 @@ header .header__right .dropdown-menus .dropdown-menu {
 <td>支持</td>
 <td>有参构造，无参构造,拷贝构造</td>
 </tr>
-<tr>
-<td>在auto_ptr中，虽然也有所有权的定义，但只会拷贝构造时会发生所有权的转移，同一个对象仍然可以由多个不同的auto_ptr共享，因此也就造成了同一片内存空间多次释放(UB)，调用空指针等问题</td>
-<td></td>
-</tr>
-<tr>
-<td>但对在unique_ptr中，加强了所有权，一个对象只可以由一个unique_ptr进行独享，所有权可以被释放，可以被转移，但绝不能被共享，因此弥补了auto_ptr的一些缺陷</td>
-<td></td>
-</tr>
 </tbody></table>
+<p>在auto_ptr中，虽然也有所有权的定义，但拷贝构造时不会发生所有权的转移，同一个对象仍然可以由多个不同的auto_ptr共享，因此也就造成了同一片内存空间可能被多次释放&#x2F;释放后调用，调用空指针等UB类问题<br>但对在unique_ptr中，加强了所有权，一个对象只可以由一个unique_ptr进行独享，所有权可以被释放，可以被转移，但绝不能被共享，因此弥补了auto_ptr的一些缺陷</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;memory&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    unique_ptr&lt;string&gt; up1;</span><br><span class="line">    up1.<span class="built_in">reset</span>(<span class="keyword">new</span> <span class="built_in">string</span>(<span class="string">&quot;This is an unique_ptr&quot;</span>));<span class="comment">//使用reset绑定对象</span></span><br><span class="line">    <span class="function">unique_ptr&lt;string&gt; <span class="title">up2</span><span class="params">(<span class="keyword">new</span> string(<span class="string">&quot;unique_ptr2&quot;</span>))</span></span>;<span class="comment">//</span></span><br><span class="line">    unique_ptr&lt;string&gt; up3;</span><br><span class="line">    string *p=up1.<span class="built_in">release</span>();</span><br><span class="line">    <span class="comment">//使用release使up1释放对象所有权，并返回该对象于p指针</span></span><br><span class="line">    up3=<span class="built_in">move</span>(up2);<span class="comment">//使用[移动语义]()进行所有权转移;</span></span><br><span class="line">    up4.<span class="built_in">reset</span>(up3.<span class="built_in">release</span>());<span class="comment">//up3释放所有权，up4绑定对象</span></span><br><span class="line">    up2.<span class="built_in">reset</span>();<span class="comment">//对象被销毁，指针变为空</span></span><br><span class="line">    up4=<span class="literal">nullptr</span>;<span class="comment">//对象被销毁，指针变为空</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//当且仅当unique_ptr为右值时，支持拷贝</span></span><br><span class="line">    <span class="function">unique_ptr <span class="title">get</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="function">unique_ptr&lt;<span class="type">int</span>&gt; <span class="title">temp</span><span class="params">(<span class="keyword">new</span> <span class="type">int</span>(<span class="number">3</span>))</span></span>;</span><br><span class="line">        <span class="keyword">return</span> temp;</span><br><span class="line">    &#125;</span><br><span class="line">    unique_ptr&lt;<span class="type">int</span>&gt; gotit=<span class="built_in">get</span>();</span><br><span class="line">    <span class="comment">//此时gotit会接住get()函数返回的右值，由gotit指向get()函数中temp指针初始化的int对象</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="shared-ptr：允许多个指针指向同一个对象"><a href="#shared-ptr：允许多个指针指向同一个对象" class="headerlink" title="shared_ptr：允许多个指针指向同一个对象"></a>shared_ptr：允许多个指针指向同一个对象</h2><table>
@@ -616,12 +609,9 @@ header .header__right .dropdown-menus .dropdown-menu {
 <td>支持</td>
 <td>有参构造，无参构造，拷贝构造</td>
 </tr>
-<tr>
-<td>在shared_ptr中，引入了”计数器”这一概念，当多个指针指向同一个对象时，这些指针共享同一个计数器，记录着改对象被引用的次数，当指针被销毁时，计数器会同步减少，当计数器减少到0时，该对象会被自动销毁</td>
-<td></td>
-</tr>
 </tbody></table>
-<h2 id="weak-ptr：和shared-ptr通力合作的亲密友指针"><a href="#weak-ptr：和shared-ptr通力合作的亲密友指针" class="headerlink" title="weak_ptr：和shared_ptr通力合作的亲密友指针"></a>weak_ptr：和shared_ptr通力合作的亲密友指针</h2><table>
+<p>在shared_ptr中，引入了”计数器”这一概念，当多个指针指向同一个对象时，这些指针共享同一个计数器，记录着改对象被引用的次数，当指针被销毁时，计数器会同步减少，当计数器减少到0时，该对象会被自动销毁<br>但是注意，shared_ptr在指针是线程不安全的，因此在涉及到修改等操作时需要加锁(mutex)</p>
+<h2 id="weak-ptr：和shared-ptr通力合作的亲密友指针（其实也不能说是个智能指针）"><a href="#weak-ptr：和shared-ptr通力合作的亲密友指针（其实也不能说是个智能指针）" class="headerlink" title="weak_ptr：和shared_ptr通力合作的亲密友指针（其实也不能说是个智能指针）"></a>weak_ptr：和shared_ptr通力合作的亲密友指针（其实也不能说是个智能指针）</h2><table>
 <thead>
 <tr>
 <th>信息</th>
@@ -652,11 +642,8 @@ header .header__right .dropdown-menus .dropdown-menu {
 <td>特性</td>
 <td>可以弱引用shared_ptr且不会增加计数器计数</td>
 </tr>
-<tr>
-<td>该指针被设计成和shared_ptr共同使用，用于观测shared_ptr目前的状态</td>
-<td></td>
-</tr>
 </tbody></table>
+<p>该指针被设计成和shared_ptr共同使用，可以用于观测shared_ptr目前的状态或对shared_ptr指向的对象进行一些操作</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;memory&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">shared_ptr&lt;string&gt; <span class="title">sp1</span><span class="params">(<span class="keyword">new</span> string(<span class="string">&quot;This is an unique_ptr&quot;</span>))</span></span>;</span><br><span class="line">    <span class="function">weak_ptr&lt;string&gt; <span class="title">wp</span><span class="params">(up1)</span></span>;</span><br><span class="line">    <span class="comment">//使用拷贝构造实例化了一个weak_ptr指针</span></span><br><span class="line">    cout&lt;&lt;wp.<span class="built_in">use_count</span>();</span><br><span class="line">    <span class="comment">//打印up1的引用计数</span></span><br><span class="line">    cout&lt;&lt;wp.<span class="built_in">expired</span>();</span><br><span class="line">    <span class="comment">//检查是否存在，如果为1，则up1指向的对象已经不复存在</span></span><br><span class="line">    string *p=wp.<span class="built_in">lock</span>();</span><br><span class="line">    <span class="comment">//从wp指向的shared_ptr中获取其指向的对象，从而在不影响计数器的情况下进行操作</span></span><br><span class="line">    <span class="comment">//此时sp1的计数器不会+1，如果sp1为空，会返回一个空的shared_ptr</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>那么这个指针的意义是什么？难道只是一个观星者吗？<br>答案：解除循环依赖问题<br><br>假设我们现在有两个对象A和B</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setpb</span><span class="params">(B* b)</span></span>&#123;</span><br><span class="line">        pb.<span class="built_in">reset</span>(b);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">shared_ptr&lt;B&gt; pb;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setpb</span><span class="params">(B* b)</span></span>&#123;</span><br><span class="line">        pb.<span class="built_in">reset</span>(b);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">shared_ptr&lt;A&gt; pa;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
