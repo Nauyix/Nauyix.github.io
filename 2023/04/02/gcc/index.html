@@ -8,7 +8,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/null">
     <link rel="icon" type="image/png" href="/null">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>关于linux编程的一些碎碎念 - Stone Zhao@STZ</title>
+    <title>关于linux编程的一些基础知识 - Stone Zhao@STZ</title>
     
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
@@ -385,20 +385,16 @@ header .header__right .dropdown-menus .dropdown-menu {
 <div class="header__right">
 	<div class="navbar__menus">
 		
+		<a href="https://lxy12138.com/2023/02/01/About-2023/" class="button">
+			<div class="navbar-menu">2023</div>
+		</a>
+		
 		<a href="/" class="button">
 			<div class="navbar-menu">Home</div>
 		</a>
 		
 		<a target="_blank" rel="noopener" href="https://github.com/nauyix" class="button">
 			<div class="navbar-menu">GitHub</div>
-		</a>
-		
-		<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_30701125" class="button">
-			<div class="navbar-menu">CSDN</div>
-		</a>
-		
-		<a target="_blank" rel="noopener" href="https://zhihu.com/people/stone-zhao-6" class="button">
-			<div class="navbar-menu">Zhihu</div>
 		</a>
 		
 		<a href="http://lxy12138.com/Friends.html" class="button">
@@ -442,16 +438,13 @@ header .header__right .dropdown-menus .dropdown-menu {
 	</a>
 	<div class="dropdown-menus" id="dropdown-menus">
 		
+		<a href="https://lxy12138.com/2023/02/01/About-2023/" class="dropdown-menu button">2023</a>
+		<br>
+		
 		<a href="/" class="dropdown-menu button">Home</a>
 		<br>
 		
 		<a target="_blank" rel="noopener" href="https://github.com/nauyix" class="dropdown-menu button">GitHub</a>
-		<br>
-		
-		<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_30701125" class="dropdown-menu button">CSDN</a>
-		<br>
-		
-		<a target="_blank" rel="noopener" href="https://zhihu.com/people/stone-zhao-6" class="dropdown-menu button">Zhihu</a>
 		<br>
 		
 		<a href="http://lxy12138.com/Friends.html" class="dropdown-menu button">Friends</a>
@@ -472,7 +465,7 @@ header .header__right .dropdown-menus .dropdown-menu {
 <article class="page">
 <div id="post-meta-m">
     <div class="post-meta" id="post-meta">
-  <h3>关于linux编程的一些碎碎念</h3>
+  <h3>关于linux编程的一些基础知识</h3>
     
       <span class="post-meta-label">
         Stone Zhao
@@ -490,7 +483,7 @@ header .header__right .dropdown-menus .dropdown-menu {
       
       <span class="post-meta">
         <span class="p-dot"></span>
-        共 1.6k 字
+        共 3k 字
       </span>
     
     
@@ -499,7 +492,7 @@ header .header__right .dropdown-menus .dropdown-menu {
         <span class="p-dot"></span>
         
         预计 
-        15
+        28
          分钟
       </span>
     
@@ -510,7 +503,7 @@ header .header__right .dropdown-menus .dropdown-menu {
 <div class="article-m">
   <div class="post-toc">
     
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#gcc%E7%9A%84%E5%B8%B8%E7%94%A8%E9%80%89%E9%A1%B9"><span class="toc-number">1.</span> <span class="toc-text">gcc的常用选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gcc%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">gcc工作流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%BA%93%E5%92%8C%E5%8A%A8%E6%80%81%E5%BA%93"><span class="toc-number"></span> <span class="toc-text">静态库和动态库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">静态库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-number">1.0.1.</span> <span class="toc-text">命名规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%89%93%E5%8C%85"><span class="toc-number">1.0.2.</span> <span class="toc-text">如何打包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E9%9D%99%E6%80%81%E5%BA%93"><span class="toc-number">1.0.3.</span> <span class="toc-text">如何使用自定义静态库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%BA%93"><span class="toc-number">2.</span> <span class="toc-text">动态库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99-1"><span class="toc-number">2.0.1.</span> <span class="toc-text">命名规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%89%93%E5%8C%85%EF%BC%9A"><span class="toc-number">2.0.2.</span> <span class="toc-text">如何打包：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8A%A8%E6%80%81%E5%BA%93"><span class="toc-number">2.0.3.</span> <span class="toc-text">如何使用自定义动态库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%BA%93%E5%92%8C%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">2.0.4.</span> <span class="toc-text">动态库和静态库的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%BA%93-1"><span class="toc-number">2.0.4.1.</span> <span class="toc-text">静态库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%BA%93-1"><span class="toc-number">2.0.4.2.</span> <span class="toc-text">动态库</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Makefile"><span class="toc-number"></span> <span class="toc-text">Makefile</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%84%E5%88%99"><span class="toc-number">1.</span> <span class="toc-text">规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">工作原理：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">3.</span> <span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="toc-number">3.0.1.</span> <span class="toc-text">自定义变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%84%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="toc-number">3.0.2.</span> <span class="toc-text">预定义变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC"><span class="toc-number">3.0.3.</span> <span class="toc-text">获取变量的值</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GDB"><span class="toc-number"></span> <span class="toc-text">GDB</span></a>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#gcc%E7%9A%84%E5%B8%B8%E7%94%A8%E9%80%89%E9%A1%B9"><span class="toc-number">1.</span> <span class="toc-text">gcc的常用选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gcc%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">gcc工作流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%BA%93%E5%92%8C%E5%8A%A8%E6%80%81%E5%BA%93"><span class="toc-number"></span> <span class="toc-text">静态库和动态库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">静态库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-number">1.0.1.</span> <span class="toc-text">命名规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%89%93%E5%8C%85"><span class="toc-number">1.0.2.</span> <span class="toc-text">如何打包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E9%9D%99%E6%80%81%E5%BA%93"><span class="toc-number">1.0.3.</span> <span class="toc-text">如何使用自定义静态库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%BA%93"><span class="toc-number">2.</span> <span class="toc-text">动态库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99-1"><span class="toc-number">2.0.1.</span> <span class="toc-text">命名规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%89%93%E5%8C%85%EF%BC%9A"><span class="toc-number">2.0.2.</span> <span class="toc-text">如何打包：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8A%A8%E6%80%81%E5%BA%93"><span class="toc-number">2.0.3.</span> <span class="toc-text">如何使用自定义动态库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%BA%93%E5%92%8C%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">2.0.4.</span> <span class="toc-text">动态库和静态库的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%BA%93-1"><span class="toc-number">2.0.4.1.</span> <span class="toc-text">静态库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%BA%93-1"><span class="toc-number">2.0.4.2.</span> <span class="toc-text">动态库</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Makefile"><span class="toc-number"></span> <span class="toc-text">Makefile</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%84%E5%88%99"><span class="toc-number">1.</span> <span class="toc-text">规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">工作原理：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">3.</span> <span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="toc-number">3.0.1.</span> <span class="toc-text">自定义变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%84%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="toc-number">3.0.2.</span> <span class="toc-text">预定义变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC"><span class="toc-number">3.0.3.</span> <span class="toc-text">获取变量的值</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GDB"><span class="toc-number"></span> <span class="toc-text">GDB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E5%B7%A5%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">开始工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GDB%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">2.0.1.</span> <span class="toc-text">GDB常用命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gdb%E8%B0%83%E8%AF%95%E5%91%BD%E4%BB%A4"><span class="toc-number">2.0.2.</span> <span class="toc-text">gdb调试命令</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6IO"><span class="toc-number"></span> <span class="toc-text">文件IO</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6IO%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">C语言中的文件IO：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4"><span class="toc-number">2.</span> <span class="toc-text">虚拟地址空间</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%8C%BA"><span class="toc-number">2.0.1.</span> <span class="toc-text">用户区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E6%A0%B8%E5%8C%BA"><span class="toc-number">2.0.2.</span> <span class="toc-text">内核区</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E4%B8%8E%E7%B3%BB%E7%BB%9FAPI"><span class="toc-number"></span> <span class="toc-text">文件描述符与系统API</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#open-amp-close"><span class="toc-number">0.0.1.</span> <span class="toc-text">open&amp;close</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#read-amp-write"><span class="toc-number">0.0.2.</span> <span class="toc-text">read&amp;write</span></a></li></ol></li></ol></li></ol>
     
   </div>
     <div id="article">
@@ -678,8 +671,68 @@ header .header__right .dropdown-menus .dropdown-menu {
 <h4 id="预定义变量"><a href="#预定义变量" class="headerlink" title="预定义变量"></a>预定义变量</h4><p>AR 归档维护程序的名称，默认为ar<br>CC c的编译器的名称，默认为gcc<br>cxx c++的编译器的名称<br>$@ 目标的完整名称<br>$&lt; 第一个依赖文件的名称<br>$^ 所有的依赖文件<br>…….<br>还有很多，这里只列举常用的</p>
 <h4 id="获取变量的值"><a href="#获取变量的值" class="headerlink" title="获取变量的值"></a>获取变量的值</h4><p>$(变量名)</p>
 <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>$(函数名 参数)<br>比如：<br>$(wildcatd PATTERN)…<br>功能：获取指定目录下指定类型的文件列表<br>参数：pattern指的是某个或多个目录下某种类型的文件<br>返回值：得到一个文件列表，文件名之间用空格间隔<br>示例：<br>$(wildcard <em>.c .&#x2F;sub&#x2F;</em>.c)<br> 获取当前目录与同级sub目录下的所有*.c文件名<br>$（patsubst,&lt;pattern&gt;,&lt;replacement&gt;,&lt;text&gt;）<br>查找&lt;text&gt;中的单词是否符合&lt;pattern&gt;模式，如果匹配的话，用&lt;replacement&gt;替换<br>示例：<br>$(patsubst %.c,%.o,x.c bar.c)<br>返回值格式：x.o bar.o</p>
-<h1 id="GDB"><a href="#GDB" class="headerlink" title="GDB"></a>GDB</h1><p>gdb是由gnu组织提供的调试工具，和gcc配套组成了一套完整的开发环境</p>
+<h1 id="GDB"><a href="#GDB" class="headerlink" title="GDB"></a>GDB</h1><p>gdb是由gnu组织提供的调试工具，和gcc配套组成了一套完整的开发环境<br>主要协助完成如下功能：</p>
+<ul>
+<li>按照自定义的要求运行程序</li>
+<li>在指定的断电处暂停程序运行</li>
+<li>在程序暂停运行时检查内部运行状态</li>
+<li>可以改正程序</li>
+</ul>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li>编译时加上调试选项’-g’<br>  调试选项的作用：在可执行文件中加入源代码的信息，使可执行文件的指令和源代码的行数建立联系，但并不嵌入源文件，因此必须保证gdb可以找到源文件</li>
+<li>编译时加上’-Wall’ 打开所有warning</li>
+<li>关闭编译器优化(-o)</li>
+</ul>
+<h2 id="开始工作"><a href="#开始工作" class="headerlink" title="开始工作"></a>开始工作</h2><p>使用命令gdb进入gdb环境</p>
+<h4 id="GDB常用命令"><a href="#GDB常用命令" class="headerlink" title="GDB常用命令"></a>GDB常用命令</h4><ul>
+<li>启动和退出<br>gdb [name]<br>quit</li>
+<li>设置属性并获取<br>set [name] [value]<br>show [name]</li>
+<li>查看当前文件代码<br>list&#x2F;l [文件名]:[行号&#x2F;函数名]<br>若留空文件名，只查看当前文件<br>使用show list&#x2F;listsize 可以查看当前一次展示的行数<br>使用set list&#x2F;listsize [number]可以修改每次显示的行数(defaule 10)</li>
+<li>设置断点<br>break&#x2F;b [文件名]:[行号&#x2F;函数名]<br>这样设置好的是普通断点<br>break&#x2F;b [文件名]:[行号&#x2F;函数名] [条件]<br>这样可以在某一行设置条件断点(一般用于循环)<br>例： b test.cpp:9 if i&#x3D;&#x3D;3</li>
+<li>查看断点<br>info&#x2F;i break&#x2F;b<br>(是一个整体，比如info break这样输入)</li>
+<li>删除断点<br>d&#x2F;del&#x2F;delete [num]<br>注意是断点编号不是断点所在行数，可以使用info查看断点编号</li>
+<li>设置断点有效&#x2F;无效<br>enable&#x2F;disable [num]</li>
+</ul>
+<h4 id="gdb调试命令"><a href="#gdb调试命令" class="headerlink" title="gdb调试命令"></a>gdb调试命令</h4><ul>
+<li>运行程序<br>start 开始运行，但停留在第一行<br>run 开始运行，直到遇到可以停顿的断点</li>
+<li>继续运行，到下一个断点停<br>continue&#x2F;c</li>
+<li>向下执行一行代码(不会进入函数体)<br>next&#x2F;n</li>
+<li>操作变量<br>print&#x2F;p [name] 打印变量的值<br>ptype [name] 打印变量的类型</li>
+<li>向下单步调试<br>step&#x2F;s 向下运行一行<br>finish 跳出当前函数体</li>
+<li>自动变量操作<br>display [name] 每次运行到断点处时自动打印指定变量的值<br>undisplay [name]<br>info&#x2F;i [display&#x2F;undisplay] [num]</li>
+<li>其他变量操作<br>set var [name]&#x3D;[value]<br>until(跳出循环)</li>
+<li>小tip<br>在断点所在行停留时，该行代码并不会被执行，继续运行代码后才会执行该行代码</li>
+</ul>
+<h1 id="文件IO"><a href="#文件IO" class="headerlink" title="文件IO"></a>文件IO</h1><h2 id="C语言中的文件IO："><a href="#C语言中的文件IO：" class="headerlink" title="C语言中的文件IO："></a>C语言中的文件IO：</h2><p>使用fopen或其他函数打开文件，返回值FILE *fp为一个指针，由三个部分组成</p>
+<ul>
+<li>文件描述符[整型值]： 索引对应的磁盘文件</li>
+<li>文件读写指针：读写文件过程中指针的实际位置(内存)</li>
+<li>I&#x2F;O缓存区[内存地址]：通过寻址找到对应的内存块(默认为8192byte)<br>缓存区的意义：<br>软件直接写入缓存区，当(<br>  1.缓存区达到最大容量时<br>  2.调用fflush<br>  3.正常关闭文件<br>  )时，缓冲区内容会被写入磁盘，可以提高系统运行效率</li>
+<li>C语言IO和linux系统IO的关系<br>程序&lt;-&gt;C标准IO库(缓冲区在此)&lt;–系统内核IO–&gt;磁盘</li>
+</ul>
+<h2 id="虚拟地址空间"><a href="#虚拟地址空间" class="headerlink" title="虚拟地址空间"></a>虚拟地址空间</h2><p>每个进程都会被分配一个虚拟地址空间，里面的数据会通过cpu的MMU(内存管理单元)映射到物理内存中，这段空间按照操作者被分为内核区和用户区</p>
+<h4 id="用户区"><a href="#用户区" class="headerlink" title="用户区"></a>用户区</h4><ul>
+<li>受保护的地址(0-4K)</li>
+<li>.text 代码段</li>
+<li>.data 已初始化的全局变量</li>
+<li>.bss 未初始化的全局变量</li>
+<li>堆空间(较大)</li>
+<li>共享库(动态链接库)</li>
+<li>栈空间(较小)</li>
+<li>命令行参数 char* argv[]</li>
+<li>环境变量</li>
+</ul>
+<h4 id="内核区"><a href="#内核区" class="headerlink" title="内核区"></a>内核区</h4><p>即Linux kernel，不可以由程序进行操作，之可以通过程序调用系统API，从而间接更改内核数据</p>
+<ul>
+<li>内存管理</li>
+<li>进程管理</li>
+<li>设备驱动管理</li>
+<li>VFS虚拟文件系统</li>
+</ul>
+<h1 id="文件描述符与系统API"><a href="#文件描述符与系统API" class="headerlink" title="文件描述符与系统API"></a>文件描述符与系统API</h1><h4 id="open-amp-close"><a href="#open-amp-close" class="headerlink" title="open&amp;close"></a>open&amp;close</h4><p>在上文提到的”内核区”中，有一个模块叫做PCB-进程控制块，指向文件描述符表<br>每打开一个新文件，就占用空闲的最小的文件描述符<br>系统IO函数和标准C库存在一定的对应关系</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="comment">//运行在linux下</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">open</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *pathname,<span class="type">int</span> flags)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">pathname:需要打开的文件路径</span></span><br><span class="line"><span class="comment">flags:对文件的操作权限设置/其他设置，可以是多个标记，多个标记之间使用|连接</span></span><br><span class="line"><span class="comment">    必选项：O_RDONLY/O_WRONLY/O_RDWR</span></span><br><span class="line"><span class="comment">    本质：32位的二进制数</span></span><br><span class="line"><span class="comment">可选项：</span></span><br><span class="line"><span class="comment">返回值：fd，文件描述符，若打开错误则返回-1</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    errno：属于linux函数库内的一个全局变量，记录的是最近的错误号</span></span><br><span class="line"><span class="comment">    #include&lt;stdio.h&gt;</span></span><br><span class="line"><span class="comment">        void perror(const char *s);</span></span><br><span class="line"><span class="comment">    //作用：打印errno对应的错误描述，打印格式:*s+&quot;description&quot;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">open</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *pathname,<span class="type">int</span> flags,<span class="type">mode_t</span> mode)</span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">若读取文件不存在，可以创建新文件</span></span><br><span class="line"><span class="comment">    mode:新文件的操作权限</span></span><br><span class="line"><span class="comment">    类型/当前用户权限/当前用户所在组权限/其他组权限</span></span><br><span class="line"><span class="comment">    (用八进制的数表示，如：0777，前导零为八进制数的标志)</span></span><br><span class="line"><span class="comment">    最终的权限是:mode &amp; ~umask</span></span><br><span class="line"><span class="comment">rwx:每一位对应一个1(二进制)，则最大数为7</span></span><br><span class="line"><span class="comment">umask:每一个用户独有的值</span></span><br><span class="line"><span class="comment">    若mode=0777，umask=0002，则结果为0775</span></span><br><span class="line"><span class="comment">    意义：可以抹去某些特定的权限</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">close</span><span class="params">(<span class="type">int</span> fd)</span>;</span><br><span class="line">关闭fd所指向的连接</span><br></pre></td></tr></table></figure>
 
+<h4 id="read-amp-write"><a href="#read-amp-write" class="headerlink" title="read&amp;write"></a>read&amp;write</h4>
       </div>
     </div>
 </div>
@@ -697,7 +750,7 @@ header .header__right .dropdown-menus .dropdown-menu {
 
   <div class="post-copyright">
     <p style="margin: 5px 0;">文章作者：<a href="/">Stone Zhao</a></p>
-    <p style="margin: 5px 0;">文章链接：<a href="http://lxy12138.com/2023/04/02/gcc/">http://lxy12138.com/2023/04/02/gcc/</a></p>
+    <p style="margin: 5px 0;">文章链接：<a href="https://lxy12138.com/2023/04/02/gcc/">https://lxy12138.com/2023/04/02/gcc/</a></p>
     <p style="margin: 5px 0;">版权声明：本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处，谢谢。</p>
   </div>
   
@@ -720,7 +773,7 @@ header .header__right .dropdown-menus .dropdown-menu {
     
     
     
-    <p>&copy;  2020 - 2023&nbsp;&nbsp;Stone Zhao</p>
+    <p>&copy;  2022 - 2023&nbsp;&nbsp;Stone Zhao</p>
     
     <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme by <a href="https://github.com/hifun-team/hexo-theme-miracle" target="_blank">Miracle</a></p>
     
