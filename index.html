@@ -473,6 +473,37 @@ header .header__right .dropdown-menus .dropdown-menu {
       
       <article class="index-card-info">
         <h3 class="index-header">
+          <a href="/2023/06/12/RabbitMQ/">
+          
+          RabbitMQ</a>
+        </h3>
+        <p class="index-excerpt">
+            
+            
+              
+            
+            核心工作模型消息生产者-&gt;TCP长连接（虚拟通道）-&gt;虚拟主机交换机-&gt;消息队列-&gt;TCP长连接（虚拟通道）-&gt;消息消费者
+长连接（虚拟通道）内含很多通道（Channel），以实现发送效率的提升
+交换机（Exchange）与消息发送Fanout Exchange(扇形交换机)消息会被发送到交换机，交换机会投递到所有绑定的队列中
+12345678910111213141
+        </p>
+        <div class="index-btm post-metas">
+          
+            
+              <time datetime="2023-06-12 09:03" pubdate>
+                2023-06-12
+              </time>
+            
+          
+          
+        </div>
+      </article>
+    </div>
+  
+    <div class="index-card">
+      
+      <article class="index-card-info">
+        <h3 class="index-header">
           <a href="/2023/05/30/network/">
           
           网络编程</a>
@@ -510,49 +541,13 @@ header .header__right .dropdown-menus .dropdown-menu {
             
               
             
-            线程
-一个程序中的所有线程会独立执行相同程序，且共享一份全局内存区域。
-进程是cpu分配资源的最小的那位，是操作系统调度执行的最小单位
-线程是轻量级的进程，在linux下线程的本质仍然是进程
-查看指定进程的LWQ号可以使用：ps -Lf pid优点：
-线程间可以方便的进行通信
-fork创造进程的代价较高，而创建线程代价较低（无需复制内存和页表等）
-
-
+            坑还没填
         </p>
         <div class="index-btm post-metas">
           
             
               <time datetime="2023-05-30 19:33" pubdate>
                 2023-05-30
-              </time>
-            
-          
-          
-        </div>
-      </article>
-    </div>
-  
-    <div class="index-card">
-      
-      <article class="index-card-info">
-        <h3 class="index-header">
-          <a href="/2023/05/15/erp/">
-          
-          erp</a>
-        </h3>
-        <p class="index-excerpt">
-            
-            
-              
-            
-            
-        </p>
-        <div class="index-btm post-metas">
-          
-            
-              <time datetime="2023-05-15 17:30" pubdate>
-                2023-05-15
               </time>
             
           

@@ -8,12 +8,12 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/null">
     <link rel="icon" type="image/png" href="/null">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>About-2023 - Stone Zhao@STZ</title>
+    <title>RabbitMQ - Stone Zhao@STZ</title>
     
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
     
-    <meta name="description" content="&lt;center&gt;But if it has to end, I&#39;m glad you have been my friend&lt;/center&gt;">
+    <meta name="description" content="">
     <meta name="author" content="Stone Zhao">
     <meta name="keywords" content="">
     <style>
@@ -465,7 +465,7 @@ header .header__right .dropdown-menus .dropdown-menu {
 <article class="page">
 <div id="post-meta-m">
     <div class="post-meta" id="post-meta">
-  <h3>About-2023</h3>
+  <h3>RabbitMQ</h3>
     
       <span class="post-meta-label">
         Stone Zhao
@@ -474,8 +474,8 @@ header .header__right .dropdown-menus .dropdown-menu {
     
       <span class="post-meta-label">
         <span class="p-dot"></span>
-        <time datetime="2023-02-01 22:18" pubdate>
-          2023-02-01
+        <time datetime="2023-06-12 09:03" pubdate>
+          2023-06-12
         </time>
       </span>
     
@@ -483,7 +483,7 @@ header .header__right .dropdown-menus .dropdown-menu {
       
       <span class="post-meta">
         <span class="p-dot"></span>
-        共 252 字
+        共 545 字
       </span>
     
     
@@ -492,7 +492,7 @@ header .header__right .dropdown-menus .dropdown-menu {
         <span class="p-dot"></span>
         
         预计 
-        2
+        6
          分钟
       </span>
     
@@ -503,51 +503,23 @@ header .header__right .dropdown-menus .dropdown-menu {
 <div class="article-m">
   <div class="post-toc">
     
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E6%9C%88%E4%BB%BD"><span class="toc-number">1.</span> <span class="toc-text">一月份</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E6%9C%88%E4%BB%BD"><span class="toc-number">2.</span> <span class="toc-text">二月份</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E6%9C%88%E4%BB%BD"><span class="toc-number">3.</span> <span class="toc-text">三月份</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E6%9C%88%E4%BB%BD"><span class="toc-number">4.</span> <span class="toc-text">四月份</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E6%9C%88%E4%BB%BD"><span class="toc-number">5.</span> <span class="toc-text">五月份</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E6%9C%88%E4%BB%BD"><span class="toc-number">6.</span> <span class="toc-text">六月份</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">核心工作模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%95%BF%E8%BF%9E%E6%8E%A5%EF%BC%88%E8%99%9A%E6%8B%9F%E9%80%9A%E9%81%93%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">长连接（虚拟通道）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA%EF%BC%88Exchange%EF%BC%89%E4%B8%8E%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81"><span class="toc-number">1.2.</span> <span class="toc-text">交换机（Exchange）与消息发送</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Fanout-Exchange-%E6%89%87%E5%BD%A2%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="toc-number">1.2.1.</span> <span class="toc-text">Fanout Exchange(扇形交换机)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Direct-Exchange%EF%BC%88%E7%9B%B4%E8%BF%9E%E4%BA%A4%E6%8D%A2%E6%9C%BA%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">Direct Exchange（直连交换机）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Topic-Exchange%EF%BC%88%E4%B8%BB%E9%A2%98%E4%BA%A4%E6%8D%A2%E6%9C%BA%EF%BC%89"><span class="toc-number">1.2.3.</span> <span class="toc-text">Topic Exchange（主题交换机）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Headers-Exchange%EF%BC%88%E5%A4%B4%E9%83%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%EF%BC%89%EF%BC%88%E4%BD%BF%E7%94%A8%E8%BE%83%E5%B0%91%EF%BC%89"><span class="toc-number">1.2.4.</span> <span class="toc-text">Headers Exchange（头部交换机）（使用较少）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E6%8E%A5%E6%94%B6"><span class="toc-number">1.3.</span> <span class="toc-text">消息接收</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E7%9A%84%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4%EF%BC%88TTL%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">消息的过期时间（TTL）</span></a></li></ol></li></ol>
     
   </div>
     <div id="article">
       <div id="post-content" class="markdown-body textretty">
-        <center>But if it has to end, I'm glad you have been my friend</center>
-<span id="more"></span>
-<center>In the time of our lives</center>
+        <h1 id="核心工作模型"><a href="#核心工作模型" class="headerlink" title="核心工作模型"></a>核心工作模型</h1><p>消息生产者-&gt;TCP长连接（虚拟通道）-&gt;虚拟主机交换机-&gt;消息队列-&gt;TCP长连接（虚拟通道）-&gt;消息消费者</p>
+<h2 id="长连接（虚拟通道）"><a href="#长连接（虚拟通道）" class="headerlink" title="长连接（虚拟通道）"></a>长连接（虚拟通道）</h2><p>内含很多通道（Channel），以实现发送效率的提升</p>
+<h2 id="交换机（Exchange）与消息发送"><a href="#交换机（Exchange）与消息发送" class="headerlink" title="交换机（Exchange）与消息发送"></a>交换机（Exchange）与消息发送</h2><h3 id="Fanout-Exchange-扇形交换机"><a href="#Fanout-Exchange-扇形交换机" class="headerlink" title="Fanout Exchange(扇形交换机)"></a>Fanout Exchange(扇形交换机)</h3><p>消息会被发送到交换机，交换机会投递到所有绑定的队列中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义交换机</span></span><br><span class="line"><span class="keyword">public</span> FanoutExchange <span class="title function_">fanoutExchange</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">FanoutExchange</span>(<span class="string">&quot;exchange.fanout&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//定义队列</span></span><br><span class="line"><span class="keyword">public</span> Queue <span class="title function_">queueA</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Queue</span>(<span class="string">&quot;queue.fanout.a&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> Queue <span class="title function_">queueB</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Queue</span>(<span class="string">&quot;queue.fanout.b&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//绑定交换机和队列</span></span><br><span class="line"><span class="keyword">public</span> Binding <span class="title function_">bindingA</span><span class="params">(FanoutExchange fanoutExchange,Queue queueA)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> BindingBuilder.bind(queueA).to(fanoutExchange);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> Binding <span class="title function_">bindingB</span><span class="params">(FanoutExchange fanoutExchange,Queue queueB)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> BindingBuilder.bind(queueB).to(fanoutExchange);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//发送端</span></span><br><span class="line"><span class="type">Message</span> <span class="variable">message</span> <span class="operator">=</span> MessageBuilder.withBody(<span class="string">&quot;This is a message&quot;</span>.getBytes()).build();</span><br><span class="line">rabbitTemplate.convertAndSend(Exchange,<span class="string">&quot;&quot;</span>,message);</span><br><span class="line"><span class="comment">//扇形交换机，key留空即可</span></span><br></pre></td></tr></table></figure>
+<h3 id="Direct-Exchange（直连交换机）"><a href="#Direct-Exchange（直连交换机）" class="headerlink" title="Direct Exchange（直连交换机）"></a>Direct Exchange（直连交换机）</h3><p>根据路由键匹配，传递到相应的消息队列中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableConfigurationProperties(&quot;name&quot;)</span></span><br><span class="line">String exchangeName;</span><br><span class="line">String queueAName;</span><br><span class="line"><span class="comment">//定义交换机（建造者模式）</span></span><br><span class="line"><span class="keyword">public</span> DirectExchange <span class="title function_">directExchange</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ExchangeBuilder.directExchange(exchangeName).build();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//定义队列</span></span><br><span class="line"><span class="keyword">public</span> Queue <span class="title function_">queueA</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> QueueBuilder.durable(queueAName).build();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//绑定交换机和队列</span></span><br><span class="line"><span class="keyword">public</span> Binding <span class="title function_">bindingB3</span><span class="params">(DirectExchange directExchange,Queue queueA)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> BindingBuilder.bind(queueA).to(directExchange).with(key);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//发送端</span></span><br><span class="line"><span class="type">Message</span> <span class="variable">message</span> <span class="operator">=</span> MessageBuilder.withBody(<span class="string">&quot;This is a message&quot;</span>.getBytes()).build();</span><br><span class="line">rabbitTemplate.convertAndSend(Exchange,Key,message);</span><br></pre></td></tr></table></figure>
+<h3 id="Topic-Exchange（主题交换机）"><a href="#Topic-Exchange（主题交换机）" class="headerlink" title="Topic Exchange（主题交换机）"></a>Topic Exchange（主题交换机）</h3><p>类似通配符匹配，#表示多个单词（0个或多个），*表示一个单词（必须有一个），用.对单词和通配符进行分隔<br>一个信息只会进入一个队列一次，无论有多少条匹配<br>没有匹配的消息会被丢弃</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义交换机和队列同上</span></span><br><span class="line"><span class="comment">//绑定交换机和队列</span></span><br><span class="line"><span class="keyword">public</span> Binding <span class="title function_">bindingB3</span><span class="params">(TopicExchange topicExchange,Queue queueA)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> BindingBuilder.bind(queueA).to(topicExchange).with(*.qwq.*);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Headers-Exchange（头部交换机）（使用较少）"><a href="#Headers-Exchange（头部交换机）（使用较少）" class="headerlink" title="Headers Exchange（头部交换机）（使用较少）"></a>Headers Exchange（头部交换机）（使用较少）</h3><p>基于消息内容的头部进行匹配，暂时没写</p>
+<h2 id="消息接收"><a href="#消息接收" class="headerlink" title="消息接收"></a>消息接收</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RabbitListener(queues=&#123;&quot;queue.fanout.a&quot;,&quot;queue.fanout.b&quot;&#125;)</span><span class="comment">//接收这两个队列的消息</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">receiveMsg</span><span class="params">(Message message)</span>&#123;</span><br><span class="line">    <span class="type">byte</span>[] body=message.getBody();</span><br><span class="line">    String msg=<span class="keyword">new</span> <span class="title class_">String</span>(body);</span><br><span class="line">    System.out.println(msg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=29414006&auto=1&height=66"></iframe>
-
-<blockquote>
-<p>这个世界-孙燕姿<br>2023才刚刚开始，歌曲可能会随每月心情而更改;-)</p>
-</blockquote>
-<hr>
-<p>今年更是全新开坑的一年！我决定年初就开始写总结！</p>
-<h1 id="一月份"><a href="#一月份" class="headerlink" title="一月份"></a>一月份</h1><ul>
-<li>双板滑雪入门之在中级道被鱼雷创飞！</li>
-<li>从0开始的python生活</li>
-</ul>
-<h1 id="二月份"><a href="#二月份" class="headerlink" title="二月份"></a>二月份</h1><ul>
-<li>为什么周围人都这么卷啊</li>
-<li>Spring！</li>
-<li>从0开始的实习生活</li>
-<li>得到又失去，相遇却别离，或许重逢，或许再而不见</li>
-<li>开学🌶</li>
-</ul>
-<h1 id="三月份"><a href="#三月份" class="headerlink" title="三月份"></a>三月份</h1><ul>
-<li>楞学C++</li>
-<li>周围人都好卷啊</li>
-<li>找不到实习了嘤嘤嘤</li>
-</ul>
-<h1 id="四月份"><a href="#四月份" class="headerlink" title="四月份"></a>四月份</h1><ul>
-<li>放弃找实习，专心学技术</li>
-<li>感觉好像忙忙碌碌的什么也没干，这个月就过去了</li>
-</ul>
-<h1 id="五月份"><a href="#五月份" class="headerlink" title="五月份"></a>五月份</h1><ul>
-<li>关于五一本来想学五天习但是看了四天车这件事</li>
-<li>订车啦（又退掉哩）</li>
-</ul>
-<h1 id="六月份"><a href="#六月份" class="headerlink" title="六月份"></a>六月份</h1><ul>
-<li>边课设边期末</li>
-<li>学长们毕业啦，一年之后也就轮到我啦</li>
-</ul>
-
+<h2 id="消息的过期时间（TTL）"><a href="#消息的过期时间（TTL）" class="headerlink" title="消息的过期时间（TTL）"></a>消息的过期时间（TTL）</h2>
       </div>
     </div>
 </div>
@@ -565,7 +537,7 @@ header .header__right .dropdown-menus .dropdown-menu {
 
   <div class="post-copyright">
     <p style="margin: 5px 0;">文章作者：<a href="/">Stone Zhao</a></p>
-    <p style="margin: 5px 0;">文章链接：<a href="https://lxy12138.com/2023/02/01/About-2023/">https://lxy12138.com/2023/02/01/About-2023/</a></p>
+    <p style="margin: 5px 0;">文章链接：<a href="https://lxy12138.com/2023/06/12/RabbitMQ/">https://lxy12138.com/2023/06/12/RabbitMQ/</a></p>
     <p style="margin: 5px 0;">版权声明：本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处，谢谢。</p>
   </div>
   

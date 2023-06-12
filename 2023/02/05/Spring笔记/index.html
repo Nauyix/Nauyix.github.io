@@ -596,18 +596,23 @@ header .header__right .dropdown-menus .dropdown-menu {
 <pre><code>* 注入null和空字符串
 </code></pre>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;qwq&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">null</span>/&gt;</span> <span class="comment">&lt;!--此时，qwq为null--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;qwq&quot;</span> <span class="attr">value</span>=<span class="string">&quot;null&quot;</span>&gt;</span> <span class="comment">&lt;!--此时，qwq为&quot;null&quot;--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;qwq&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>/&gt;</span> <span class="comment">&lt;!--此时，qwq为空字符串--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;qwq&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span>&gt;</span> <span class="comment">&lt;!--此时，qwq为空字符串--&gt;</span></span><br></pre></td></tr></table></figure>
-<pre><code>* 注入值中存在特殊符号(&lt;&gt;?/)
-    1. 使用实体符号代替特殊符号
-    + |符号|转义字符|
-    + |:-:|:-:|:-:|
-    + |&amp;gt;|&amp; gt;|
-    + |&amp;lt;|&amp; lt;|
-    + |&amp;apos;|&amp; apos;|
-    + |&amp;quot;|&amp; quot;|
-    + |&amp;amp;|&amp; amp;|
-    + |&amp;iquest;|&amp; iquest;|
-    2. 将特殊符号放到&amp;lt;![CDATA[...]]&amp;gt;(只能用value标签，即双标记value)
-</code></pre>
+<ul>
+<li>注入值中存在特殊符号(&lt;&gt;?&#x2F;)</li>
+</ul>
+<ol>
+<li>使用实体符号代替特殊符号<ul>
+<li>|符号|转义字符|</li>
+<li>|:-:|:-:|:-:|</li>
+<li>|&gt;|&amp; gt;|</li>
+<li>|&lt;|&amp; lt;|</li>
+<li>|&amp;apos;|&amp; apos;|</li>
+<li>|&quot;|&amp; quot;|</li>
+<li>|&amp;|&amp; amp;|</li>
+<li>|&amp;iquest;|&amp; iquest;|</li>
+</ul>
+</li>
+<li>将特殊符号放到&lt;![CDATA[…]]&gt;(只能用value标签，即双标记value)</li>
+</ol>
 <h1 id="命名空间注入"><a href="#命名空间注入" class="headerlink" title="命名空间注入"></a>命名空间注入</h1><pre><code>1. p命名空间注入
 * 目的：简化配置
 * 基于set注入
