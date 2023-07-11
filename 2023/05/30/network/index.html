@@ -483,7 +483,7 @@ header .header__right .dropdown-menus .dropdown-menu {
       
       <span class="post-meta">
         <span class="p-dot"></span>
-        共 312 字
+        共 604 字
       </span>
     
     
@@ -492,7 +492,7 @@ header .header__right .dropdown-menus .dropdown-menu {
         <span class="p-dot"></span>
         
         预计 
-        2
+        6
          分钟
       </span>
     
@@ -503,7 +503,7 @@ header .header__right .dropdown-menus .dropdown-menu {
 <div class="article-m">
   <div class="post-toc">
     
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Socket"><span class="toc-number">1.</span> <span class="toc-text">Socket</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E5%BA%8F"><span class="toc-number">2.</span> <span class="toc-text">字节序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89%E5%AD%97%E8%8A%82%E5%BA%8F%EF%BC%9F"><span class="toc-number">2.1.</span> <span class="toc-text">为什么要有字节序？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E5%BA%8F%E7%9A%84%E8%BD%AC%E6%8D%A2%E5%87%BD%E6%95%B0"><span class="toc-number">2.2.</span> <span class="toc-text">字节序的转换函数</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Socket"><span class="toc-number">1.</span> <span class="toc-text">Socket</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E5%BA%8F"><span class="toc-number">2.</span> <span class="toc-text">字节序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89%E5%AD%97%E8%8A%82%E5%BA%8F%EF%BC%9F"><span class="toc-number">2.1.</span> <span class="toc-text">为什么要有字节序？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E5%BA%8F%E7%9A%84%E8%BD%AC%E6%8D%A2%E5%87%BD%E6%95%B0"><span class="toc-number">2.2.</span> <span class="toc-text">字节序的转换函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#socket%E5%9C%B0%E5%9D%80"><span class="toc-number">3.</span> <span class="toc-text">socket地址</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%94%A8socket%E5%9C%B0%E5%9D%80"><span class="toc-number">3.1.</span> <span class="toc-text">通用socket地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%93%E7%94%A8socket%E5%9C%B0%E5%9D%80"><span class="toc-number">3.2.</span> <span class="toc-text">专用socket地址</span></a></li></ol></li></ol>
     
   </div>
     <div id="article">
@@ -511,8 +511,44 @@ header .header__right .dropdown-menus .dropdown-menu {
         <span id="more"></span>
 <h1 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h1><p>套接字，是对网络中不同主机上应用进程进行双向通信的抽象，表现为<br><strong><center>IP Address:port</center></strong><br>在linux中，为了同一接口，使得读写套接字和读写文件的操作一致，套接字被抽象为伪文件，因此在程序中可以借助文件描述符对其进行引用<br>套接字通信对服务器端和客户端进行了区分，需要注意，socket只是通信的接口，windows和linux都有socket，但存在细微的区别。</p>
 <h1 id="字节序"><a href="#字节序" class="headerlink" title="字节序"></a>字节序</h1><h2 id="为什么要有字节序？"><a href="#为什么要有字节序？" class="headerlink" title="为什么要有字节序？"></a>为什么要有字节序？</h2><p>现代CPU的累加器一次可以加载多个字节的数据，即这四个字节在内存中的顺序将被影响它被累加器所装载城的整数的值，分为大端序（数据高位存在内存低位）和小端序（数据低位存在内存低位），因此，数据在跨计算机交互时，应约定好应该采用何种字节序</p>
-<h2 id="字节序的转换函数"><a href="#字节序的转换函数" class="headerlink" title="字节序的转换函数"></a>字节序的转换函数</h2><p>使用套接字传输数据时候，约定统一采用网络字节序（即大端序），因此我们在发送时，应该采用字节序转换函数处理数据</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;arpa/inet.h&gt;</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="字节序的转换函数"><a href="#字节序的转换函数" class="headerlink" title="字节序的转换函数"></a>字节序的转换函数</h2><p>使用套接字传输数据时候，约定统一采用网络字节序（即大端序），因此我们在发送时，应该采用字节序转换函数处理数据<br>如果主机已经是大端序，htonl和htons不会进行任何操作<br>h：host 主机字节序<br>network：网络字节序<br>s:short 一般为转换端口 16位<br>l:long 一般为转换ip 32位</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;arpa/inet.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">short</span> a=<span class="number">0x0102</span>;</span><br><span class="line">    ubsigned <span class="type">short</span> b=htons(a);</span><br><span class="line">    <span class="comment">//此时b就是a的网络字节序版</span></span><br><span class="line">    <span class="type">char</span> buf[<span class="number">4</span>]=&#123;<span class="number">192</span>,<span class="number">168</span>,<span class="number">1</span>,<span class="number">100</span>&#125;;</span><br><span class="line">    <span class="type">int</span> num=*(<span class="type">int</span>*)buf;</span><br><span class="line">    <span class="type">int</span> sum=htonl(num);</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> *p=(<span class="type">char</span>*)&amp;sum;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d %d %d %d&quot;</span>,*p,*(p+<span class="number">1</span>),*(p+<span class="number">2</span>),*(p+<span class="number">3</span>));</span><br><span class="line">    <span class="comment">//其他函数同理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="socket地址"><a href="#socket地址" class="headerlink" title="socket地址"></a>socket地址</h1><h2 id="通用socket地址"><a href="#通用socket地址" class="headerlink" title="通用socket地址"></a>通用socket地址</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/socket.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sockaddr</span>&#123;</span></span><br><span class="line">    <span class="type">sa_family_t</span> sa_family;<span class="comment">//协议簇</span></span><br><span class="line">    <span class="type">char</span> sa_data[<span class="number">14</span>];<span class="comment">//地址和端口</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">unsigned</span> <span class="type">short</span> <span class="type">int</span> sa_Family_t;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>协议族</th>
+<th>地址族</th>
+<th>描述</th>
+<th>含义和长度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PF_UNIX</td>
+<td>AF_UNIX</td>
+<td>unix本地域协议族</td>
+<td>文件路径，最长可以达到108字节</td>
+</tr>
+<tr>
+<td>PF_INET</td>
+<td>AF_INET</td>
+<td>TCP&#x2F;IPv4协议族</td>
+<td>16bit端口和32bit的ipv4，共6字节</td>
+</tr>
+<tr>
+<td>PF_INET6</td>
+<td>AF_INET6</td>
+<td>TCP&#x2F;IPv6协议族</td>
+<td>16bit端口，32bit流表示，128bit IPv6地址，32bit范围ID，共26字节</td>
+</tr>
+<tr>
+<td>由于sockaddr无法满足需求，linux定义了一个sockaddr_storage（了解即可）</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="专用socket地址"><a href="#专用socket地址" class="headerlink" title="专用socket地址"></a>专用socket地址</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;netinet/in.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span>&#123;</span></span><br><span class="line">    <span class="type">sa_family_t</span> sin_family;<span class="comment">//协议族</span></span><br><span class="line">    <span class="type">in_port_t</span> sin_port;<span class="comment">//端口号 uint16_t</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">in_addr</span> <span class="title">sin_addr</span>;</span><span class="comment">//地址</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">in_addr</span>&#123;</span></span><br><span class="line">    <span class="type">in_addr_t</span> s_addr;<span class="comment">//地址 uint32_t</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       </div>
     </div>
 </div>
