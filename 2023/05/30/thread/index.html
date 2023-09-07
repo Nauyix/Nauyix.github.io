@@ -483,7 +483,7 @@ header .header__right .dropdown-menus .dropdown-menu {
       
       <span class="post-meta">
         <span class="p-dot"></span>
-        共 145 字
+        共 235 字
       </span>
     
     
@@ -492,7 +492,7 @@ header .header__right .dropdown-menus .dropdown-menu {
         <span class="p-dot"></span>
         
         预计 
-        1
+        2
          分钟
       </span>
     
@@ -503,7 +503,7 @@ header .header__right .dropdown-menus .dropdown-menu {
 <div class="article-m">
   <div class="post-toc">
     
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">线程</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E9%97%B4%E8%B5%84%E6%BA%90"><span class="toc-number">1.1.</span> <span class="toc-text">线程间资源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B1%E4%BA%AB%E8%B5%84%E6%BA%90"><span class="toc-number">1.1.1.</span> <span class="toc-text">共享资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E5%85%B1%E4%BA%AB%E8%B5%84%E6%BA%90"><span class="toc-number">1.1.2.</span> <span class="toc-text">非共享资源</span></a></li></ol></li></ol></li></ol>
     
   </div>
     <div id="article">
@@ -517,6 +517,20 @@ header .header__right .dropdown-menus .dropdown-menu {
 <li>查看指定进程的LWQ号可以使用：ps -Lf pid<br>优点：</li>
 <li>线程间可以方便的进行通信</li>
 <li>fork创造进程的代价较高，而创建线程代价较低（无需复制内存和页表等）</li>
+</ul>
+<h2 id="线程间资源"><a href="#线程间资源" class="headerlink" title="线程间资源"></a>线程间资源</h2><h3 id="共享资源"><a href="#共享资源" class="headerlink" title="共享资源"></a>共享资源</h3><ul>
+<li>文件描述符表</li>
+<li>信号处置方法</li>
+<li>文件系统相关信息（工作目录等）</li>
+<li>虚拟地址空间（除了栈和.text）</li>
+</ul>
+<h3 id="非共享资源"><a href="#非共享资源" class="headerlink" title="非共享资源"></a>非共享资源</h3><ul>
+<li>线程ID</li>
+<li>信号掩码</li>
+<li>线程特有数据</li>
+<li>error变量</li>
+<li>实时调度策略和优先级</li>
+<li>本地变量和函数的调用链接信息</li>
 </ul>
 
       </div>
