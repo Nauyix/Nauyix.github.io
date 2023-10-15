@@ -13,7 +13,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
     
-    <meta name="description" content="">
+    <meta name="description" content="&lt;h1 id=&#34;ROS-Robot-Operation-System-新手村速查手册&#34;&gt;&lt;a href=&#34;#ROS-Robot-Operation-System-新手村速查手册&#34; class=&#34;headerlink&#34; title=&#34;ROS(Robot Operation System)新手村速查手册&#34;&gt;&lt;/a&gt;ROS(Robot Operation System)新手村速查手册&lt;/h1&gt;">
     <meta name="author" content="Stone Zhao">
     <meta name="keywords" content="">
     <style>
@@ -508,7 +508,8 @@ header .header__right .dropdown-menus .dropdown-menu {
   </div>
     <div id="article">
       <div id="post-content" class="markdown-body textretty">
-        <h1 id="ROS-Robot-Operation-System-新手村速查手册"><a href="#ROS-Robot-Operation-System-新手村速查手册" class="headerlink" title="ROS(Robot Operation System)新手村速查手册"></a>ROS(Robot Operation System)新手村速查手册</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="Workspace"><a href="#Workspace" class="headerlink" title="Workspace"></a>Workspace</h3><p>Workspace间彼此相互独立，包含Package<br>进入目录，创建src文件夹后（空的就可以），可以使用”catkin_make [targets] [-DCMAKE_VARIBLES…]”来构建项目，该命令可被视作于”mkdir build;cd build;cmake;make;make install”</p>
+        <h1 id="ROS-Robot-Operation-System-新手村速查手册"><a href="#ROS-Robot-Operation-System-新手村速查手册" class="headerlink" title="ROS(Robot Operation System)新手村速查手册"></a>ROS(Robot Operation System)新手村速查手册</h1><span id="more"></span>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="Workspace"><a href="#Workspace" class="headerlink" title="Workspace"></a>Workspace</h3><p>Workspace间彼此相互独立，包含Package<br>进入目录，创建src文件夹后（空的就可以），可以使用”catkin_make [targets] [-DCMAKE_VARIBLES…]”来构建项目，该命令可被视作于”mkdir build;cd build;cmake;make;make install”</p>
 <h3 id="Packege"><a href="#Packege" class="headerlink" title="Packege"></a>Packege</h3><p>包含设置、配置、结点信息等，至少应该包含package.xml文件和CMakeList.txt文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建新package</span></span><br><span class="line">catkin_create_pkg beginner_tutorials std_msgs rospy roscpp</span><br></pre></td></tr></table></figure>
 

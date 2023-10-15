@@ -13,7 +13,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
     
-    <meta name="description" content="">
+    <meta name="description" content="&lt;p&gt;WebSocket库与其使用方法（JAVA）&lt;/p&gt;">
     <meta name="author" content="Stone Zhao">
     <meta name="keywords" content="">
     <style>
@@ -508,7 +508,8 @@ header .header__right .dropdown-menus .dropdown-menu {
   </div>
     <div id="article">
       <div id="post-content" class="markdown-body textretty">
-        <span id="more"></span>
+        <p>WebSocket库与其使用方法（JAVA）</p>
+<span id="more"></span>
 <h1 id="消息推送常见方式"><a href="#消息推送常见方式" class="headerlink" title="消息推送常见方式"></a>消息推送常见方式</h1><h2 id="轮询"><a href="#轮询" class="headerlink" title="轮询"></a>轮询</h2><p>浏览器以指定的间隔发送HTTP请求，服务器实时返回数据给浏览器，即时相应，如果没有数据会返回空数据<br>缺点：有延迟</p>
 <h2 id="长轮询"><a href="#长轮询" class="headerlink" title="长轮询"></a>长轮询</h2><p>服务器发出ajax请求，服务器接收到请求之后，会阻塞请求，直到有数据或请求超时才会返回数据</p>
 <h2 id="SSE-服务器发送事件"><a href="#SSE-服务器发送事件" class="headerlink" title="SSE-服务器发送事件"></a>SSE-服务器发送事件</h2><p>在服务器-&gt;浏览器间打开一个单向通道，服务器相应的不再是数据包，而是text&#x2F;event-stream类型的数据流信息，因此数据会被实时发送给客户端</p>

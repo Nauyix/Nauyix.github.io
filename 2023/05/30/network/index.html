@@ -13,7 +13,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
     
-    <meta name="description" content="">
+    <meta name="description" content="&lt;p&gt;c++&amp;amp;&amp;amp;linux 网络编程&lt;/p&gt;">
     <meta name="author" content="Stone Zhao">
     <meta name="keywords" content="">
     <style>
@@ -483,7 +483,7 @@ header .header__right .dropdown-menus .dropdown-menu {
       
       <span class="post-meta">
         <span class="p-dot"></span>
-        共 604 字
+        共 612 字
       </span>
     
     
@@ -508,7 +508,8 @@ header .header__right .dropdown-menus .dropdown-menu {
   </div>
     <div id="article">
       <div id="post-content" class="markdown-body textretty">
-        <span id="more"></span>
+        <p>c++&amp;&amp;linux 网络编程</p>
+<span id="more"></span>
 <h1 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h1><p>套接字，是对网络中不同主机上应用进程进行双向通信的抽象，表现为<br><strong><center>IP Address:port</center></strong><br>在linux中，为了同一接口，使得读写套接字和读写文件的操作一致，套接字被抽象为伪文件，因此在程序中可以借助文件描述符对其进行引用<br>套接字通信对服务器端和客户端进行了区分，需要注意，socket只是通信的接口，windows和linux都有socket，但存在细微的区别。</p>
 <h1 id="字节序"><a href="#字节序" class="headerlink" title="字节序"></a>字节序</h1><h2 id="为什么要有字节序？"><a href="#为什么要有字节序？" class="headerlink" title="为什么要有字节序？"></a>为什么要有字节序？</h2><p>现代CPU的累加器一次可以加载多个字节的数据，即这四个字节在内存中的顺序将被影响它被累加器所装载城的整数的值，分为大端序（数据高位存在内存低位）和小端序（数据低位存在内存低位），因此，数据在跨计算机交互时，应约定好应该采用何种字节序</p>
 <h2 id="字节序的转换函数"><a href="#字节序的转换函数" class="headerlink" title="字节序的转换函数"></a>字节序的转换函数</h2><p>使用套接字传输数据时候，约定统一采用网络字节序（即大端序），因此我们在发送时，应该采用字节序转换函数处理数据<br>如果主机已经是大端序，htonl和htons不会进行任何操作<br>h：host 主机字节序<br>network：网络字节序<br>s:short 一般为转换端口 16位<br>l:long 一般为转换ip 32位</p>
