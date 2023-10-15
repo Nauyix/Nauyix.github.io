@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+
+<head>
+    <meta charset="UTF-8">
+    
+    <link rel="apple-touch-icon" sizes="76x76" href="/null">
+    <link rel="icon" type="image/png" href="/null">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <title>SpringMVC - Stone Zhao@STZ</title>
+    
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    
+    
+    <meta name="description" content="&lt;h1 id=&#34;关于SpringMVC&#34;&gt;&lt;a href=&#34;#关于SpringMVC&#34; class=&#34;headerlink&#34; title=&#34;关于SpringMVC&#34;&gt;&lt;/a&gt;关于SpringMVC&lt;/h1&gt;&lt;p&gt;基于MVC开发模式的框架，用来优化控制器，也是spring家族的一员，同样具备IoC和AOP特性&lt;/p&gt;">
+    <meta name="author" content="Stone Zhao">
+    <meta name="keywords" content="">
+    <style>
+
+
+    
+    :root{
+        --shadow-color: rgba(0,0,0,0.2);
+        --sec-shadow: rgba(0,0,0,0.03);
+        --shadow-hover-color: rgba(0,0,0,0.28);
+        --first-text-color: #475b6d;
+        --second-text-color: #37475b;
+        --third-text-color: #858585;
+        --default-text-color: #505050;
+        --default-link-color: #007bff;
+        --link-color: #000000;
+        --second-link-color: #4F9BFA;
+        --code-color:rgba(27,31,35,.05);
+        --post-bkg-color: #fff;
+        --page-bkg-color: #f2f5f8;
+        --nav-a-hover-color: #3498db;
+        --post-sec-text-color: #718096;
+        --sec-bkg: #f2f5f8;
+        --color-mode: 'light';
+        --bkg-h: rgba(255,255,255,0.6);
+        --bkg-m: #e1e4e8;
+        --home-title-color: #4169E1;
+        --shadow: 0 4px 10px rgba(0,2,4,0.06),0 0 1px rgba(0,2,4,0.11);
+        --hr-color: #ddd;
+        --bg-t: #f4f4f4;
+        --nav-bkg: rgba(255,255,255,0.6);
+    }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-mode: 'dark';
+  }
+
+  :root:not([data-theme]) {
+    --first-text-color: hsla(0,0%,100%,0.92);
+    --second-text-color: hsla(0,0%,100%,0.86);
+    --third-text-color: #a7a9ad;
+    --default-text-color: #505050;
+    --default-link-color: #1589e9;
+    --link-color: #000000;
+    --second-link-color: #30a9de;
+    --post-bkg-color: #252d38;
+    --page-bkg-color: #181c27;
+    --nav-a-hover-color: #3498db;
+    --post-sec-text-color: #a7a9ad;
+    --sec-bkg: #364151;
+    --bkg-h: rgba(255,255,255,0.2);
+    --bkg-m: rgba(255,255,255,0.1);
+    --home-title-color: rgb(226, 82, 90);
+    --code-color:#3e4b5e;
+    --shadow: none;
+    --hr-color: #718096;
+    --bg-t: #364151;
+    --nav-bkg: rgba(13,17,23,0.6);
+  }
+}
+
+[data-theme='dark'] {
+    --shadow-color: rgba(0,0,0,0.2);
+    --shadow-hover-color: rgba(0,0,0,0.28);
+    --first-text-color: hsla(0,0%,100%,0.92);
+    --second-text-color: hsla(0,0%,100%,0.86);
+    --third-text-color: #a7a9ad;
+    --default-text-color: #505050;
+    --default-link-color: #1589e9;
+    --link-color: #000000;
+    --second-link-color: #30a9de;
+    --post-bkg-color: #252d38;
+    --page-bkg-color: #181c27;
+    --nav-a-hover-color: #3498db;
+    --post-sec-text-color: #a7a9ad;
+    --sec-bkg: #364151;
+    --bkg-h: rgba(255,255,255,0.2);
+    --bkg-m: rgba(255,255,255,0.1);
+    --home-title-color: rgb(226, 82, 90);
+    --code-color:#3e4b5e;
+    --shadow: none;
+    --hr-color: #718096;
+    --bg-t: #364151;
+    --nav-bkg: rgba(13,17,23,0.6);
+}
+
+</style>
+
+
+
+    
+<link rel="stylesheet" href="/source/css/blackwhilte.css">
+
+
+<style>
+#page-main,footer,.p-btn{
+    display: none;
+}
+html,body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: overlay;
+}
+body{
+    background-color: var(--page-bkg-color);
+    color: var(--second-text-color);
+    overflow-y: scroll;
+}
+a {
+    color: var(--default-link-color);
+    text-decoration: none;
+    background-color: transparent;
+}
+a:hover{
+    color: var(--second-link-color);
+}
+.main-content,.post-card-main{
+    margin: 30px;
+}
+
+
+
+@media (max-width: 410px){
+    .post-card-main{
+        max-width: 350px!important;
+    }
+}
+
+@media (max-width: 980px){
+    .post-card-main{
+        max-width: 520px!important;
+    }
+}
+
+
+@media (min-width: 780px){ 
+    h3{
+        font-size: 1.5rem;
+        line-height: 1.5em;
+    }
+}
+@media (min-width: 1280px){ 
+    h3{
+        font-size: 1.7rem;
+        line-height: 1.5em;
+    }
+}
+@media (min-width: 2096px){ 
+    h3{
+        font-size: 1.8rem;
+        line-height: 1.5em;
+    }
+}
+
+.text-center{
+    text-align: center!important;
+}
+.middle-center{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 100%;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    height: 54px;
+    padding: 0 1.25rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    border-bottom: 1px solid var(--bkg-m);
+    background-color: var(--nav-bkg);
+}
+header .header__left, header .header__right {
+    display: flex;
+    align-items: center;
+    font-family: rubik,sans-serif,Varela Round;
+}
+header .header__left .logo__text {
+    font-size: 18px;
+    font-weight: 450;
+    padding: 14.5px 10px;
+    border-radius: 5px;
+    color: var(--second-text-color);
+}
+header .header__right .navbar__menus {
+    height: 54px;
+    padding: 0 0 0 15px;
+}
+header .header__right .button {
+    color: var(--second-text-color);
+}
+header .header__right .navbar__menus .navbar-menu {
+    display: inline-block;
+    align-items: center;
+    height: 54px;
+    padding: 0 10px;
+    font-size: 16px;
+    line-height: 54px;
+}
+header .header__right .dropdown-icon {
+    display: none;
+    height: 54px;
+    padding: 15px 10px;
+    border: 0;
+    background-color: transparent;
+}
+header .header__right .dropdown-menus {
+    line-height: 2rem;
+    animation: slide-in .15s ease 1;
+    display: none;
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    top: calc(54px + 10px);
+    border-radius: 6px;
+    padding: 24px;
+    background-color: var(--page-bkg-color);
+    border: 1px solid var(--bkg-m);
+    z-index: 9999;
+    justify-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+header .header__right #btn-search, header .header__right #btn-toggle-dark{
+    display: inline-block;
+    padding:  18px 10px;
+    height: 25px;
+}
+header .header__right #btn-dropdown{
+  display: inline-block;
+  padding:  13.5px 0;
+}
+header .header__right .dropdown-menus .dropdown-menu {
+    padding: 10px;
+    color: var(--second-text-color);
+}
+@media screen and (max-width: 764px){
+.navbar__menus {
+    display: none!important;
+}
+.dropdown-icon {
+    display: inline-block!important;
+}
+}
+.p-btn{
+    position: fixed;
+    bottom: 1.2rem;
+    right: 1.2rem;
+    contain: layout;
+}
+.toc-btn,.click-btn{
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    align-items: center;
+    margin-top: .5rem;
+    font-size: .75rem;
+    background-color: var(--sec-bkg);
+    display: block;
+    padding: 0.9rem;
+    box-shadow: 0 0.3rem 0.6rem rgba(48,55,66,.15);
+    border: none;
+    border-radius: 0.5rem;
+    line-height: 1;
+    color: var(--first-text-color);
+}
+.toc-link{
+    color: var(--second-text-color);
+}
+
+#css-loading h3{
+    font-weight: 500;
+    font-size: 1.4rem;
+    text-align: center;
+    position: fixed;
+    top: 200px;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    animation: cssLoad;
+    animation-delay: 0.3s;
+    -webkit-animation: cssLoad;
+    -webkit-animation-delay: 0.3s;
+}
+@keyframes cssLoad {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.9;
+    }
+}
+
+
+.memorial {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1); filter:gray;
+}
+
+
+    .post-copyright:after {
+        position: absolute;
+        color: #fff;
+        background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 496 512'%3E%3Cpath fill='gray' d='M245.8 214.9l-33.2 17.3c-9.4-19.6-25.2-20-27.4-20-22.2 0-33.3 14.6-33.3 43.9 0 23.5 9.2 43.8 33.3 43.8 14.4 0 24.6-7 30.5-21.3l30.6 15.5a73.2 73.2 0 01-65.1 39c-22.6 0-74-10.3-74-77 0-58.7 43-77 72.6-77 30.8-.1 52.7 11.9 66 35.8zm143 0l-32.7 17.3c-9.5-19.8-25.7-20-27.9-20-22.1 0-33.2 14.6-33.2 43.9 0 23.5 9.2 43.8 33.2 43.8 14.5 0 24.7-7 30.5-21.3l31 15.5c-2 3.8-21.3 39-65 39-22.7 0-74-9.9-74-77 0-58.7 43-77 72.6-77C354 179 376 191 389 214.8zM247.7 8C104.7 8 0 123 0 256c0 138.4 113.6 248 247.6 248C377.5 504 496 403 496 256 496 118 389.4 8 247.6 8zm.8 450.8c-112.5 0-203.7-93-203.7-202.8 0-105.5 85.5-203.3 203.8-203.3A201.7 201.7 0 01451.3 256c0 121.7-99.7 202.9-202.9 202.9z'/%3E%3C/svg%3E");
+        content: ' ';
+        height: 10rem;
+        width: 10rem;
+        right: -2rem;
+        top: -2rem;
+        opacity: .1;
+    }
+
+</style>
+
+    
+
+    
+        <!--
+        <link rel="stylesheet" href="/css/page.css" media="print"
+            onload="this.media='all';this.onload=null">
+        <noscript>-->
+            <link rel="stylesheet" href="/css/page.css">
+        <!--</noscript>-->
+    
+    
+    <link rel="stylesheet" href="/css/main.css" media="print" onload="this.media='all';this.onload=null">
+    <noscript>
+        <link rel="stylesheet" href="/css/main.css">
+    </noscript>
+
+    
+    <script src="/js/main.js"></script>
+    
+    <script>
+        let mdate = "11-30, 12-1, 12-2";
+        let ndate = new Date();
+        if (mdate == (ndate.getMonth()+1) + "-" + (ndate.getDate())) {
+            addClass("html", "memorial");
+        }
+    </script>
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+    <body>
+        <header>
+            
+<div class="header__left">
+	<a href="/" class="button"><span class="logo__text">赵石的小窝</span></a>
+</div>
+<div class="header__right">
+	<div class="navbar__menus">
+		
+		<a href="https://lxy12138.com/2023/02/01/About-2023/" class="button">
+			<div class="navbar-menu">2023</div>
+		</a>
+		
+		<a href="/" class="button">
+			<div class="navbar-menu">Home</div>
+		</a>
+		
+		<a target="_blank" rel="noopener" href="https://github.com/nauyix" class="button">
+			<div class="navbar-menu">GitHub</div>
+		</a>
+		
+		<a href="http://lxy12138.com/Friends.html" class="button">
+			<div class="navbar-menu">Friends</div>
+		</a>
+		
+		<a href="http://lxy12138.com/me.html" class="button">
+			<div class="navbar-menu">About</div>
+		</a>
+		
+	</div>
+	
+	<a href="/search/" class="button">
+		<div id="btn-search">
+			<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1024 1024" width="24" height="24" fill="currentColor"
+				stroke="currentColor" stroke-width="32">
+				<path
+					d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z">
+				</path>
+			</svg>
+		</div>
+	</a>
+	
+	<a href="javaScript:void(0);" class="button" id="btn-toggle-dark">
+		<div>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none"
+				stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+			</svg>
+		</div>
+	</a>
+	<a href="javaScript:void(0);" class="dropdown-icon button">
+		<div id="btn-dropdown">
+			<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1024 1024" width="24" height="24" fill="currentColor"
+				stroke="currentColor" stroke-width="32" stroke-linecap="round">
+				<path
+					d="M903.43 561.52H148.8c-13.25 0-24-10.75-24-24s10.75-24 24-24h754.63c13.25 0 24 10.75 24 24s-10.75 24-24 24zM903.43 204.31H148.8c-13.25 0-24-10.75-24-24s10.75-24 24-24h754.63c13.25 0 24 10.75 24 24s-10.75 24-24 24zM903.43 918.73H148.8c-13.25 0-24-10.75-24-24s10.75-24 24-24h754.63c13.25 0 24 10.75 24 24s-10.75 24-24 24z"
+					fill="currentColor"></path>
+			</svg>
+		</div>
+	</a>
+	<div class="dropdown-menus" id="dropdown-menus">
+		
+		<a href="https://lxy12138.com/2023/02/01/About-2023/" class="dropdown-menu button">2023</a>
+		<br>
+		
+		<a href="/" class="dropdown-menu button">Home</a>
+		<br>
+		
+		<a target="_blank" rel="noopener" href="https://github.com/nauyix" class="dropdown-menu button">GitHub</a>
+		<br>
+		
+		<a href="http://lxy12138.com/Friends.html" class="dropdown-menu button">Friends</a>
+		<br>
+		
+		<a href="http://lxy12138.com/me.html" class="dropdown-menu button">About</a>
+		<br>
+		
+	</div>
+</div>
+
+        </header>
+        <div id="top"></div>
+        <div id="page-main" class="main-content">
+        <div class="mg-top">
+            
+
+<article class="page">
+<div id="post-meta-m">
+    <div class="post-meta" id="post-meta">
+  <h3>SpringMVC</h3>
+    
+      <span class="post-meta-label">
+        Stone Zhao
+      </span>
+    
+    
+      <span class="post-meta-label">
+        <span class="p-dot"></span>
+        <time datetime="2023-04-18 22:30" pubdate>
+          2023-04-18
+        </time>
+      </span>
+    
+    
+      
+      <span class="post-meta">
+        <span class="p-dot"></span>
+        共 2.5k 字
+      </span>
+    
+    
+      
+      <span class="post-meta">
+        <span class="p-dot"></span>
+        
+        预计 
+        30
+         分钟
+      </span>
+    
+    
+  </div>
+  
+</div>
+<div class="article-m">
+  <div class="post-toc">
+    
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8ESpringMVC"><span class="toc-number">1.</span> <span class="toc-text">关于SpringMVC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">1.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.2.</span> <span class="toc-text">基本开发步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E6%93%8D"><span class="toc-number">1.3.</span> <span class="toc-text">如何实操</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RequestMapping"><span class="toc-number">1.4.</span> <span class="toc-text">@RequestMapping</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%8F%90%E4%BA%A4%E6%96%B9%E5%BC%8F%E7%9A%84%E4%BC%98%E5%8C%96"><span class="toc-number">1.5.</span> <span class="toc-text">数据提交方式的优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%A3%E6%8F%90%E6%95%B0%E6%8D%AE"><span class="toc-number">1.5.0.1.</span> <span class="toc-text">散提数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%B0%81%E8%A3%85"><span class="toc-number">1.5.0.2.</span> <span class="toc-text">对象封装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%8D%A0%E4%BD%8D%E7%AC%A6%E6%8F%90%E4%BA%A4"><span class="toc-number">1.5.0.3.</span> <span class="toc-text">动态占位符提交</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%A0%E5%B0%84%E5%8F%82%E6%95%B0%E5%90%8D%E7%A7%B0%E4%B8%8D%E4%B8%80%E8%87%B4"><span class="toc-number">1.5.0.4.</span> <span class="toc-text">映射参数名称不一致</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%8B%E5%B7%A5%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="toc-number">1.5.0.5.</span> <span class="toc-text">手工提取数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.6.</span> <span class="toc-text">如何解决中文乱码的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#servlet%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-number">1.7.</span> <span class="toc-text">servlet方法的返回值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#String"><span class="toc-number">1.7.0.1.</span> <span class="toc-text">String</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Object"><span class="toc-number">1.7.0.2.</span> <span class="toc-text">Object</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#void"><span class="toc-number">1.7.0.3.</span> <span class="toc-text">void</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.7.0.4.</span> <span class="toc-text">基本数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ModelAndView"><span class="toc-number">1.7.0.5.</span> <span class="toc-text">ModelAndView</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E6%88%90ajax%E8%AF%B7%E6%B1%82%E8%AE%BF%E9%97%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%8C%E8%BF%94%E5%9B%9E%E5%AD%A6%E7%94%9F%E9%9B%86%E5%90%88"><span class="toc-number">1.8.</span> <span class="toc-text">完成ajax请求访问服务器，返回学生集合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringMVC%E7%9A%84%E5%9B%9B%E7%A7%8D%E8%B7%B3%E8%BD%AC%E6%96%B9%E5%BC%8F"><span class="toc-number">1.9.</span> <span class="toc-text">SpringMVC的四种跳转方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SpringMVC%E9%BB%98%E8%AE%A4%E7%9A%84%E5%8F%82%E6%95%B0%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.9.0.1.</span> <span class="toc-text">SpringMVC默认的参数类型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E4%B8%8A%E6%97%A5%E6%9C%9F%E7%9A%84%E6%98%BE%E7%A4%BA"><span class="toc-number">1.10.</span> <span class="toc-text">页面上日期的显示</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E6%8F%90%E4%BA%A4"><span class="toc-number">1.10.0.1.</span> <span class="toc-text">日期提交</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E7%9A%84%E6%98%BE%E7%A4%BA%E5%A4%84%E7%90%86"><span class="toc-number">1.10.0.2.</span> <span class="toc-text">日期的显示处理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringMVC%E6%89%A7%E8%A1%8C%E5%88%86%E6%9E%90"><span class="toc-number">1.11.</span> <span class="toc-text">SpringMVC执行分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Eannotation-drivern"><span class="toc-number">1.11.0.1.</span> <span class="toc-text">关于annotation-drivern</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B5%84%E6%BA%90%E6%94%BE%E5%9C%A8WEB-INF%E7%9B%AE%E5%BD%95%E4%B8%8B"><span class="toc-number">1.11.0.2.</span> <span class="toc-text">为什么资源放在WEB-INF目录下</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%A6%E6%88%AA%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%8E%E5%BA%94%E7%94%A8"><span class="toc-number">1.12.</span> <span class="toc-text">拦截器开发与应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B%EF%BC%9A"><span class="toc-number">1.12.0.1.</span> <span class="toc-text">处理流程：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="toc-number">1.12.0.2.</span> <span class="toc-text">实现方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.12.0.3.</span> <span class="toc-text">实现步骤</span></a></li></ol></li></ol></li></ol></li></ol>
+    
+  </div>
+    <div id="article">
+      <div id="post-content" class="markdown-body textretty">
+        <h1 id="关于SpringMVC"><a href="#关于SpringMVC" class="headerlink" title="关于SpringMVC"></a>关于SpringMVC</h1><p>基于MVC开发模式的框架，用来优化控制器，也是spring家族的一员，同样具备IoC和AOP特性</p>
+<span id="more"></span>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>轻量级，基于MVC架构</li>
+<li>易上手，易理解</li>
+<li>具备IoC和AOP</li>
+<li>完全基于注解开发</li>
+</ul>
+<h2 id="基本开发步骤"><a href="#基本开发步骤" class="headerlink" title="基本开发步骤"></a>基本开发步骤</h2><ol>
+<li>新建项目，选择webapp模板</li>
+<li>修改目录，添加缺失的test,java,resources(*2)，并修改目录属性</li>
+<li>修改pom.xml，添加springMVC依赖，添加servlet的依赖</li>
+<li>添加springmvc.xml配置文件，指定扫描包，添加视图解析器</li>
+<li>删除web.xml(原有版本过低)，新建web.xml</li>
+<li>在web.xml中注册springMVC框架(请求基于servlet)</li>
+<li>删除index.jsp，新建，发送请求给服务器</li>
+<li>开发控制器(servlet)，它是一个普通的类</li>
+</ol>
+<h2 id="如何实操"><a href="#如何实操" class="headerlink" title="如何实操"></a>如何实操</h2><ul>
+<li>访问权限public</li>
+<li>返回值任意</li>
+<li>名称任意</li>
+<li>参数任意，可以为空</li>
+<li>使用@RequeseMapping来声明访问路径（可以分级）</li>
+</ul>
+<h2 id="RequestMapping"><a href="#RequestMapping" class="headerlink" title="@RequestMapping"></a>@RequestMapping</h2><ul>
+<li>可以加在方法或类上，指定该方法(或类)的访问路径<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/sr&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">qwq</span>&#123;</span><br><span class="line">    <span class="meta">@RequeseMapping(&quot;/firstController&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">req</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这样即可通过&#123;path&#125;/sr/firstController访问该类了</span></span><br></pre></td></tr></table></figure></li>
+<li>可以约定请求提交方式<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/sr&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">qwq</span>&#123;</span><br><span class="line">    <span class="meta">@RequeseMapping(value=&quot;/firstController&quot;,method=RequestMethod.GET)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">req</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//method留空默认接受所有类型请求</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="数据提交方式的优化"><a href="#数据提交方式的优化" class="headerlink" title="数据提交方式的优化"></a>数据提交方式的优化</h2><h4 id="散提数据"><a href="#散提数据" class="headerlink" title="散提数据"></a>散提数据</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;$&#123;pageContext.request.contextPath&#125;/try&quot;</span>&gt;</span></span><br><span class="line">    姓名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">qwq</span>&#123;</span><br><span class="line">    <span class="meta">@RequeseMapping(value=&quot;/try&quot;,method=RequestMethod.GET)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">req</span><span class="params">(String name)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//若想传输数据，使形参名和form名一致即可，可以自动进行类型转换</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="对象封装"><a href="#对象封装" class="headerlink" title="对象封装"></a>对象封装</h4><p>在提交请求中保证请求参数的名称与实体类中成员变量一致则可以自动提交数据，自动类型转换，自动封装数据到对象中</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;$&#123;pageContext.request.contextPath&#125;/try&quot;</span>&gt;</span></span><br><span class="line">    姓名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span>&gt;</span></span><br><span class="line">    年龄：<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;age&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span>&#123;</span><br><span class="line">    <span class="comment">//一定要有set/get/无参构造/全参构造</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line">    Person()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    Person(String name,<span class="type">int</span> age)&#123;</span><br><span class="line">        <span class="built_in">this</span>.name=name;</span><br><span class="line">        <span class="built_in">this</span>.age=age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*get和set就省略了*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">qwq</span>&#123;</span><br><span class="line">    <span class="meta">@RequeseMapping(value=&quot;/try&quot;,method=RequestMethod.GET)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">req</span><span class="params">(Person p)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//若想传输数据，使形参名和form名一致即可，可以自动进行类型转换</span></span><br><span class="line">    <span class="comment">//注意POST会乱码，之后会讲如何解决</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="动态占位符提交"><a href="#动态占位符提交" class="headerlink" title="动态占位符提交"></a>动态占位符提交</h4><p>仅限于超链接或地址栏直接提交，<strong>一杠一值</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;$&#123;pageContext.request.contextPath&#125;/try/张三/25&quot;</span>&gt;</span>点我！<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">qwq</span>&#123;</span><br><span class="line">    <span class="meta">@RequeseMapping(value=&quot;/try/&#123;uname&#125;/&#123;uage&#125;&quot;,method=RequestMethod.GET)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">req</span><span class="params">(<span class="meta">@PathVariable(&quot;uname&quot;)</span> String name,<span class="meta">@PathVariable(&quot;uage&quot;)</span> <span class="type">int</span> age)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//使用大括号和@PathVariable，从路径中取值</span></span><br><span class="line">    <span class="comment">//若path和形参名称一致可以省略括号</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="映射参数名称不一致"><a href="#映射参数名称不一致" class="headerlink" title="映射参数名称不一致"></a>映射参数名称不一致</h4><p>提交的参数名和形参不一致，使用@RequestParam解析</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;$&#123;pageContext.request.contextPath&#125;/try&quot;</span>&gt;</span></span><br><span class="line">    姓名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;uname&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">qwq</span>&#123;</span><br><span class="line">    <span class="meta">@RequeseMapping(value=&quot;/try&quot;,method=RequestMethod.GET)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">req</span><span class="params">(<span class="meta">@RequestParam(&quot;uname&quot;)</span> String name)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//使用@RequestParam注解来解决名称不一致的问题，从请求参数中取</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="手工提取数据"><a href="#手工提取数据" class="headerlink" title="手工提取数据"></a>手工提取数据</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;$&#123;pageContext.request.contextPath&#125;/try&quot;</span>&gt;</span></span><br><span class="line">    姓名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;uname&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">qwq</span>&#123;</span><br><span class="line">    <span class="meta">@RequeseMapping(value=&quot;/try&quot;,method=RequestMethod.GET)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">req</span><span class="params">(HttpServletRequest request)</span>&#123;</span><br><span class="line">        String name=request.getParameter(<span class="string">&quot;uname&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//使用@RequestParam注解来解决名称不一致的问题，从请求参数中取</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="如何解决中文乱码的问题"><a href="#如何解决中文乱码的问题" class="headerlink" title="如何解决中文乱码的问题"></a>如何解决中文乱码的问题</h2><p>配置过滤器-&gt;web.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--建议放在所有的配置之前--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>encode<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.springframework.web.filter.CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>forceRequestEncoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>forceResponseEncoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>encode<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="servlet方法的返回值"><a href="#servlet方法的返回值" class="headerlink" title="servlet方法的返回值"></a>servlet方法的返回值</h2><h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><p>客户端资源的地址，自动拼接前缀后缀，可以屏蔽自动拼接字符串，可以指定返回路径</p>
+<h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><p>返回json格式的对象，自动将对象或集合转为json，依赖jackson工具，一般用于ajax请求</p>
+<h4 id="void"><a href="#void" class="headerlink" title="void"></a>void</h4><p>一般用于ajax请求</p>
+<h4 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h4><p>用于ajax请求</p>
+<h4 id="ModelAndView"><a href="#ModelAndView" class="headerlink" title="ModelAndView"></a>ModelAndView</h4><p>返回数据和试图对象，现在用的很少</p>
+<h2 id="完成ajax请求访问服务器，返回学生集合"><a href="#完成ajax请求访问服务器，返回学生集合" class="headerlink" title="完成ajax请求访问服务器，返回学生集合"></a>完成ajax请求访问服务器，返回学生集合</h2><ol>
+<li>添加jackson依赖<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-databind<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.8<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>在webapp下新建js目录，添加jQuery函数库</li>
+<li>在index.jsp上导入函数库</li>
+<li>在action上添加注解@ResponseBody，用来处理ajax请求<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;js/jquery-3.3.1.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--↑head↓body--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:showStu()&quot;</span>&gt;</span>请求学生集合<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;mydiv&quot;</span>&gt;</span>等待返回数据<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">showStu</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        $.<span class="title function_">ajax</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">url</span>:<span class="string">&quot;$&#123;pageContext.request.contextPath&#125;/list&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">type</span>:<span class="string">&quot;get&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">dataType</span>:<span class="string">&quot;json&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">success</span>:<span class="keyword">function</span>(<span class="params">stuList</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">var</span> s=<span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">                $.<span class="title function_">each</span>(<span class="params">stuList,<span class="keyword">function</span>(i,stu)</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">                    s+=stu.<span class="property">name</span>+<span class="string">&quot;----&quot;</span>+stu.<span class="property">age</span>+<span class="string">&quot;&lt;br&gt;&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">                &#125;&#125;</span></span><br><span class="line"><span class="language-javascript">                <span class="comment">//回显在div上</span></span></span><br><span class="line"><span class="language-javascript">                $(<span class="string">&quot;#mydiv&quot;</span>).<span class="title function_">html</span>(s);</span></span><br><span class="line"><span class="language-javascript">        &#125;)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//省略类的定义</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/list&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> List&lt;Student&gt; <span class="title function_">list</span><span class="params">()</span>&#123;</span><br><span class="line">    List&lt;Student&gt; list=<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="comment">//添加数据...</span></span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">    <span class="comment">//SpringMVC会协助将集合转为json数组</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>在springMVC.xml文件中添加注解驱动&lt;mvc:annotationdriven&#x2F;&gt;，用于解析@ResponseBody注解</li>
+</ol>
+<h2 id="SpringMVC的四种跳转方式"><a href="#SpringMVC的四种跳转方式" class="headerlink" title="SpringMVC的四种跳转方式"></a>SpringMVC的四种跳转方式</h2><p>实质：[请求转发，重定向]到[页面，action]<br>请求转发和重定向最大的不同：请求转发地址栏不变，重定向地址栏改变</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">qwq</span>&#123;</span><br><span class="line">    <span class="meta">@RequeseMapping(value=&quot;/forwardToJsp&quot;,method=RequestMethod.GET)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">req1</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">        <span class="comment">//请求转发到.../success.jsp</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequeseMapping(value=&quot;/forwardToAction&quot;,method=RequestMethod.GET)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">req2</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;forward:success.action&quot;</span>;</span><br><span class="line">        <span class="comment">//请求转发到另一个方法中</span></span><br><span class="line">        <span class="comment">//字符串具有forward关键字时不会自动拼接前缀和后缀</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequeseMapping(value=&quot;/redirectToJsp&quot;,method=RequestMethod.GET)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">req1</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">        <span class="comment">//请求重定向到.../success.jsp</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequeseMapping(value=&quot;/redirectToAction&quot;,method=RequestMethod.GET)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">req2</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;redirect:success.action&quot;</span>;</span><br><span class="line">        <span class="comment">//请求重定向到另一个方法中</span></span><br><span class="line">        <span class="comment">//字符串具有redirect关键字时不会自动拼接前缀和后缀</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="SpringMVC默认的参数类型"><a href="#SpringMVC默认的参数类型" class="headerlink" title="SpringMVC默认的参数类型"></a>SpringMVC默认的参数类型</h4><ol>
+<li>HttpServletRequest</li>
+<li>HttpServletResponse</li>
+<li>HttpSession</li>
+<li>Model</li>
+<li>Map</li>
+<li>ModelMap<br>直接拿来即可用，作用域：Request，所以只有forward时数据仍然存在，如果使用redirect，则需要使用session保存数据</li>
+</ol>
+<h2 id="页面上日期的显示"><a href="#页面上日期的显示" class="headerlink" title="页面上日期的显示"></a>页面上日期的显示</h2><h4 id="日期提交"><a href="#日期提交" class="headerlink" title="日期提交"></a>日期提交</h4><ul>
+<li>单个日期处理<br>使用注解@DateTimeFormat()，必须搭配springMVC配置文件中&lt;mvc:annontationdriven\&gt;共同使用<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;$&#123;pageContext.request.contextPath&#125;/try&quot;</span>&gt;</span></span><br><span class="line">    姓名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;date&quot;</span> <span class="attr">name</span>=<span class="string">&quot;ddate&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequeseMapping(value=&quot;/try&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">req2</span><span class="params">(<span class="meta">@DateTimeFormat(pattern=&quot;yyyy-MM-Ddd HH:ss&quot;)</span>Date ddate)</span>&#123;</span><br><span class="line">        <span class="comment">//注意，如果不使用@DateTimeFormat，无法成功注入</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>类中全局日期处理<br>上文方式的处理方法，如果需要注入多个日期，需要分别填写@DateTimeFormat，因此我们可以尝试复用日期格式<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">SimpleDateFormat sf=<span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line"><span class="meta">@InitBinder</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">(WebDataBinder dataBinder)</span>&#123;</span><br><span class="line">    dataBinder.registerCustomEditor(Date.class,<span class="keyword">new</span> <span class="title class_">CustomDateEditor</span>(sf,<span class="literal">true</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@RequeseMapping(value=&quot;/try&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">req2</span><span class="params">(Date ddate)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="日期的显示处理"><a href="#日期的显示处理" class="headerlink" title="日期的显示处理"></a>日期的显示处理</h4><p><del>可以直接格式化日期并返回String</del><br>如果想在页面上自定义样式，需要使用JSTL，步骤如下</p>
+<ol>
+<li>添加依赖<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>jakarta.servlet.jsp.jstl<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jakarta.servlet.jsp.jstl-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--spring6.0以上用jakarta--&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>在页面上导入标签库<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot;%&gt;</span><br><span class="line">&lt;%@taglib prefix=&quot;fmt&quot; uri=&quot;http://java.sun.com/jsp/jstl/fmt&quot;%&gt;</span><br></pre></td></tr></table></figure></li>
+<li>使用标签显示数据<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">fmt:formatDate</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;date&#125; pattern=&quot;</span><span class="attr">yyyy-MM-dd</span>&quot;&gt;</span><span class="tag">&lt;/<span class="name">fmt:formatDate</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="SpringMVC执行分析"><a href="#SpringMVC执行分析" class="headerlink" title="SpringMVC执行分析"></a>SpringMVC执行分析</h2><h4 id="关于annotation-drivern"><a href="#关于annotation-drivern" class="headerlink" title="关于annotation-drivern"></a>关于annotation-drivern</h4><p>会自动注册以下两个bean</p>
+<ul>
+<li>DefaultAnnotationHandlerMapping<br>解析服务器端资源地址，即地址映射器</li>
+<li>AnnotationMethodHandlerAdapter<br>构建对象，即处理器适配器</li>
+</ul>
+<h4 id="为什么资源放在WEB-INF目录下"><a href="#为什么资源放在WEB-INF目录下" class="headerlink" title="为什么资源放在WEB-INF目录下"></a>为什么资源放在WEB-INF目录下</h4><p>该目录下资源对外不可直接访问</p>
+<h2 id="拦截器开发与应用"><a href="#拦截器开发与应用" class="headerlink" title="拦截器开发与应用"></a>拦截器开发与应用</h2><p>针对请求和响应进行的额外的处理，可以添加预处理、后处理和最终处理</p>
+<h4 id="处理流程："><a href="#处理流程：" class="headerlink" title="处理流程："></a>处理流程：</h4><p>ruquest-&gt;preHandle()-&gt;处理器-&gt;postHandle()-&gt;afterCompletion()-&gt;response</p>
+<ul>
+<li>preHandle():在请求被处理时进行操作</li>
+<li>postHandle():在请求被处理，但结果没渲染之前进行操作</li>
+<li>afterCompletion():在请求响应结束后进行善后</li>
+</ul>
+<h4 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h4><ul>
+<li>继承父类HandlerInterceptorAdapter</li>
+<li>实现接口HandlerInterceptor，推荐使用该方式</li>
+</ul>
+<h4 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h4><ol>
+<li>在springMVC.xml中注册<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mvc:interceptors</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mvc:mapping</span> <span class="attr">path</span>=<span class="string">&quot;要拦截的请求地址&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">mvc:mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mvc:exclude-mapping</span> <span class="attr">path</span>=<span class="string">&quot;要放行的请求&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">mvc:exclude-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--如果配置多个拦截器，可以构成拦截器链--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mvc:interceptors</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>开发拦截器<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyIntercrptor</span> <span class="keyword">implements</span> <span class="title class_">HandlerInterceptor</span>&#123;</span><br><span class="line">    <span class="meta">@override</span></span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response,Object handler)</span><span class="keyword">throws</span> Exception&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 关于返回值类型</span></span><br><span class="line"><span class="comment">     * boolean-&gt;true则继续执行，false则止步于此</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@override</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">postHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response,Object handler)</span><span class="keyword">throws</span> Exception&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@override</span></span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">afterCompletion</span><span class="params">(HttpServletRequest request, HttpServletResponse response,Object handler)</span><span class="keyword">throws</span> Exception&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Object handler</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>51</p>
+
+      </div>
+    </div>
+</div>
+
+
+<div class="post-footer">
+  
+  <div class="donate text-center">
+    <span>喜欢这篇文章？为什么不考虑打赏一下作者呢？</span>
+    <div class="donate-way">
+      
+    </div>
+  </div>
+  
+
+  <div class="post-copyright">
+    <p style="margin: 5px 0;">文章作者：<a href="/">Stone Zhao</a></p>
+    <p style="margin: 5px 0;">文章链接：<a href="https://lxy12138.com/2023/04/18/SpringMVC/">https://lxy12138.com/2023/04/18/SpringMVC/</a></p>
+    <p style="margin: 5px 0;">版权声明：本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处，谢谢。</p>
+  </div>
+  
+</div>
+
+    <!-- Comments -->
+    <div class="comments">
+        
+        
+    </div>
+
+</article>
+
+
+        </div>
+        
+<footer class="text-center">
+    
+    
+    
+    
+    
+    <p>&copy;  2022 - 2023&nbsp;&nbsp;Stone Zhao</p>
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme by <a href="https://github.com/hifun-team/hexo-theme-miracle" target="_blank">Miracle</a></p>
+    
+    
+</footer>
+
+<div class="p-btn">
+    
+        <a class="toc-btn" id="toc-btn"><i id="i-menu"></i></a>
+    
+    <a href="#top" class="click-btn">
+      <i id="i-up"></i>
+    </a>
+</div>
+
+<!-- SCRIPTS -->
+
+
+
+
+
+
+
+<script>
+    document.getElementById("btn-dropdown").addEventListener('click', () => {
+      toggleClass("#dropdown-menus","display-inline");
+    });
+    console.log('\n' + ' %c Powered by Hexo Theme Miracle ' + ' %c https://github.com/hifun-team/hexo-theme-miracle ' + '\n' + '\n', 'color: #fff; background: #4F9BFA; padding:5px 0;', 'background: #FFF; padding:5px 0;');
+
+    
+
+    
+  /* 小彩蛋: 饮茶先啦 */
+  setTimeout(() => {
+    var time = new Date();
+    if (time.getHours() == 15) {
+      let comment = document.createComment(' 三点几嚟！饮茶先啦！ ');
+      document.body.insertBefore(comment, document.getElementsByTagName('header')[0]);
+    }
+  },1);
+    
+</script>
+
+
+<script>
+    var postImg = document.querySelectorAll("article[class=page] img");
+    for (let imgi = 0; imgi < postImg.length; imgi++) {
+        postImg[imgi].onclick = () => {
+            let zoomImg = document.createElement("div");
+            zoomImg.id = "zoomImg";
+            zoomImg.innerHTML = `<div id="zoom-picture"></div>
+    <div class="poptrox-overlay"
+        style="position: fixed; left: 0px; top: 0px; z-index: 20000; width: 100%; height: 100%; text-align: center; cursor: zoom-out; opacity: 1;">
+        <div style="display:inline-block;height:100%;vertical-align:middle;"></div>
+        <div
+            style="position:absolute;left:0;top:0;width:100%;height:100%;background:#000000;opacity:0;filter:alpha(opacity=0);">
+        </div>
+        <div class="poptrox-popup"
+            style="display: inline-block; vertical-align: middle; position: relative; z-index: 1; cursor: zoom-out; min-width: 10px; min-height: 10px; width: auto; height: auto;">
+            <div class="loader" style="display: none;"></div>
+            <div class="pic" style="text-indent: 0px;"><img
+                    src="${ postImg[imgi].srcset || postImg[imgi].src }" alt="Loading..."
+                    style="vertical-align: bottom; max-width: 85vw; max-height: 85vh;"></div>
+        </div>
+    </div>`;
+            document.body.appendChild(zoomImg);
+                document.querySelector("#zoomImg").onclick = () => {
+                    document.querySelector("#zoomImg").remove();
+                }
+        }
+    }
+    
+</script>
+
+
+
+
+    <script>
+        query("#toc-btn")[0].onclick = () => {
+            if (query(".post-toc")[0].innerHTML) {
+                toggleClass(".post-toc", "display-inline");
+            }
+        }
+
+        if (!query(".post-toc")[0].innerHTML) {
+            addClass("#toc-btn","display-none");
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+        </div>
+        <div id="css-loading">
+            <h3 class="text-center">加载中...</h3>
+        </div>
+        
+    </body>
+</html>
