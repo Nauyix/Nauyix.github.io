@@ -483,7 +483,7 @@ header .header__right .dropdown-menus .dropdown-menu {
       
       <span class="post-meta">
         <span class="p-dot"></span>
-        共 295 字
+        共 559 字
       </span>
     
     
@@ -492,7 +492,7 @@ header .header__right .dropdown-menus .dropdown-menu {
         <span class="p-dot"></span>
         
         预计 
-        3
+        6
          分钟
       </span>
     
@@ -503,7 +503,7 @@ header .header__right .dropdown-menus .dropdown-menu {
 <div class="article-m">
   <div class="post-toc">
     
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#lambda%E4%BD%9C%E4%B8%BA%E6%A7%BD%E5%87%BD%E6%95%B0%E5%AF%BC%E8%87%B4%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">lambda作为槽函数导致的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EventFilter%E6%93%8D%E4%BD%9C%E6%95%B0%E6%AC%A1%E5%90%8E%E6%97%A0%E6%B3%95%E6%8D%95%E8%8E%B7%E6%9F%90%E4%B8%80%E4%BF%A1%E5%8F%B7%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">EventFilter操作数次后无法捕获某一信号的问题</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#lambda%E4%BD%9C%E4%B8%BA%E6%A7%BD%E5%87%BD%E6%95%B0%E5%AF%BC%E8%87%B4%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">lambda作为槽函数导致的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EventFilter%E6%93%8D%E4%BD%9C%E6%95%B0%E6%AC%A1%E5%90%8E%E6%97%A0%E6%B3%95%E6%8D%95%E8%8E%B7%E6%9F%90%E4%B8%80%E4%BF%A1%E5%8F%B7%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">EventFilter操作数次后无法捕获某一信号的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#QT%E4%BF%A1%E5%8F%B7%E6%A7%BD%E8%A7%A6%E5%8F%91%E9%A1%BA%E5%BA%8F%E9%9A%8F%E6%9C%BA%E5%92%8C%E6%BA%A2%E5%87%BA%E5%AF%BC%E8%87%B4%E7%9A%84%E6%AE%B5%E9%94%99%E8%AF%AF"><span class="toc-number">3.</span> <span class="toc-text">QT信号槽触发顺序随机和溢出导致的段错误</span></a></li></ol>
     
   </div>
     <div id="article">
@@ -513,6 +513,12 @@ header .header__right .dropdown-menus .dropdown-menu {
 
 <h2 id="EventFilter操作数次后无法捕获某一信号的问题"><a href="#EventFilter操作数次后无法捕获某一信号的问题" class="headerlink" title="EventFilter操作数次后无法捕获某一信号的问题"></a>EventFilter操作数次后无法捕获某一信号的问题</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">MainWindow::eventFilter</span><span class="params">(QObject *watched, QEvent *event)</span> </span>&#123;</span><br><span class="line">  QKeyEvent *keyEvent = <span class="built_in">static_cast</span>&lt;QKeyEvent*&gt;(event);</span><br><span class="line">  QDateTime dateTime = QDateTime::<span class="built_in">currentDateTime</span>();</span><br><span class="line">  <span class="built_in">qDebug</span>() &lt;&lt; <span class="string">&quot;Captured&quot;</span> &lt;&lt; dateTime .<span class="built_in">toString</span>(<span class="string">&quot;yyyy-MM-dd hh:mm:ss&quot;</span>) &lt;&lt; <span class="string">&quot;type is: &quot;</span> &lt;&lt; event -&gt; <span class="built_in">type</span>();</span><br><span class="line">  <span class="keyword">if</span> (event -&gt; <span class="built_in">type</span>() == QEvent::ShortcutOverride) &#123;</span><br><span class="line">    <span class="keyword">if</span> (keyEvent -&gt; <span class="built_in">key</span>() == Qt::Key_Right) &#123;</span><br><span class="line">      <span class="built_in">Forward1f</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (keyEvent -&gt; <span class="built_in">key</span>() == Qt::Key_Left) &#123;</span><br><span class="line">      <span class="built_in">Back1f</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> QWidget::<span class="built_in">eventFilter</span>(watched, event);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>操作单侧方向键多次之后无法再次捕获，需要点击此部件内按钮后才能继续捕获<br>将事件处理器由子部件上升到父部件，问题解决<br>原因未查明，推测是多次操作后触发某部件特性导致事件被拦截，可能和事件的传输顺序有关</p>
+<h2 id="QT信号槽触发顺序随机和溢出导致的段错误"><a href="#QT信号槽触发顺序随机和溢出导致的段错误" class="headerlink" title="QT信号槽触发顺序随机和溢出导致的段错误"></a>QT信号槽触发顺序随机和溢出导致的段错误</h2><p>执行代码到这一步的时候发现有概率会发生段错误，但不是稳定复现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;images_.<span class="built_in">size</span>() - <span class="number">1</span>;i++) &#123;</span><br><span class="line">  <span class="built_in">qDebug</span>() &lt;&lt; images_.<span class="built_in">size</span>() &lt;&lt; i;</span><br><span class="line">  current_index[i] = time%images_[i].<span class="built_in">size</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>刚开始是一位如果另一条事件链先触发，此时images[i]是空的<br>修复了这个问题之后还是报错，遂打印日志，惊奇的发现日志输出如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0 1</span><br><span class="line">0 2</span><br><span class="line">0 3</span><br><span class="line">0 4</span><br></pre></td></tr></table></figure>
+<p>循环的条件为 __ i &lt; images_.size()-1__，但打印出来的结果是i为1234，但size()为0<br>于是看了一下images_.size()的类型，为size_type(aka unsigned long)<br>真相大白，原来是为size()为0的时候-1溢出了</p>
+<p>也就是说，如果另一条事件链先触发，size()不会是0，因此不会溢出<br>如果是这条事件链触发的时候，images_里有内容，也不会段错误<br>只有当这条事件链触发，且images_为空的时候，才会段错误</p>
 
       </div>
     </div>
